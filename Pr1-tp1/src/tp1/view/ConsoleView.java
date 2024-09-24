@@ -112,8 +112,10 @@ public class ConsoleView extends GameView {
 		return sb.toString();
 	}
 
+	//CAMBIO BRF: para que devuelva vacío.
 	protected String consoleCell(String celStr) {
-		return MyStringUtils.center(celStr, CELL_SIZE);
+		return "     ";
+		//return MyStringUtils.center(celStr, CELL_SIZE);
 	}
 	
 	@Override
