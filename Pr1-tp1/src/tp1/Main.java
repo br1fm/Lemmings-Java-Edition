@@ -16,7 +16,7 @@ public class Main {
 	 * 
 	 * @param args Arguments for the game.
 	 */
-	/*public static void main(String[] args) {
+	public static void main(String[] args) {
 		// Required to avoid issues with tests
 		// Locale.of("es", "ES");
 		// You can replace the following line by the previous line if using Java21
@@ -34,5 +34,5 @@ public class Main {
 		} catch (NumberFormatException e) {
 			System.out.println(String.format(Messages.LEVEL_NOT_A_NUMBER_ERROR, args[0]));
 		}
-	}*/
+	}
 }
