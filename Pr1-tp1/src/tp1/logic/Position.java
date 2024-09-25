@@ -9,7 +9,12 @@ public class Position {
 
 	private int col;
 	private int row;
-
+	
 	//TODO fill your code
+	
+	public Position(int fila, int columna) {
+		col = columna;
+		row = fila;
+	}
 
 }

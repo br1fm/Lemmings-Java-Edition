@@ -1,6 +1,7 @@
 package tp1.control;
 
 import tp1.logic.Game;
+import tp1.logic.GameObjectContainer;
 import tp1.view.GameView;
 
 /**
@@ -27,5 +28,6 @@ public class Controller {
 		view.showGame();
 		view.showEndMessage();
 	}
+	
 
 }
