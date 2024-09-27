@@ -12,9 +12,15 @@ public class Position {
 	
 	//TODO fill your code
 	
-	public Position(int fila, int columna) {
-		col = columna;
-		row = fila;
+	public Position(int col, int row) {
+		this.col = col;
+		this.row = row;
 	}
+	
+	  public boolean equals(Position other_pos) {
+	        if (this == other_pos) return true; 
+	        if (other_pos == null) return false;
+	        return (col == other_pos.col && row == other_pos.row); // Compara atributos
+	  }
 
 }

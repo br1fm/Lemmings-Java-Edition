@@ -8,8 +8,8 @@ public class Lemming {
 	//TODO fill your code
 	private Position pos;
 	
-	public Lemming(int fila, int columna) {
-		pos = new Position(fila, columna);
+	public Lemming(int col, int row) {
+		pos = new Position(col, row);
 	}
 	
 	/**
@@ -17,6 +17,11 @@ public class Lemming {
 	 */
 	public void update() {
 		//TODO fill your code
+	}
+	
+	public Boolean isAtPosition(int col, int row) {
+		Position comparison = new Position(col,row);
+		return (comparison.equals(pos));
 	}
 
 	//CAMBIO: provisional, más adelante cambia de B a B invertida 

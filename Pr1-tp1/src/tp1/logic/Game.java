@@ -46,8 +46,7 @@ public class Game {
 
 	public String positionToString(int col, int row) {
 		// TODO Auto-generated method stub
-		
-		return null;
+		return container.positionToString(col, row);
 	}
 
 	public boolean playerWins() {
@@ -69,7 +68,7 @@ public class Game {
 	//CAMBIO: tanto los parámetros de addLemmings como el de addWalls están sacados del coño
 	private void addLemmings(int nLevel) {
 		//CAMBIO: Cambiar en cuanto se pueda. Por ahora solo añado uno.
-		container.add(new Lemming(1,2));
+		container.add(new Lemming(0,2));
 	}
 	
 	private void addWalls(int nLevel) {

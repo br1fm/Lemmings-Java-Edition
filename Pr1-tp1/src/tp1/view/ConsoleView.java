@@ -114,8 +114,8 @@ public class ConsoleView extends GameView {
 
 	//CAMBIO: para que devuelva vacío.
 	protected String consoleCell(String celStr) {
-		return "     ";
-		//return MyStringUtils.center(celStr, CELL_SIZE);
+		//return "     ";
+		return MyStringUtils.center(celStr, CELL_SIZE);
 	}
 	
 	@Override

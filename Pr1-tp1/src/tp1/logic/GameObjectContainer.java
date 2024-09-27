@@ -34,4 +34,29 @@ public class GameObjectContainer {
     	this.exitDoor = exitDoor;
     }
 	
+    public void update() {
+    	for(Lemming l : arrayLemmings) {
+    		l.update();
+    	}
+    	
+    	for(Wall w : arrayWalls) {
+    		w.update();
+    	}
+    }
+    
+    public String positionToString(int col, int row) {
+    	
+    	String str = "      ";
+    	
+    	for(Lemming l : arrayLemmings) {
+    		if(l.isAtPosition(col, row)) str = l.toString();
+    	}
+    	/*
+    	for(Wall w : arrayWalls) {
+    		if(w.isAtPosition(col, row)) str = w.toString();
+    	}*/
+    	
+    	return str;
+    }
+    
 }

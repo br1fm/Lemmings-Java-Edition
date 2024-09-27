@@ -29,5 +29,8 @@ public class Controller {
 		view.showEndMessage();
 	}
 	
+	public void draw() {
+		view.showGame();
+	}
 
 }
