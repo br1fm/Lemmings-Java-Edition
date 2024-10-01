@@ -58,9 +58,10 @@ public class GameObjectContainer {
     		}
     	}
     	
-    	
-    	for(Wall w : arrayWalls) {
-    		if(w.isAtPosition(col, row)) str = w.toString();
+    	if(arrayWalls.length > 0) {
+    		for(Wall w : arrayWalls) {
+    			if(w.isAtPosition(col, row)) str = w.toString();
+    		}
     	}
     	
     	return str;
