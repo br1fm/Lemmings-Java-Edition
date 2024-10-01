@@ -1,15 +1,17 @@
 package tp1.logic;
 
 import tp1.logic.gameobjects.Lemming;
+import tp1.logic.gameobjects.Wall;
 
 public class Game {
 
 	public static final int DIM_X = 10;
 	public static final int DIM_Y = 10;
 	private GameObjectContainer container;
+	private int game_cycle = 0;
 	//CAMBIO: Variable para el num inicial de lemmings/walls, 
 	//luego hay que quitarlo, solo para pruebas y tal
-	public static final int N_LEMMINGS = 1;
+	public static final int N_LEMMINGS = 2;
 	public static final int N_WALLS = 1;
 	
 	public Game(int nLevel) {
@@ -20,17 +22,16 @@ public class Game {
 	}
 
 	public int getCycle() {
-		// TODO Auto-generated method stub
-		return 0;
+		return game_cycle;
 	}
 
 	public int numLemmingsInBoard() {
-		// TODO Auto-generated method stub
+		//return container.numLemmingsBoard();
 		return 0;
 	}
 
 	public int numLemmingsDead() {
-		// TODO Auto-generated method stub
+		//return N_LEMMINGS - numLemmingsInBoard();
 		return 0;
 	}
 
@@ -69,13 +70,14 @@ public class Game {
 	private void addLemmings(int nLevel) {
 		//CAMBIO: Cambiar en cuanto se pueda. Por ahora solo añado uno
 		container.add(new Lemming(0,2));
+		container.add(new Lemming(0,3));
 	}
 	
 	private void addWalls(int nLevel) {
-		
+		container.add(new Wall(2,3));
 	}
 	
-	private void update() {
-		
+	public void update() {
+		game_cycle++;
 	}
 }

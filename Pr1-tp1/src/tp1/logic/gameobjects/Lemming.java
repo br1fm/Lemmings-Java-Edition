@@ -1,5 +1,6 @@
 package tp1.logic.gameobjects;
 
+import tp1.logic.Direction;
 import tp1.logic.Game;
 import tp1.logic.Position;
 
@@ -7,9 +8,13 @@ public class Lemming {
 
 	//TODO fill your code
 	private Position pos;
+	private Direction dir;
+	private boolean is_alive;
 	
 	public Lemming(int col, int row) {
 		pos = new Position(col, row);
+		dir = Direction.RIGHT;
+		is_alive = true;
 	}
 	
 	/**

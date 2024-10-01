@@ -17,7 +17,7 @@ public class Wall {
 	
 	public Boolean isAtPosition(int col, int row) {
 		Position comparison = new Position(col,row);
-		return (comparison == pos);
+		return (comparison.equals(pos));
 	}
 
 	public void update() {
