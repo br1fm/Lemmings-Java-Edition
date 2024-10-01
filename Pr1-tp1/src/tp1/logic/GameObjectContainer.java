@@ -1,5 +1,6 @@
 package tp1.logic;
 import tp1.logic.gameobjects.Lemming;
+
 import tp1.logic.gameobjects.Wall;
 import tp1.logic.gameobjects.ExitDoor;
 //CAMBIO: igual hay que cambiar este import.

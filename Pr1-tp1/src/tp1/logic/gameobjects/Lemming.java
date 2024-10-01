@@ -37,9 +37,7 @@ public class Lemming {
 		return (comparison.equals(pos));
 	}
 	
-	public void move() {
-		
-	}
+
 
 	//CAMBIO: provisional, más adelante cambia de B a B invertida 
 	//si va de derecha a izda o de izquierda a derecha.

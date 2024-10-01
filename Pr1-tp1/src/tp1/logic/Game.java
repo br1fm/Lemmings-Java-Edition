@@ -11,7 +11,7 @@ public class Game {
 	private int game_cycle = 0;
 	//CAMBIO: Variable para el num inicial de lemmings/walls, 
 	//luego hay que quitarlo, solo para pruebas y tal
-	public static final int N_LEMMINGS = 2;
+	public static final int N_LEMMINGS = 1;
 	public static final int N_WALLS = 1;
 	
 	public Game(int nLevel) {
@@ -26,8 +26,8 @@ public class Game {
 	}
 
 	public int numLemmingsInBoard() {
-		//return container.numLemmingsBoard();
-		return 0;
+		return container.numLemmingsBoard();
+		//return 0;
 	}
 
 	public int numLemmingsDead() {
@@ -70,7 +70,6 @@ public class Game {
 	private void addLemmings(int nLevel) {
 		//CAMBIO: Cambiar en cuanto se pueda. Por ahora solo añado uno
 		container.add(new Lemming(0,2));
-		container.add(new Lemming(0,3));
 	}
 	
 	private void addWalls(int nLevel) {
@@ -79,5 +78,9 @@ public class Game {
 	
 	public void update() {
 		game_cycle++;
+	}
+	
+	public void move() {
+
 	}
 }

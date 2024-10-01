@@ -28,19 +28,44 @@ public class Controller {
 		view.showWelcome();
 		//TODO fill your code: The main loop that displays the game, asks the user for input, and executes the action.
 		Scanner entrada = new Scanner (System.in);
-		String command;
+		String command = "";
 		
 		do {
-			view.showGame();
+			//APAÑO PARA QUE NO SE REPINTE EL TABLERO EN HELP O EN COMANDO ERRONEO
+			//(PENSAR OTRA FORMA) 
+			if(command.equals("")||command.equals("none") || command.equals("n")
+					|| command.equals("reset") || command.equals("r")) {
+				view.showGame();
+			}
+			
+			System.out.print("Command > ");
 			command = entrada.nextLine();
 			command.toLowerCase();
 			
+			if(command.equals("r") || command.equals("reset")) {
+				
+			}
+			else if(command.equals("h") || command.equals("help")) {
+				help();
+			}
+			else if(command.equals("") || command.equals("none") || command.equals("n")) {
+				game.update();
+			}
+			else if(!(command.equals("e")) && !(command.equals("exit"))) System.out.println("-- The command entered is incorrect--");
 			
-			
-		}while(command != "e" || command != "exit");
+		}while(!(command.equals("e")) && !(command.equals("exit")));
 		
 		entrada.close();
 		view.showEndMessage();
+	}
+	
+	public void help() {
+		System.out.println( "\n" + "\r\n"
+				+ "Available commands:\r\n"
+				+ "[r]eset: start a new game\r\n"
+				+ "[h]elp: print this help message\r\n"
+				+ "[e]xit: end the execution of the game\r\n"
+				+ "[n]one | \"\": skips cycle" + "\n");
 	}
 	
 	public void draw() {
