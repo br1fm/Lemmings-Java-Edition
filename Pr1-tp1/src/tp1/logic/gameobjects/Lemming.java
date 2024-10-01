@@ -28,6 +28,10 @@ public class Lemming {
 		//TODO fill your code
 	}
 	
+	public Direction getDirection() {
+		return dir;
+	}
+	
 	public Boolean isAtPosition(int col, int row) {
 		Position comparison = new Position(col,row);
 		return (comparison.equals(pos));
