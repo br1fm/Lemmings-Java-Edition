@@ -3,6 +3,7 @@ package tp1.logic.gameobjects;
 import tp1.logic.Direction;
 import tp1.logic.Game;
 import tp1.logic.Position;
+import tp1.logic.lemmingRoles.WalkerRole;
 
 public class Lemming {
 
@@ -18,7 +19,6 @@ public class Lemming {
 		pos = new Position(col, row);
 		dir = Direction.RIGHT;
 		is_alive = true;
-		
 	}
 	
 	/**
