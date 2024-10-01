@@ -67,7 +67,7 @@ public class Game {
 	
 	//CAMBIO: tanto los parámetros de addLemmings como el de addWalls están sacados del coño
 	private void addLemmings(int nLevel) {
-		//CAMBIO: Cambiar en cuanto se pueda. Por ahora solo añado uno.
+		//CAMBIO: Cambiar en cuanto se pueda. Por ahora solo añado uno
 		container.add(new Lemming(0,2));
 	}
 	
