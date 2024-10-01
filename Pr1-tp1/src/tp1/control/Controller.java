@@ -25,54 +25,26 @@ public class Controller {
 	 * 
 	 */
 	public void run() {
-		
+		view.showWelcome();
 		//TODO fill your code: The main loop that displays the game, asks the user for input, and executes the action.
 		Scanner entrada = new Scanner (System.in);
 		String command;
-		view.showWelcome();
-		view.showGame();
 		
-		do{
+		do {
+			view.showGame();
 			command = entrada.nextLine();
-			command = command.toLowerCase();
-				
-				switch(command) {
-					case "none":
-					case "n":
-					case "":
-						game.update();
-						view.showGame();
-						//CAMBIO: AÑADIR QUE SUME UN TURNO
-					break;
-					case "help":
-					case "h":
-						//System.out.flush();
-						help();
-					break;
-					case "reset":
-					case "r":
-					break;
-					case "exit":
-					case "e":
-					break;
-					default:
-						System.out.println("El comando introducido no es correcto");
-				}
+			command.toLowerCase();
 			
-		}while((!command.equals("e")) && (!command.equals("exit")));
+			
+			
+		}while(command != "e" || command != "exit");
 		
 		entrada.close();
 		view.showEndMessage();
 	}
 	
-	private void help(){
-		System.out.println(
-				"Command > help\n"
-				+ "Available commands:\n"
-				+ "[r]eset: start a new game\n"
-				+ "[h]elp: print this help message\n"
-				+ "[e]xit: end the execution of the game\n"
-				+ "[n]one | \"\": skips cycle");
+	public void draw() {
+		view.showGame();
 	}
-	
+
 }

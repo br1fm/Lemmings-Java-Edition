@@ -10,11 +10,15 @@ public class Lemming {
 	private Position pos;
 	private Direction dir;
 	private boolean is_alive;
+	private int fall_force;
+	private WalkerRole role;
+	private Game game;
 	
 	public Lemming(int col, int row) {
 		pos = new Position(col, row);
 		dir = Direction.RIGHT;
 		is_alive = true;
+		
 	}
 	
 	/**
@@ -27,6 +31,10 @@ public class Lemming {
 	public Boolean isAtPosition(int col, int row) {
 		Position comparison = new Position(col,row);
 		return (comparison.equals(pos));
+	}
+	
+	public void move() {
+		
 	}
 
 	//CAMBIO: provisional, más adelante cambia de B a B invertida 

@@ -44,21 +44,18 @@ public class GameObjectContainer {
     	}
     }
     
-    public int numLemmingsBoard() {
-    	return arrayLemmings.length;
-    }
     
     public String positionToString(int col, int row) {
     	
     	String str = "      ";
     	
     	if(arrayLemmings.length > 0) {
-    		for(Lemming l : arrayLemmings) {
-    			if(l.isAtPosition(col, row)) str = l.toString();
-    		}
+        	for(Lemming l : arrayLemmings) {
+        		if(l.isAtPosition(col, row)) str = l.toString();
+        	}
     	}
-    	
-    	
+
+ 
     	for(Wall w : arrayWalls) {
     		if(w.isAtPosition(col, row)) str = w.toString();
     	}
