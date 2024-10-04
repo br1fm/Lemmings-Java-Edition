@@ -5,21 +5,14 @@ import tp1.logic.gameobjects.Lemming;
 
 public class WalkerRole {
 	
-	private Lemming lemming;
-	
-	public WalkerRole(Lemming lemming) {
-		this.lemming = lemming;
-	}
-	
-    public void play() {
-    	
+    public void play(Lemming lemming) {
+    	lemming.move();
     }
     
-    @Override
-    public String toString(){
+    public String getIcon(Lemming lemming){
     	String str;
-    	if(lemming.getDirection() == Direction.RIGHT) str = "B";
-    	else str = "ᗺ";
+    	if(lemming.getDirection() == Direction.LEFT) str = "ᗺ";
+    	else str = "B";
     	return str;
     }
 }

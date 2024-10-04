@@ -2,33 +2,30 @@ package tp1.logic;
 import tp1.logic.gameobjects.Lemming;
 
 import tp1.logic.gameobjects.Wall;
+
+import java.util.ArrayList;
+
 import tp1.logic.gameobjects.ExitDoor;
-//CAMBIO: igual hay que cambiar este import.
-import tp1.logic.Game;
 
 public class GameObjectContainer {
 	//TODO fill your code
 	private int l_cont;
 	private int w_cont;
-	private Lemming[] arrayLemmings;
-	private Wall[] arrayWalls;
+	private ArrayList<Lemming> arrayLemmings;
+	private ArrayList<Wall> arrayWalls;
 	private ExitDoor exitDoor;
 	
 	public GameObjectContainer(int num_lemmings, int num_walls) {
-		l_cont = 0;
-		w_cont = 0;
-		arrayLemmings = new Lemming[num_lemmings];
-		arrayWalls = new Wall[num_walls];
+		arrayLemmings = new ArrayList<>();
+		arrayWalls = new ArrayList<>();
 	}
 	
     public void add(Lemming lemming) {
-    	arrayLemmings[l_cont] = lemming;
-    	l_cont++;
+    	arrayLemmings.add(lemming);
     }
     
     public void add(Wall wall) {
-    	arrayWalls[w_cont] = wall;
-    	w_cont++;
+    	arrayWalls.add(wall);
     }
 	
     public void add(ExitDoor exitDoor) {
@@ -46,23 +43,31 @@ public class GameObjectContainer {
     }
     
     public int numLemmingsBoard() {
-    	return arrayLemmings.length;
+    	return arrayLemmings.size();
+    }
+    
+    public boolean isWallAtPos(Position comparison) {
+    	
+    	boolean condition = false;
+    	
+    	for(Wall w : arrayWalls) {
+    		if(w.isAtPosition(comparison)) condition = true;
+    	}
+    	return condition;
     }
     
     public String positionToString(int col, int row) {
     	
     	String str = "      ";
+    	Position pos = new Position(col, row);
     	
-    	if(l_cont > 0) {
-    		for(Lemming l : arrayLemmings) {
-    			if(l.isAtPosition(col, row)) str = l.toString();
-    		}
+    	
+    	for(Lemming l : arrayLemmings) {
+    		if(l.isAtPosition(pos)) str = l.toString();
     	}
     	
-    	if(w_cont > 0) {
-    		for(Wall w : arrayWalls) {
-    			if(w.isAtPosition(col, row)) str = w.toString();
-    		}
+    	for(Wall w : arrayWalls) {
+    			if(w.isAtPosition(pos)) str = w.toString();
     	}
     	
     	return str;

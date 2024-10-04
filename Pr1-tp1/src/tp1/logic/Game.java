@@ -11,8 +11,8 @@ public class Game {
 	private int game_cycle = 0;
 	//CAMBIO: Variable para el num inicial de lemmings/walls, 
 	//luego hay que quitarlo, solo para pruebas y tal
-	public static final int N_LEMMINGS = 1;
-	public static final int N_WALLS = 1;
+	public static final int N_LEMMINGS = 10;
+	public static final int N_WALLS = 10;
 	
 	public Game(int nLevel) {
 		//CAMBIO: en el futuro número lemmings / walls viene determinado por nLevel?
@@ -65,22 +65,29 @@ public class Game {
 		return null;
 	}
 	
+	public boolean isWallAtPos(Position comparison) {
+		return container.isWallAtPos(comparison);
+	}
 	
 	//CAMBIO: tanto los parámetros de addLemmings como el de addWalls están sacados del coño
 	private void addLemmings(int nLevel) {
 		//CAMBIO: Cambiar en cuanto se pueda. Por ahora solo añado uno
-		container.add(new Lemming(0,2));
+		container.add(new Lemming(new Position(2,4), this));
 	}
 	
 	private void addWalls(int nLevel) {
-		container.add(new Wall(2,3));
+		container.add(new Wall(2,5));
+		container.add(new Wall(3,5));
+		container.add(new Wall(4,5));
+		container.add(new Wall(5, 5));
+		container.add(new Wall(6, 5));
+		container.add(new Wall(6, 4));
 	}
 	
 	public void update() {
+		container.update();
 		game_cycle++;
 	}
 	
-	public void move() {
-
-	}
+	
 }

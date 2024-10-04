@@ -5,10 +5,10 @@ package tp1.logic;
  * Immutable class to encapsulate and manipulate positions in the game board
  * 
  */
-public class Position {
+public final class Position {
 
-	private int col;
-	private int row;
+	private final int col;
+	private final int row;
 	
 	//TODO fill your code
 	
@@ -17,10 +17,18 @@ public class Position {
 		this.row = row;
 	}
 	
-	  public boolean equals(Position other_pos) {
-	        if (this == other_pos) return true; 
-	        if (other_pos == null) return false;
-	        return (col == other_pos.col && row == other_pos.row); // Compara atributos
-	  }
-
+	 public boolean equals(Position other_pos) {
+	       if (this == other_pos) return true; 
+	       if (other_pos == null) return false;
+	       return (col == other_pos.col && row == other_pos.row); // Compara atributos
+	 }
+	
+	 public int getCol() {
+		 return col;
+	 }
+	 
+	 public int getRow() {
+		 return row;
+	 }
+	 
 }

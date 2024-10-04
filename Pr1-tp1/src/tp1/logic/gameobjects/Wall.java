@@ -12,11 +12,10 @@ public class Wall {
 	
 	@Override
 	public String toString() {
-		return "▓";
+		return "▓▓▓▓▓";
 	}
 	
-	public Boolean isAtPosition(int col, int row) {
-		Position comparison = new Position(col,row);
+	public Boolean isAtPosition(Position comparison) {
 		return (comparison.equals(pos));
 	}
 
