@@ -15,4 +15,13 @@ public class WalkerRole {
     	else str = "B";
     	return str;
     }
+    
+    public boolean manageLanding(int fall_force) {
+    	return (fall_force > 2);
+    }
+    
+    public void manageFall(Lemming lemming) {
+    	lemming.fall();
+    }
+    
 }

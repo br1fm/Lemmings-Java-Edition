@@ -31,4 +31,13 @@ public final class Position {
 		 return row;
 	 }
 	 
+	 public boolean isAtBorder() {
+			return (this.row == Game.DIM_X ||
+					this.col == -1);
+	}
+		
+	public boolean isAtVoid() {
+			return (this.row == Game.DIM_Y);
+	}
+	 
 }

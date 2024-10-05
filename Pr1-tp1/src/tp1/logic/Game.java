@@ -16,7 +16,7 @@ public class Game {
 	
 	public Game(int nLevel) {
 		//CAMBIO: en el futuro número lemmings / walls viene determinado por nLevel?
-		this.container = new GameObjectContainer(N_LEMMINGS, N_WALLS);
+		this.container = new GameObjectContainer();
 		addLemmings(nLevel);
 		addWalls(nLevel);
 	}
@@ -27,7 +27,6 @@ public class Game {
 
 	public int numLemmingsInBoard() {
 		return container.numLemmingsBoard();
-		//return 0;
 	}
 
 	public int numLemmingsDead() {
@@ -76,12 +75,13 @@ public class Game {
 	}
 	
 	private void addWalls(int nLevel) {
-		container.add(new Wall(2,5));
-		container.add(new Wall(3,5));
-		container.add(new Wall(4,5));
+		container.add(new Wall(2, 5));
+		container.add(new Wall(3, 5));
+		container.add(new Wall(4, 5));
 		container.add(new Wall(5, 5));
 		container.add(new Wall(6, 5));
 		container.add(new Wall(6, 4));
+		container.add(new Wall(1, 7));
 	}
 	
 	public void update() {

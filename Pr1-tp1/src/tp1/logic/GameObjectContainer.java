@@ -9,13 +9,11 @@ import tp1.logic.gameobjects.ExitDoor;
 
 public class GameObjectContainer {
 	//TODO fill your code
-	private int l_cont;
-	private int w_cont;
 	private ArrayList<Lemming> arrayLemmings;
 	private ArrayList<Wall> arrayWalls;
 	private ExitDoor exitDoor;
 	
-	public GameObjectContainer(int num_lemmings, int num_walls) {
+	public GameObjectContainer() {
 		arrayLemmings = new ArrayList<>();
 		arrayWalls = new ArrayList<>();
 	}

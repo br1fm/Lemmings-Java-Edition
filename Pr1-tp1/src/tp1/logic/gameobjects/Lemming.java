@@ -14,15 +14,13 @@ public class Lemming {
 	private int fall_force;
 	private WalkerRole role;
 	private Game game;
-	private boolean falling;
 	
 	public Lemming(Position pos, Game game) {
 		this.game = game;
 		this.pos = pos;
 		dir = Direction.RIGHT;
 		is_alive = true;
-		falling = false;
-		fall_force = 0;
+		fall_force = pos.getRow();
 		role = new WalkerRole();
 	}
 	
@@ -42,33 +40,22 @@ public class Lemming {
 	}
 	
 	public void move() {
-		
-		if(game.isWallAtPos(new Position(pos.getCol() + Direction.DOWN.getX(), 
-					pos.getRow() + Direction.DOWN.getY()))){
 			
-			if(fall_force > 2) {
-				die();
-			}
-			else {
-				if(game.isWallAtPos(new Position(pos.getCol() + dir.getX(), 
-						pos.getRow() + dir.getY()))) {
-					if(dir.equals(Direction.LEFT)) dir = Direction.RIGHT;
-					else dir = Direction.LEFT;
-				}
-				pos = new Position(pos.getCol() + dir.getX(), 
-						pos.getRow() + dir.getY());
-				falling = false;
-				fall_force = 0;
-			}
+		if(!isOnGround()){
+			role.manageFall(this);
 		}
 		
 		else{
-			pos = new Position(pos.getCol() + Direction.DOWN.getX(), 
-					pos.getRow() + Direction.DOWN.getY());
-			falling = true;
-			fall_force++;
+			if(role.manageLanding(pos.getRow() - fall_force)) die();
+			else {
+				walk();
+				fall_force = pos.getRow();
+			}
 		}
+		
+		if(pos.isAtVoid()) die();
 	}
+	
 	
 	public Direction getDirection() {
 		return dir;
@@ -78,8 +65,28 @@ public class Lemming {
 		return (comparison.equals(pos));
 	}
 	
+	private Boolean isOnGround() {
+		return (game.isWallAtPos(new Position(pos.getCol() + Direction.DOWN.getX(), 
+				pos.getRow() + Direction.DOWN.getY())));
+	}
+	
 	private void die() {
 		is_alive = false;
+	}
+	
+	public void fall() {
+		pos = new Position(pos.getCol() + Direction.DOWN.getX(), 
+				pos.getRow() + Direction.DOWN.getY());
+	}
+	
+	private void walk() {
+		if(game.isWallAtPos(new Position(pos.getCol() + dir.getX(), 
+				pos.getRow() + dir.getY())) || pos.isAtBorder()) {
+			if(dir.equals(Direction.LEFT)) dir = Direction.RIGHT;
+			else dir = Direction.LEFT;
+		}
+		pos = new Position(pos.getCol() + dir.getX(), 
+				pos.getRow() + dir.getY());
 	}
 	
 	@Override
