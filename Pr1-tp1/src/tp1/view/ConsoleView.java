@@ -112,9 +112,7 @@ public class ConsoleView extends GameView {
 		return sb.toString();
 	}
 
-	//CAMBIO: para que devuelva vacío.
 	protected String consoleCell(String celStr) {
-		//return "     ";
 		return MyStringUtils.center(celStr, CELL_SIZE);
 	}
 	

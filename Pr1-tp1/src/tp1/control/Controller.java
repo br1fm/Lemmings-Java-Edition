@@ -46,30 +46,18 @@ public class Controller {
 				
 			}
 			else if(command.equals("h") || command.equals("help")) {
-				help();
+				System.out.println(game.help()); 
 			}
 			else if(command.equals("") || command.equals("none") || command.equals("n")) {
 				game.update();
 			}
 			else if(!(command.equals("e")) && !(command.equals("exit"))) System.out.println("-- The command entered is incorrect--");
 			
-		}while(!(command.equals("e")) && !(command.equals("exit")));
+		}while(!(command.equals("e")) && !(command.equals("exit")) && !game.gameEnds());
 		
+		view.showGame();
 		entrada.close();
 		view.showEndMessage();
-	}
-	
-	public void help() {
-		System.out.println( "\n" + "\r\n"
-				+ "Available commands:\r\n"
-				+ "[r]eset: start a new game\r\n"
-				+ "[h]elp: print this help message\r\n"
-				+ "[e]xit: end the execution of the game\r\n"
-				+ "[n]one | \"\": skips cycle" + "\n");
-	}
-	
-	public void draw() {
-		view.showGame();
 	}
 
 }

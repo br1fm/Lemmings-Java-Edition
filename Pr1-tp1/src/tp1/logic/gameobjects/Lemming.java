@@ -10,7 +10,7 @@ public class Lemming {
 	//TODO fill your code
 	private Position pos;
 	private Direction dir;
-	private boolean is_alive;
+	private boolean is_alive, is_out;
 	private int fall_force;
 	private WalkerRole role;
 	private Game game;
@@ -20,6 +20,7 @@ public class Lemming {
 		this.pos = pos;
 		dir = Direction.RIGHT;
 		is_alive = true;
+		is_out = false;
 		fall_force = pos.getRow();
 		role = new WalkerRole();
 	}
@@ -35,7 +36,8 @@ public class Lemming {
 	 * (acción = play del role)*/
 	public void update() {
 		if(is_alive) {
-			role.play(this);
+			if(game.isDoorAtPos(pos)) is_out = true;
+			else role.play(this);
 		}
 	}
 	
@@ -59,6 +61,14 @@ public class Lemming {
 	
 	public Direction getDirection() {
 		return dir;
+	}
+	
+	public boolean isAlive() {
+		return is_alive;
+	}
+	
+	public boolean isOut() {
+		return is_out;
 	}
 	
 	public Boolean isAtPosition(Position comparison) {

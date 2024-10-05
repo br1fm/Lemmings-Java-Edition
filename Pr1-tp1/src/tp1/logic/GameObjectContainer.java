@@ -12,10 +12,15 @@ public class GameObjectContainer {
 	private ArrayList<Lemming> arrayLemmings;
 	private ArrayList<Wall> arrayWalls;
 	private ExitDoor exitDoor;
+	private int dead_lemmings;
+	private int freed_lemmings;
 	
 	public GameObjectContainer() {
 		arrayLemmings = new ArrayList<>();
 		arrayWalls = new ArrayList<>();
+		dead_lemmings = 0;
+		freed_lemmings = 0;
+
 	}
 	
     public void add(Lemming lemming) {
@@ -31,6 +36,7 @@ public class GameObjectContainer {
     }
 	
     public void update() {
+    	
     	for(Lemming l : arrayLemmings) {
     		l.update();
     	}
@@ -38,10 +44,22 @@ public class GameObjectContainer {
     	for(Wall w : arrayWalls) {
     		w.update();
     	}
+    	
+    	removeDeadLemmings();
+    	removeFreedLemmings();
+    	
     }
     
-    public int numLemmingsBoard() {
+    public int numLemmingsInBoard() {
     	return arrayLemmings.size();
+    }
+    
+    public int numLemmingsDead() {
+    	return dead_lemmings;
+    }
+    
+    public int numLemmingsExit() {
+    	return freed_lemmings;
     }
     
     public boolean isWallAtPos(Position comparison) {
@@ -54,11 +72,16 @@ public class GameObjectContainer {
     	return condition;
     }
     
+    public boolean isDoorAtPos(Position comparison) {
+    	return (exitDoor.isAtPosition(comparison));
+    }
+    
     public String positionToString(int col, int row) {
     	
     	String str = "      ";
     	Position pos = new Position(col, row);
     	
+    	if(exitDoor.isAtPosition(pos)) str = exitDoor.toString();
     	
     	for(Lemming l : arrayLemmings) {
     		if(l.isAtPosition(pos)) str = l.toString();
@@ -69,6 +92,33 @@ public class GameObjectContainer {
     	}
     	
     	return str;
+    }
+    
+    public void removeDeadLemmings() {
+    	
+        ArrayList<Lemming> tempList = new ArrayList<>();
+        for(Lemming l : arrayLemmings) {
+            if(l.isAlive()) {
+                tempList.add(l);
+            }
+            else dead_lemmings++;
+        }
+        
+        arrayLemmings = tempList;
+    }
+    
+    public void removeFreedLemmings() {
+    	
+    	ArrayList<Lemming> tempList = new ArrayList<>();
+    	for(Lemming l : arrayLemmings) {
+			if(!l.isOut()) {
+    			tempList.add(l);
+    		}
+    		else freed_lemmings++;
+    	}
+    	
+    	arrayLemmings = tempList;
+    	
     }
     
 }
