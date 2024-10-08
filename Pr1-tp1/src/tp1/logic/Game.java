@@ -30,10 +30,59 @@ public class Game {
 	}
 	
 	private void initGame0() {
-		addWalls(new Wall(2, 5));
+		
+		addWalls(new Wall(4, 6));
+		addWalls(new Wall(5, 6));
+		addWalls(new Wall(6, 6));
+		addWalls(new Wall(7, 6));
+		addWalls(new Wall(7, 5));
+		addWalls(new Wall(8, 9));
+		addWalls(new Wall(9, 9));
+		addWalls(new Wall(8, 8));
+		addWalls(new Wall(0, 9));
+		addWalls(new Wall(1, 9));
+		addWalls(new Wall(4, 4));
+		addWalls(new Wall(3, 4));
+		addWalls(new Wall(2, 4));
+		addWalls(new Wall(8, 1));
+		addWalls(new Wall(9, 1));
+		
+		addExitDoor(new ExitDoor(new Position(4, 5)));
+		
+		addLemmings(new Lemming(new Position (9, 0), this));
+		addLemmings(new Lemming(new Position (2, 3), this));
+
+
+
+		
+		
 	}
 	
 	private void initGame1() {
+		
+		addWalls(new Wall(4, 6));
+		addWalls(new Wall(5, 6));
+		addWalls(new Wall(6, 6));
+		addWalls(new Wall(7, 6));
+		addWalls(new Wall(7, 5));
+		addWalls(new Wall(8, 9));
+		addWalls(new Wall(9, 9));
+		addWalls(new Wall(8, 8));
+		addWalls(new Wall(0, 9));
+		addWalls(new Wall(1, 9));
+		addWalls(new Wall(4, 4));
+		addWalls(new Wall(3, 4));
+		addWalls(new Wall(2, 4));
+		addWalls(new Wall(8, 1));
+		addWalls(new Wall(9, 1));
+		
+		addExitDoor(new ExitDoor(new Position(4, 5)));
+		
+		addLemmings(new Lemming(new Position (9, 0), this));
+		addLemmings(new Lemming(new Position (2, 3), this));
+		addLemmings(new Lemming(new Position (3, 3), this));
+		addLemmings(new Lemming(new Position (3, 3), this));
+		addLemmings(new Lemming(new Position (0, 8), this));
 		
 	}
 	
@@ -97,24 +146,18 @@ public class Game {
 	//CAMBIO: pasar como parametro un tipo Lemming
 	//TODO: tanto los parámetros de addLemmings como el de addWalls están sacados del coño
 	private void addLemmings(Lemming lemming) {
-		container.add(new Lemming(new Position(2,4), this));
-		container.add(new Lemming(new Position(5,4), this));
+		container.add(lemming);
+
 	}
 	
 	//CAMBIO: pasar como parametro un tipo Wall
 	private void addWalls(Wall wall) {
 		container.add(wall);
-		/*container.add(new Wall(3, 5));
-		container.add(new Wall(4, 5));
-		container.add(new Wall(5, 5));
-		container.add(new Wall(6, 5));
-		container.add(new Wall(6, 4));
-		container.add(new Wall(1, 7));*/
-		//container.add(new Wall(3, 4));
+
 	}
 	
 	private void addExitDoor(ExitDoor exitDoor) {
-		container.add(new ExitDoor(new Position(1, 6)));
+		container.add(exitDoor);
 	}
 	
 	public void update() {

@@ -18,9 +18,9 @@ public class GameObjectContainer {
 	public GameObjectContainer() {
 		arrayLemmings = new ArrayList<>();
 		arrayWalls = new ArrayList<>();
+		exitDoor = new ExitDoor();
 		dead_lemmings = 0;
 		freed_lemmings = 0;
-
 	}
 	
     public void add(Lemming lemming) {

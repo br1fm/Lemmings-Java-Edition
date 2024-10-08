@@ -10,6 +10,10 @@ public class ExitDoor {
 		this.pos = pos;
 	}
 	
+	public ExitDoor() {
+		
+	}
+	
 	@Override
 	public String toString() {
 		return "🚪";

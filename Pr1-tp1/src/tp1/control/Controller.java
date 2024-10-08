@@ -9,6 +9,7 @@ import tp1.view.GameView;
 /**
  *  Accepts user input and coordinates the game execution logic
  */
+
 public class Controller {
 
 	private Game game;
