@@ -13,11 +13,30 @@ public class Game {
 	
 	public Game(int nLevel) {
 		this.container = new GameObjectContainer();
-		addLemmings(nLevel);
-		addWalls(nLevel);
-		addExitDoor(nLevel);
+		initGames(nLevel);
 	}
-
+	
+	private void initGames(int nLevel) {
+		switch (nLevel) {
+		case 0:
+			initGame0();
+			break;
+		case 1:
+			initGame1();
+			break;
+		default:
+			System.out.println("Level not supported !");
+		}
+	}
+	
+	private void initGame0() {
+		addWalls(new Wall(2, 5));
+	}
+	
+	private void initGame1() {
+		
+	}
+	
 	public int getCycle() {
 		return game_cycle;
 	}
@@ -75,23 +94,26 @@ public class Game {
 		return container.isDoorAtPos(comparison);
 	}
 	
+	//CAMBIO: pasar como parametro un tipo Lemming
 	//TODO: tanto los parámetros de addLemmings como el de addWalls están sacados del coño
-	private void addLemmings(int nLevel) {
+	private void addLemmings(Lemming lemming) {
 		container.add(new Lemming(new Position(2,4), this));
 		container.add(new Lemming(new Position(5,4), this));
 	}
 	
-	private void addWalls(int nLevel) {
-		container.add(new Wall(2, 5));
-		container.add(new Wall(3, 5));
+	//CAMBIO: pasar como parametro un tipo Wall
+	private void addWalls(Wall wall) {
+		container.add(wall);
+		/*container.add(new Wall(3, 5));
 		container.add(new Wall(4, 5));
 		container.add(new Wall(5, 5));
 		container.add(new Wall(6, 5));
 		container.add(new Wall(6, 4));
-		container.add(new Wall(1, 7));
+		container.add(new Wall(1, 7));*/
+		//container.add(new Wall(3, 4));
 	}
 	
-	private void addExitDoor(int nLevel) {
+	private void addExitDoor(ExitDoor exitDoor) {
 		container.add(new ExitDoor(new Position(1, 6)));
 	}
 	

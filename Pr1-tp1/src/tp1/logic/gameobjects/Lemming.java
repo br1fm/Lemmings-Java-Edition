@@ -95,8 +95,10 @@ public class Lemming {
 			if(dir.equals(Direction.LEFT)) dir = Direction.RIGHT;
 			else dir = Direction.LEFT;
 		}
+		else {
 		pos = new Position(pos.getCol() + dir.getX(), 
 				pos.getRow() + dir.getY());
+		}
 	}
 	
 	@Override
