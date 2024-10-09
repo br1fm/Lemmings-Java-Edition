@@ -3,7 +3,6 @@ package tp1.control;
 import java.util.Scanner;
 
 import tp1.logic.Game;
-import tp1.logic.GameObjectContainer;
 import tp1.view.GameView;
 
 /**

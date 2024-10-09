@@ -52,10 +52,6 @@ public class Game {
 		addLemmings(new Lemming(new Position (9, 0), this));
 		addLemmings(new Lemming(new Position (2, 3), this));
 
-
-
-		
-		
 	}
 	
 	private void initGame1() {
@@ -81,7 +77,6 @@ public class Game {
 		addLemmings(new Lemming(new Position (9, 0), this));
 		addLemmings(new Lemming(new Position (2, 3), this));
 		addLemmings(new Lemming(new Position (3, 3), this));
-		addLemmings(new Lemming(new Position (3, 3), this));
 		addLemmings(new Lemming(new Position (0, 8), this));
 		
 	}
@@ -104,7 +99,7 @@ public class Game {
 
 	//TODO: implementar esta función (cambiar el 2)
 	public int numLemmingsToWin() {
-		return ((container.numLemmingsExit() - 2));
+		return ((2 - container.numLemmingsExit()));
 	}
 
 	public String positionToString(int col, int row) {

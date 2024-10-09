@@ -18,7 +18,6 @@ public class GameObjectContainer {
 	public GameObjectContainer() {
 		arrayLemmings = new ArrayList<>();
 		arrayWalls = new ArrayList<>();
-		exitDoor = new ExitDoor();
 		dead_lemmings = 0;
 		freed_lemmings = 0;
 	}
@@ -78,14 +77,24 @@ public class GameObjectContainer {
     
     public String positionToString(int col, int row) {
     	
+    	StringBuilder res = new StringBuilder(5);
     	String str = "      ";
     	Position pos = new Position(col, row);
     	
-    	if(exitDoor.isAtPosition(pos)) str = exitDoor.toString();
-    	
     	for(Lemming l : arrayLemmings) {
-    		if(l.isAtPosition(pos)) str = l.toString();
+    		if(l.isAtPosition(pos)) {
+    			str = l.toString();
+    			res.append(str);
+    		}
+    		
     	}
+    	
+    	if(exitDoor.isAtPosition(pos)) {
+    		str = exitDoor.toString();
+    		res.append(str);
+    	}
+    	
+    	str = res.toString();
     	
     	for(Wall w : arrayWalls) {
     			if(w.isAtPosition(pos)) str = w.toString();

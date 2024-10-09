@@ -10,9 +10,9 @@ public class ExitDoor {
 		this.pos = pos;
 	}
 	
-	public ExitDoor() {
+	/*public ExitDoor() {
 		
-	}
+	}*/
 	
 	@Override
 	public String toString() {
