@@ -118,7 +118,7 @@ public class Game {
 		return (playerLooses() || playerWins());
 	}
 	
-	public String help() {
+	/*public String help() {
 	    StringBuilder sb = new StringBuilder();
 	    sb.append("\n")
 	      .append("Available commands:\r\n")
@@ -128,7 +128,7 @@ public class Game {
 	      .append("[n]one | \"\": skips cycle\n");
 	    
 	    return sb.toString();
-	}
+	}*/
 	
 	public boolean isWallAtPos(Position comparison) {
 		return container.isWallAtPos(comparison);

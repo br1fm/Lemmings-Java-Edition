@@ -1,9 +1,11 @@
 package tp1.control;
 
+import java.util.Arrays;
 import java.util.Scanner;
 
 import tp1.logic.Game;
 import tp1.view.GameView;
+import tp1.view.Messages;
 
 /**
  *  Accepts user input and coordinates the game execution logic
@@ -33,25 +35,31 @@ public class Controller {
 		do {
 			//APAÑO PARA QUE NO SE REPINTE EL TABLERO EN HELP O EN COMANDO ERRONEO
 			//(PENSAR OTRA FORMA) 
-			if(command.equals("")||command.equals("none") || command.equals("n")
+			if(command.equals("")||command.equals(Messages.COMMAND_NONE_NAME) || command.equals(Messages.COMMAND_NONE_SHORTCUT)
 					|| command.equals("reset") || command.equals("r")) {
 				view.showGame();
 			}
 			
-			System.out.print("Command > ");
+			//String prompt = Messages.PROMPT;
+			System.out.print(Messages.PROMPT);
 			command = entrada.nextLine();
 			command.toLowerCase();
 			
 			if(command.equals("r") || command.equals("reset")) {
 				
 			}
-			else if(command.equals("h") || command.equals("help")) {
-				System.out.println(game.help()); 
+			else if(command.equals(Messages.COMMAND_HELP_NAME) || command.equals(Messages.COMMAND_HELP_SHORTCUT)) {
+				String str[] = Messages.HELP_LINES;
+				System.out.println(Arrays.toString(str)); 
 			}
-			else if(command.equals("") || command.equals("none") || command.equals("n")) {
+			else if(command.equals("") || command.equals(Messages.COMMAND_NONE_NAME) || command.equals(Messages.COMMAND_NONE_SHORTCUT)) {
 				game.update();
 			}
-			else if(!(command.equals("e")) && !(command.equals("exit"))) System.out.println("-- The command entered is incorrect--");
+			else if(!(command.equals(Messages.COMMAND_EXIT_NAME)) && !(command.equals(Messages.COMMAND_EXIT_SHORTCUT))) {
+				
+				System.out.println(Messages.INVALID_COMMAND);
+				
+			}
 			
 		}while(!(command.equals("e")) && !(command.equals("exit")) && !game.gameEnds());
 		
