@@ -32,7 +32,7 @@ public final class Position {
 	 }
 	 
 	 public boolean isAtBorder() {
-			return (this.row == Game.DIM_X ||
+			return (this.col == Game.DIM_X||
 					this.col == -1);
 	}
 		

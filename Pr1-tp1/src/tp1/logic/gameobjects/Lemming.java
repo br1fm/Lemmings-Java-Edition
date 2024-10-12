@@ -90,14 +90,13 @@ public class Lemming {
 	}
 	
 	private void walk() {
-		if(game.isWallAtPos(new Position(pos.getCol() + dir.getX(), 
-				pos.getRow() + dir.getY())) || pos.isAtBorder()) {
+		Position next_pos = new Position(pos.getCol() + dir.getX(), pos.getRow() + dir.getY());
+		if(game.isWallAtPos(next_pos) || next_pos.isAtBorder()) {
 			if(dir.equals(Direction.LEFT)) dir = Direction.RIGHT;
 			else dir = Direction.LEFT;
 		}
 		else {
-		pos = new Position(pos.getCol() + dir.getX(), 
-				pos.getRow() + dir.getY());
+		pos = next_pos;
 		}
 	}
 	
