@@ -61,7 +61,7 @@ public class Controller {
 				
 			}
 			
-		}while(!(command.equals("e")) && !(command.equals("exit")) && !game.gameEnds());
+		}while(!(command.equals(Messages.COMMAND_EXIT_SHORTCUT)) && !(command.equals(Messages.COMMAND_EXIT_NAME)) && !game.gameEnds());
 		
 		view.showGame();
 		entrada.close();
@@ -69,3 +69,4 @@ public class Controller {
 	}
 
 }
+

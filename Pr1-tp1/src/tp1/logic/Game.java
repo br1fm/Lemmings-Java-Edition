@@ -118,17 +118,6 @@ public class Game {
 		return (playerLooses() || playerWins());
 	}
 	
-	/*public String help() {
-	    StringBuilder sb = new StringBuilder();
-	    sb.append("\n")
-	      .append("Available commands:\r\n")
-	      .append("[r]eset: start a new game\r\n")
-	      .append("[h]elp: print this help message\r\n")
-	      .append("[e]xit: end the execution of the game\r\n")
-	      .append("[n]one | \"\": skips cycle\n");
-	    
-	    return sb.toString();
-	}*/
 	
 	public boolean isWallAtPos(Position comparison) {
 		return container.isWallAtPos(comparison);
@@ -159,6 +148,7 @@ public class Game {
 		container.update();
 		game_cycle++;
 	}
+
 	
 	
 }
