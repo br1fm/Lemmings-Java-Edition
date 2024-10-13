@@ -46,7 +46,7 @@ public class Controller {
 			command.toLowerCase();
 			
 			if(command.equals("r") || command.equals("reset")) {
-				
+				game.reset();
 			}
 			else if(command.equals(Messages.COMMAND_HELP_NAME) || command.equals(Messages.COMMAND_HELP_SHORTCUT)) {
 				String str[] = Messages.HELP_LINES;

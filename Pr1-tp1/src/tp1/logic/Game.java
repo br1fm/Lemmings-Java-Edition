@@ -10,10 +10,17 @@ public class Game {
 	public static final int DIM_Y = 10;
 	private GameObjectContainer container;
 	private int game_cycle = 0;
+	private int level;
 	
 	public Game(int nLevel) {
 		this.container = new GameObjectContainer();
 		initGames(nLevel);
+		this.level = nLevel;
+	}
+	
+	public void reset() {
+		this.container = new GameObjectContainer();
+		initGames(this.level);
 	}
 	
 	private void initGames(int nLevel) {
@@ -50,7 +57,9 @@ public class Game {
 		addExitDoor(new ExitDoor(new Position(4, 5)));
 		
 		addLemmings(new Lemming(new Position (9, 0), this));
-		addLemmings(new Lemming(new Position (2, 3), this));
+		addLemmings(new Lemming(new Position (3, 3), this));
+		addLemmings(new Lemming(new Position (0, 8), this));
+
 
 	}
 	
