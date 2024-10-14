@@ -7,40 +7,39 @@ import tp1.logic.Game;
 import tp1.view.GameView;
 import tp1.view.Messages;
 
-/**
- *  Accepts user input and coordinates the game execution logic
- */
-
 public class Controller {
 
 	private Game game;
 	private GameView view;
 
+	/**
+	 * Constructor de la clase Controller.
+	 * Inicializa el juego (game) y la vista (view).
+	 * 
+	 * @param game El objeto de la clase Game que gestiona la lógica del juego.
+	 * @param view El objeto de la clase GameView que gestiona la visualización del juego.
+	 */
 	public Controller(Game game, GameView view) {
 		this.game = game;
 		this.view = view;
 	}
 
-
 	/**
-	 * Runs the game logic, coordinate Model(game) and View(view)
-	 * 
+	 * Método principal que ejecuta el bucle de control del juego.
+	 * Gestiona los comandos introducidos por el usuario, actualiza
+	 * el estado del juego y muestra el estado final del juego cuando se termina.
 	 */
 	public void run() {
 		view.showWelcome();
-		//TODO fill your code: The main loop that displays the game, asks the user for input, and executes the action.
 		Scanner entrada = new Scanner (System.in);
 		String command = "";
 		
 		do {
-			//APAÑO PARA QUE NO SE REPINTE EL TABLERO EN HELP O EN COMANDO ERRONEO
-			//(PENSAR OTRA FORMA) 
 			if(command.equals("")||command.equals(Messages.COMMAND_NONE_NAME) || command.equals(Messages.COMMAND_NONE_SHORTCUT)
 					|| command.equals("reset") || command.equals("r")) {
 				view.showGame();
 			}
 			
-			//String prompt = Messages.PROMPT;
 			System.out.print(Messages.PROMPT);
 			command = entrada.nextLine();
 			command.toLowerCase();

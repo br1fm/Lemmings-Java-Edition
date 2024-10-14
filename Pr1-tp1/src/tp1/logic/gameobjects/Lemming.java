@@ -5,9 +5,11 @@ import tp1.logic.Game;
 import tp1.logic.Position;
 import tp1.logic.lemmingRoles.WalkerRole;
 
+/**
+ * Clase que representa un lemming en el juego, que se mueve y interactúa con el entorno.
+ */
 public class Lemming {
 
-	//TODO fill your code
 	private Position pos;
 	private Direction dir;
 	private boolean is_alive, is_out;
@@ -15,6 +17,12 @@ public class Lemming {
 	private WalkerRole role;
 	private Game game;
 	
+	/**
+	 * Constructor de la clase Lemming.
+	 * 
+	 * @param pos La posición inicial del lemming.
+	 * @param game El juego en el que está el lemming.
+	 */
 	public Lemming(Position pos, Game game) {
 		this.game = game;
 		this.pos = pos;
@@ -26,14 +34,9 @@ public class Lemming {
 	}
 	
 	/**
-	 *  Implements the automatic update	
+	 * Actualiza el estado del lemming en cada ciclo del juego.
+	 * Si el lemming está vivo, verifica si ha llegado a la puerta de salida o si debe moverse.
 	 */
-	
-	/* TENER EN CUENTA 1: si está cayendo aparecerá justo encima del suelo para en la siguiente iteración aterrizar,
-	 *  que consistirá en morir o dar un paso.*/
-	
-	/*TENER EN CUENTA 2: Para saber si están cayendo o si mueren en una caída también es necesario delegar en su acción
-	 * (acción = play del role)*/
 	public void update() {
 		if(is_alive) {
 			if(game.isDoorAtPos(pos)) is_out = true;
@@ -41,6 +44,10 @@ public class Lemming {
 		}
 	}
 	
+	/**
+	 * Mueve al lemming según su estado y las condiciones del juego.
+	 * Si no está en el suelo, intenta caer; si está en el suelo, puede caminar o morir.
+	 */
 	public void move() {
 			
 		if(!isOnGround()){
@@ -58,37 +65,74 @@ public class Lemming {
 		if(pos.isAtVoid()) die();
 	}
 	
-	
+	/**
+	 * Devuelve la dirección actual del lemming.
+	 * 
+	 * @return La dirección del lemming.
+	 */
 	public Direction getDirection() {
 		return dir;
 	}
 	
+	/**
+	 * Comprueba si el lemming está vivo.
+	 * 
+	 * @return true si el lemming está vivo, false en caso contrario.
+	 */
 	public boolean isAlive() {
 		return is_alive;
 	}
 	
+	/**
+	 * Comprueba si el lemming ha salido del juego.
+	 * 
+	 * @return true si el lemming ha salido, false en caso contrario.
+	 */
 	public boolean isOut() {
 		return is_out;
 	}
 	
+	/**
+	 * Comprueba si el lemming está en la posición especificada.
+	 * 
+	 * @param comparison La posición con la que se va a comparar.
+	 * @return true si el lemming está en la posición proporcionada, false en caso contrario.
+	 */
 	public Boolean isAtPosition(Position comparison) {
 		return (comparison.equals(pos));
 	}
 	
+
+	/**
+	 * Comprueba si el lemming está en el suelo.
+	 * 
+	 * @return true si el lemming está en el suelo, false en caso contrario.
+	 */
 	private Boolean isOnGround() {
 		return (game.isWallAtPos(new Position(pos.getCol() + Direction.DOWN.getX(), 
 				pos.getRow() + Direction.DOWN.getY())));
 	}
 	
+	/**
+	 * Hace que el lemming muera.
+	 * Establece el estado de is_alive a false.
+	 */
 	private void die() {
 		is_alive = false;
 	}
 	
+	/**
+	 * Hace que el lemming caiga a la posición ìnmediatamente abajo.
+	 */
 	public void fall() {
 		pos = new Position(pos.getCol() + Direction.DOWN.getX(), 
 				pos.getRow() + Direction.DOWN.getY());
 	}
 	
+	/**
+	 * Hace que el lemming camine en la dirección actual.
+	 * Cambia la dirección si hay una pared o si el lemming está en el borde.
+	 */
 	private void walk() {
 		Position next_pos = new Position(pos.getCol() + dir.getX(), pos.getRow() + dir.getY());
 		if(game.isWallAtPos(next_pos) || next_pos.isAtBorder()) {
@@ -100,8 +144,13 @@ public class Lemming {
 		}
 	}
 	
-	@Override
 	
+	/**
+	 * Devuelve un String del lemming.
+	 * 
+	 * @return Un string que representa al lemming según su rol.
+	 */
+	@Override
 	public String toString() {
 		return role.getIcon(this);
 	}
