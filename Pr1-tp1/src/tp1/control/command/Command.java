@@ -1,4 +1,4 @@
-package tp1.control;
+package tp1.control.command;
 
 public abstract class Command {
 	protected String nombre;

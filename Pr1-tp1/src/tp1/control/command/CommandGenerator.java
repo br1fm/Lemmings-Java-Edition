@@ -1,4 +1,4 @@
-package tp1.control;
+package tp1.control.command;
 
 import java.util.Arrays;
 import java.util.List;
