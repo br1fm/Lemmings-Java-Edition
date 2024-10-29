@@ -35,32 +35,31 @@ public class Controller {
 		String command = "";
 		
 		do {
-			if(command.equals("")||command.equals(Messages.COMMAND_NONE_NAME) || command.equals(Messages.COMMAND_NONE_SHORTCUT)
-					|| command.equals("reset") || command.equals("r")) {
+			if(command.equals("")||command.equalsIgnoreCase(Messages.COMMAND_NONE_NAME) || command.equals(Messages.COMMAND_NONE_SHORTCUT)
+					|| command.equalsIgnoreCase("reset") || command.equalsIgnoreCase("r")) {
 				view.showGame();
-			}
+			}	
 			
-			System.out.print(Messages.PROMPT);
-			command = entrada.nextLine();
-			command.toLowerCase();
+			String[] prompt = view.getPrompt();
+			command = prompt[0];
 			
-			if(command.equals("r") || command.equals("reset")) {
+			if(command.equalsIgnoreCase("r") || command.equalsIgnoreCase("reset")) {
 				game.reset();
 			}
-			else if(command.equals(Messages.COMMAND_HELP_NAME) || command.equals(Messages.COMMAND_HELP_SHORTCUT)) {
+			else if(command.equalsIgnoreCase(Messages.COMMAND_HELP_NAME) || command.equalsIgnoreCase(Messages.COMMAND_HELP_SHORTCUT)) {
 				String str[] = Messages.HELP_LINES;
-				System.out.println(Arrays.toString(str)); 
+				view.showMessage(Arrays.toString(str));
 			}
-			else if(command.equals("") || command.equals(Messages.COMMAND_NONE_NAME) || command.equals(Messages.COMMAND_NONE_SHORTCUT)) {
+			else if(command.equals("") || command.equalsIgnoreCase(Messages.COMMAND_NONE_NAME) || command.equalsIgnoreCase(Messages.COMMAND_NONE_SHORTCUT)) {
 				game.update();
 			}
-			else if(!(command.equals(Messages.COMMAND_EXIT_NAME)) && !(command.equals(Messages.COMMAND_EXIT_SHORTCUT))) {
+			else if(!(command.equalsIgnoreCase(Messages.COMMAND_EXIT_NAME)) && !(command.equalsIgnoreCase(Messages.COMMAND_EXIT_SHORTCUT))) {
 				
-				System.out.println(Messages.INVALID_COMMAND);
+				view.showError(Messages.INVALID_COMMAND);
 				
 			}
 			
-		}while(!(command.equals(Messages.COMMAND_EXIT_SHORTCUT)) && !(command.equals(Messages.COMMAND_EXIT_NAME)) && !game.gameEnds());
+		}while(!(command.equalsIgnoreCase(Messages.COMMAND_EXIT_SHORTCUT)) && !(command.equalsIgnoreCase(Messages.COMMAND_EXIT_NAME)) && !game.gameEnds());
 		
 		view.showGame();
 		entrada.close();
