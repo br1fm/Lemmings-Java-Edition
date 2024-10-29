@@ -258,4 +258,23 @@ public class Game {
 		game_cycle++;
 	}
 	
+	 /**
+	 * Comprueba si la posición está en el borde del tablero.
+	 * 
+	 * @return true si la posición está en el borde, false en caso contrario.
+	 */
+	 public boolean isAtBorder(Position pos) {
+			return (pos.getRow() == DIM_X||
+					pos.getCol() == -1);
+	}
+		
+	 /**
+	 * Comprueba si la posición está fuera del tablero (en el vacío).
+	 * 
+	 * @return true si la posición está en el vacío, false en caso contrario.
+	 */
+	public boolean isAtVoid(Position pos) {
+			return (pos.getRow() == DIM_Y);
+	}
+	
 }

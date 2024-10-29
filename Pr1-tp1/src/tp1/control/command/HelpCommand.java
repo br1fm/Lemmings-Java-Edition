@@ -15,12 +15,12 @@ public class HelpCommand extends NoParamsCommand {
 	}
 
 	protected boolean matchCommand(String command) {
-		if( command.equals(Messages.COMMAND_HELP_NAME) || command.equals(Messages.COMMAND_HELP_SHORTCUT)) return true;
+		if( command.equals(NAME) || command.equals(SHORTCUT)) return true;
 		else return false;
 	}
 	
 	public Command parse(String[] command) {
-		if( command.equals(Messages.COMMAND_HELP_NAME) || command.equals(Messages.COMMAND_HELP_SHORTCUT)) return this;
+		if( command.equals(NAME) || command.equals(SHORTCUT)) return this;
 		else return null;
 	}
 	

@@ -50,23 +50,9 @@ public final class Position {
 		 return row;
 	 }
 	 
-	 /**
-	 * Comprueba si la posición está en el borde del tablero.
-	 * 
-	 * @return true si la posición está en el borde, false en caso contrario.
-	 */
-	 public boolean isAtBorder() {
-			return (this.col == Game.DIM_X||
-					this.col == -1);
-	}
-		
-	 /**
-	 * Comprueba si la posición está fuera del tablero (en el vacío).
-	 * 
-	 * @return true si la posición está en el vacío, false en caso contrario.
-	 */
-	public boolean isAtVoid() {
-			return (this.row == Game.DIM_Y);
-	}
+	 public Position nextPosition(Direction dir) {
+		 Position pos = new Position(col + dir.getX(), row + dir.getY());
+		 return pos;
+	 }
 	 
 }

@@ -3,28 +3,25 @@ import tp1.logic.Game;
 import tp1.view.GameView;
 import tp1.view.Messages;
 
-public class ExitCommand extends Command {
+public class ExitCommand extends NoParamsCommand {
 
+	private static final String NAME = Messages.COMMAND_EXIT_NAME;
+	private static final String SHORTCUT = Messages.COMMAND_EXIT_SHORTCUT;
+	private static final String DETAILS = Messages.COMMAND_HELP_DETAILS;
+	private static final String HELP = Messages.COMMAND_EXIT_HELP;
+	
 	public ExitCommand() {
-		super();
-		// TODO Auto-generated constructor stub
-	}
-
-	public ExitCommand(String nombre, String shortcut, String details, String help) {
-		super(nombre, shortcut, details, help);
+		super(NAME, SHORTCUT, DETAILS, HELP);
 		// TODO Auto-generated constructor stub
 	}
 	
 	protected boolean matchCommand(String command) {
-		if( command.equals(Messages.COMMAND_EXIT_NAME) || command.equals(Messages.COMMAND_EXIT_SHORTCUT)) return true;
+		if( command.equals(NAME) || command.equals(SHORTCUT)) return true;
 		else return false;
 	}
 	
 	public Command parse(String[] command) {
-		if( command.equals(Messages.COMMAND_EXIT_NAME) || command.equals(Messages.COMMAND_EXIT_SHORTCUT)) {
-			Command c = new ExitCommand(Messages.COMMAND_EXIT_NAME, Messages.COMMAND_EXIT_SHORTCUT, Messages.COMMAND_EXIT_HELP, Messages.COMMAND_EXIT_DETAILS);
-			return c;
-		}
+		if( command.equals(NAME) || command.equals(SHORTCUT)) return this;
 		else return null;
 	}
 	
@@ -32,5 +29,4 @@ public class ExitCommand extends Command {
 		
 	}
 	
-
 }

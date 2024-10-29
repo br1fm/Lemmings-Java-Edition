@@ -15,50 +15,22 @@ public abstract class Command {
 		this.help = help;
 	}
 
-
 	public String getNombre() {
 		return nombre;
 	}
-
-
-	public void setNombre(String nombre) {
-		this.nombre = nombre;
-	}
-
 
 	public String getShortcut() {
 		return shortcut;
 	}
 
-
-	public void setShortcut(String shortcut) {
-		this.shortcut = shortcut;
-	}
-
-
 	public String getDetails() {
 		return details;
 	}
 
-
-	public void setDetails(String details) {
-		this.details = details;
-	}
-
-
 	public String getHelp() {
 		return help;
-	}
-
-
-	public void setHelp(String help) {
-		this.help = help;
-	}
-	
-	
-	
-	
-	
+	}	
+		
 }
 
 

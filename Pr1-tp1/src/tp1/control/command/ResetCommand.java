@@ -16,12 +16,12 @@ public class ResetCommand extends NoParamsCommand {
 	}
 
 	protected boolean matchCommand(String command) {
-		if( command.equals("reset") || command.equals("r")) return true;
+		if( command.equals(NAME) || command.equals(SHORTCUT)) return true;
 		else return false;
 	}
 	
 	public Command parse(String[] command) {
-		if( command.equals("reset") || command.equals("r")) 
+		if( command.equals(NAME) || command.equals(SHORTCUT)) 
 			return this;
 		else return null;
 	}

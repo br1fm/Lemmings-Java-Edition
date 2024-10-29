@@ -13,9 +13,9 @@ public class CommandGenerator {
             new HelpCommand(),
             new ExitCommand());
     
-	public static Command parse(String[] command) {
+	/*public static Command parse(String[] command) {
 		
 
-	}
+	}*/
 	
 }

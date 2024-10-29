@@ -110,12 +110,12 @@ public class GameObjectContainer {
 	 */
     public boolean isWallAtPos(Position comparison) {
     	
-    	boolean condition = false;
+    	int i = 0;
+    	Wall w = arrayWalls.getFirst();
+    	while(i < arrayWalls.size() && !w.isAtPosition(comparison)) 
+    		i++;
     	
-    	for(Wall w : arrayWalls) {
-    		if(w.isAtPosition(comparison)) condition = true;
-    	}
-    	return condition;
+    	return i < arrayWalls.size();
     }
     
     /**

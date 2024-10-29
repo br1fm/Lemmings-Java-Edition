@@ -35,6 +35,11 @@ public enum Direction {
 	public int getY() {
 		return y;
 	}
+
+	public void changeDirection(Direction dir) {
+		if(dir.equals(LEFT)) dir = RIGHT;
+		else dir = LEFT;
+	}
 	
 	
 }

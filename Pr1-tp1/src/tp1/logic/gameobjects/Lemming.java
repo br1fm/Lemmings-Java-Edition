@@ -109,8 +109,7 @@ public class Lemming {
 	 * @return true si el lemming está en el suelo, false en caso contrario.
 	 */
 	private Boolean isOnGround() {
-		return (game.isWallAtPos(new Position(pos.getCol() + Direction.DOWN.getX(), 
-				pos.getRow() + Direction.DOWN.getY())));
+		return (game.isWallAtPos(pos.nextPosition(Direction.DOWN)));
 	}
 	
 	/**
@@ -124,9 +123,8 @@ public class Lemming {
 	/**
 	 * Hace que el lemming caiga a la posición ìnmediatamente abajo.
 	 */
-	public void fall() {
-		pos = new Position(pos.getCol() + Direction.DOWN.getX(), 
-				pos.getRow() + Direction.DOWN.getY());
+	public void fall() {		
+		pos = pos.nextPosition(Direction.DOWN);
 	}
 	
 	/**
@@ -134,10 +132,9 @@ public class Lemming {
 	 * Cambia la dirección si hay una pared o si el lemming está en el borde.
 	 */
 	private void walk() {
-		Position next_pos = new Position(pos.getCol() + dir.getX(), pos.getRow() + dir.getY());
-		if(game.isWallAtPos(next_pos) || next_pos.isAtBorder()) {
-			if(dir.equals(Direction.LEFT)) dir = Direction.RIGHT;
-			else dir = Direction.LEFT;
+		Position next_pos = pos.nextPosition(dir);
+		if(game.isWallAtPos(next_pos) || game.isAtBorder(next_pos)) {
+			dir.changeDirection(dir); //mirar
 		}
 		else {
 		pos = next_pos;
