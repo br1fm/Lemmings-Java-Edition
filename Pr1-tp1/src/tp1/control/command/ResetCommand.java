@@ -20,12 +20,6 @@ public class ResetCommand extends NoParamsCommand {
 		else return false;
 	}
 	
-	public Command parse(String[] command) {
-		if( command.equals(NAME) || command.equals(SHORTCUT)) 
-			return this;
-		else return null;
-	}
-	
 	public void execute(Game game, GameView gameview) {
 		
 	}

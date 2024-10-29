@@ -29,7 +29,11 @@ public abstract class Command {
 
 	public String getHelp() {
 		return help;
-	}	
+	}
+	
+	protected abstract boolean matchCommand(String command);
+	
+	public abstract Command parse(String[] command);
 		
 }
 

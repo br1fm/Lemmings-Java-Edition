@@ -15,5 +15,10 @@ public abstract class NoParamsCommand extends Command {
 		// TODO Auto-generated constructor stub
 	}
 	
-
+	public Command parse(String[] command) {
+		if(matchCommand(command[0])) 
+			return this;
+		else return null;
+	}
+	
 }
