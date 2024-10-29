@@ -35,7 +35,7 @@ public class Controller {
 		String command = "";
 		
 		do {
-			if(command.equals("")||command.equalsIgnoreCase(Messages.COMMAND_NONE_NAME) || command.equals(Messages.COMMAND_NONE_SHORTCUT)
+			if(command.equals("")||command.equalsIgnoreCase(Messages.COMMAND_NONE_NAME) || command.equalsIgnoreCase(Messages.COMMAND_NONE_SHORTCUT)
 					|| command.equalsIgnoreCase("reset") || command.equalsIgnoreCase("r")) {
 				view.showGame();
 			}	
