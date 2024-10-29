@@ -8,6 +8,8 @@ import tp1.logic.gameobjects.Lemming;
  */
 public class WalkerRole {
 	
+	private final int MAX_FALL = 2;
+	
 	/**
 	 * Hace que el lemming realice la acción de su rol.
 	 * 
@@ -37,7 +39,7 @@ public class WalkerRole {
 	 * @return true si el lemming supera su fall_force máxima, false en caso contrario.
 	 */
     public boolean manageLanding(int fall_force) {
-    	return (fall_force > 2);
+    	return (fall_force > MAX_FALL);
     }
     
     /**

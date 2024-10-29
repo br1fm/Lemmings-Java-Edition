@@ -36,9 +36,33 @@ public enum Direction {
 		return y;
 	}
 
-	public void changeDirection(Direction dir) {
-		if(dir.equals(LEFT)) dir = RIGHT;
-		else dir = LEFT;
+	/**
+	 * .Cambia la dirección this.
+	 * 
+	 * @return El nuevo valor de this; si era RIGHT a LEFT, si era LEFT a RIGHT,
+	 * si era UP a DOWN y si era de DONW a UP.
+	 */
+	public Direction changeDirection() {
+		Direction aux;
+		
+		switch(this) {
+		case LEFT:
+			aux = RIGHT;
+			break;
+		case RIGHT:
+			aux = LEFT;
+			break;
+		case UP:
+			aux = DOWN;
+			break;
+		case DOWN:
+			aux = UP;
+			break;
+		default:
+			aux = NONE;
+		}
+		
+		return aux;
 	}
 	
 	

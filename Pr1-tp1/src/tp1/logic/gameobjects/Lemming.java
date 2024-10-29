@@ -29,7 +29,7 @@ public class Lemming {
 		dir = Direction.RIGHT;
 		is_alive = true;
 		is_out = false;
-		fall_force = pos.getRow();
+		fall_force = 0;
 		role = new WalkerRole();
 	}
 	
@@ -55,14 +55,14 @@ public class Lemming {
 		}
 		
 		else{
-			if(role.manageLanding(pos.getRow() - fall_force)) die();
+			if(role.manageLanding(fall_force)) die();
 			else {
 				walk();
-				fall_force = pos.getRow();
+				fall_force = 0;
 			}
 		}
 		
-		if(pos.isAtVoid()) die();
+		if(game.isAtVoid(pos)) die();
 	}
 	
 	/**
@@ -125,6 +125,7 @@ public class Lemming {
 	 */
 	public void fall() {		
 		pos = pos.nextPosition(Direction.DOWN);
+		fall_force++;
 	}
 	
 	/**
@@ -134,7 +135,7 @@ public class Lemming {
 	private void walk() {
 		Position next_pos = pos.nextPosition(dir);
 		if(game.isWallAtPos(next_pos) || game.isAtBorder(next_pos)) {
-			dir.changeDirection(dir); //mirar
+			dir = dir.changeDirection(); 
 		}
 		else {
 		pos = next_pos;

@@ -111,10 +111,12 @@ public class GameObjectContainer {
     public boolean isWallAtPos(Position comparison) {
     	
     	int i = 0;
-    	Wall w = arrayWalls.getFirst();
-    	while(i < arrayWalls.size() && !w.isAtPosition(comparison)) 
+    	boolean stop = false;
+    	while(i < arrayWalls.size() && !stop) {
+    		if(arrayWalls.get(i).isAtPosition(comparison)) stop = true;
     		i++;
-    	
+    	}
+    		
     	return i < arrayWalls.size();
     }
     
@@ -138,20 +140,18 @@ public class GameObjectContainer {
     public String positionToString(int col, int row) {
     	
     	StringBuilder res = new StringBuilder(5);
-    	String str = "      ";
+    	String str = null;
     	Position pos = new Position(col, row);
     	
     	for(Lemming l : arrayLemmings) {
     		if(l.isAtPosition(pos)) {
-    			str = l.toString();
-    			res.append(str);
+    			res.append(l);
     		}
     		
     	}
     	
     	if(exitDoor.isAtPosition(pos)) {
-    		str = exitDoor.toString();
-    		res.append(str);
+    		res.append(exitDoor);
     	}
     	
     	str = res.toString();
