@@ -1,7 +1,7 @@
 package tp1.control.command;
 
 public abstract class Command {
-	protected String nombre;
+	protected String name;
 	protected String shortcut;
 	protected String details;
 	protected String help;
@@ -9,14 +9,14 @@ public abstract class Command {
 	public Command() {} //NO SÉ SI SERÁ NECESARIO CREAR UN CONSTRUCTOR VACÍO
 	
 	public Command(String nombre, String shortcut, String details, String help) {
-		this.nombre = nombre;
+		this.name = nombre;
 		this.shortcut = shortcut;
 		this.details = details;
 		this.help = help;
 	}
 
-	public String getNombre() {
-		return nombre;
+	public String getName() {
+		return name;
 	}
 
 	public String getShortcut() {
@@ -31,7 +31,14 @@ public abstract class Command {
 		return help;
 	}
 	
-	protected abstract boolean matchCommand(String command);
+	protected boolean matchCommand(String command) {
+		if( command.equals(name) || command.equals(shortcut)) return true;
+		else return false;
+	}
+	
+	protected String helpText() {
+		return help;
+	}
 	
 	public abstract Command parse(String[] command);
 		
