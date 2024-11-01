@@ -29,7 +29,7 @@ public final class Position {
 	public boolean equals(Position other_pos) {
 	       if (this == other_pos) return true; 
 	       if (other_pos == null) return false;
-	       return (col == other_pos.col && row == other_pos.row); // Compara atributos
+	       return (col == other_pos.col && row == other_pos.row); 
 	 }
 	
 	/**

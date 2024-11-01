@@ -14,11 +14,6 @@ public class ResetCommand extends NoParamsCommand {
 		super(NAME, SHORTCUT, DETAILS, HELP);
 		// TODO Auto-generated constructor stub
 	}
-
-	protected boolean matchCommand(String command) {
-		if( command.equals(NAME) || command.equals(SHORTCUT)) return true;
-		else return false;
-	}
 	
 	public void execute(Game game, GameView gameview) {
 		

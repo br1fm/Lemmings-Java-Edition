@@ -13,16 +13,6 @@ public class HelpCommand extends NoParamsCommand {
 	public HelpCommand(){
 		super(NAME, SHORTCUT, DETAILS, HELP);
 	}
-
-	protected boolean matchCommand(String command) {
-		if( command.equals(NAME) || command.equals(SHORTCUT)) return true;
-		else return false;
-	}
-	
-	public Command parse(String[] command) {
-		if( command.equals(NAME) || command.equals(SHORTCUT)) return this;
-		else return null;
-	}
 	
 	public void execute(Game game, GameView gameview) {
 		
