@@ -1,11 +1,14 @@
 package tp1.control;
 
+
 import java.util.Arrays;
 import java.util.Scanner;
 
 import tp1.logic.Game;
 import tp1.view.GameView;
 import tp1.view.Messages;
+import tp1.control.command.Command;
+import tp1.control.command.CommandGenerator;
 
 public class Controller {
 
@@ -30,39 +33,21 @@ public class Controller {
 	 * el estado del juego y muestra el estado final del juego cuando se termina.
 	 */
 	public void run() {
-		view.showWelcome();
-		Scanner entrada = new Scanner (System.in);
-		String command = "";
-		
-		do {
-			if(command.equals("")||command.equalsIgnoreCase(Messages.COMMAND_NONE_NAME) || command.equalsIgnoreCase(Messages.COMMAND_NONE_SHORTCUT)
-					|| command.equalsIgnoreCase("reset") || command.equalsIgnoreCase("r")) {
-				view.showGame();
-			}	
-			
-			String[] prompt = view.getPrompt();
-			command = prompt[0];
-			
-			if(command.equalsIgnoreCase("r") || command.equalsIgnoreCase("reset")) {
-				game.reset();
-			}
-			else if(command.equalsIgnoreCase(Messages.COMMAND_HELP_NAME) || command.equalsIgnoreCase(Messages.COMMAND_HELP_SHORTCUT)) {
-				String str[] = Messages.HELP_LINES;
-				view.showMessage(Arrays.toString(str));
-			}
-			else if(command.equals("") || command.equalsIgnoreCase(Messages.COMMAND_NONE_NAME) || command.equalsIgnoreCase(Messages.COMMAND_NONE_SHORTCUT)) {
-				game.update();
-			}
-			else if(!(command.equalsIgnoreCase(Messages.COMMAND_EXIT_NAME)) && !(command.equalsIgnoreCase(Messages.COMMAND_EXIT_SHORTCUT))) {
-				
-				view.showError(Messages.INVALID_COMMAND);
-				
-			}
-			
-		}while(!(command.equalsIgnoreCase(Messages.COMMAND_EXIT_SHORTCUT)) && !(command.equalsIgnoreCase(Messages.COMMAND_EXIT_NAME)) && !game.gameEnds());
 		
 		view.showGame();
-		entrada.close();
+		
+		while (!game.gameEnds()) {
+
+		    String[] userWords = view.getPrompt();
+		    Command command = CommandGenerator.parse(userWords);
+
+		    if (command != null) 
+				command.execute(game, view);
+		    else 
+		        view.showError(Messages.UNKNOWN_COMMAND.formatted(userWords[0]));
+		    
+		} 
+		
 		view.showEndMessage();
 	}
 

@@ -117,7 +117,7 @@ public class GameObjectContainer {
     		i++;
     	}
     		
-    	return i < arrayWalls.size();
+    	return (i < arrayWalls.size() || stop);
     }
     
     /**

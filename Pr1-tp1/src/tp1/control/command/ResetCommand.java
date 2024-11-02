@@ -1,14 +1,12 @@
 package tp1.control.command;
 import tp1.logic.Game;
 import tp1.view.GameView;
-import tp1.view.Messages;
 
 public class ResetCommand extends NoParamsCommand {
-	
 	private static final String NAME = "reset";
 	private static final String SHORTCUT = "r";
-	private static final String DETAILS = "";
-	private static final String HELP = "";
+	private static final String DETAILS = "[r]eset";
+	private static final String HELP = "start a new game";
 	
 	public ResetCommand() {
 		super(NAME, SHORTCUT, DETAILS, HELP);
@@ -16,7 +14,7 @@ public class ResetCommand extends NoParamsCommand {
 	}
 	
 	public void execute(Game game, GameView gameview) {
-		
+		game.reset();
+		gameview.showGame();
 	}
-
 }

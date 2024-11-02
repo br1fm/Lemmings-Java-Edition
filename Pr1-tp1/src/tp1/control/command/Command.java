@@ -1,4 +1,6 @@
 package tp1.control.command;
+import tp1.logic.Game;
+import tp1.view.GameView;
 
 public abstract class Command {
 	protected String name;
@@ -32,7 +34,7 @@ public abstract class Command {
 	}
 	
 	protected boolean matchCommand(String command) {
-		if( command.equals(name) || command.equals(shortcut)) return true;
+		if( command.equalsIgnoreCase(name) || command.equalsIgnoreCase(shortcut)) return true;
 		else return false;
 	}
 	
@@ -40,7 +42,12 @@ public abstract class Command {
 		return help;
 	}
 	
+	protected String detailsText() {
+		return details;
+	}
+	
 	public abstract Command parse(String[] command);
+	public abstract void execute(Game game, GameView gameview);
 		
 }
 

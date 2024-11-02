@@ -264,8 +264,8 @@ public class Game {
 	 * @return true si la posición está en el borde, false en caso contrario.
 	 */
 	 public boolean isAtBorder(Position pos) {
-			return (pos.getRow() == DIM_X||
-					pos.getCol() == -1);
+			return (pos.getCol() == DIM_X||
+					pos.getRow() == -1);
 	}
 		
 	 /**
@@ -277,4 +277,5 @@ public class Game {
 			return (pos.getRow() == DIM_Y);
 	}
 	
+
 }

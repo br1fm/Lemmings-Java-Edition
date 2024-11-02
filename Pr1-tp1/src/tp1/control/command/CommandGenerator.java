@@ -27,4 +27,17 @@ public class CommandGenerator {
 			
 	}
 	
+	public static String commandHelp() { 
+		
+		String str = "";
+		
+		for(Command i : AVAILABLE_COMMANDS) {
+			
+			str += i.detailsText() + Messages.HELP_DETAILS_COMMAND_HELP_SEPARATOR + " "+ i.helpText() + '\n';
+		}
+		
+		return str;
+			
+	}
+	
 }
