@@ -5,55 +5,44 @@ import tp1.logic.gameobjects.Wall;
 
 import java.util.ArrayList;
 
+import java.util.List;
+
 import tp1.logic.gameobjects.ExitDoor;
+
+import tp1.logic.gameobjects.GameObject;
 
 /**
  * Contenedor de objetos del juego, gestiona los lemmings, las paredes y la puerta de salida.
  */
 public class GameObjectContainer {
 
-	private ArrayList<Lemming> arrayLemmings;
-	private ArrayList<Wall> arrayWalls;
+	private List<GameObject> gameObjects;
 	private ExitDoor exitDoor;
-	private int dead_lemmings;
-	private int freed_lemmings;
+	private int dead_lemmings = 0;
+	private int freed_lemmings = 0;
 	
-	/**
-	 * Constructor de la clase GameObjectContainer.
-	 * Inicializa las listas de lemmings, paredes y los contadores de lemmings muertos y liberados.
-	 */
+	
+	/*
 	public GameObjectContainer() {
 		arrayLemmings = new ArrayList<>();
 		arrayWalls = new ArrayList<>();
-		dead_lemmings = 0;
-		freed_lemmings = 0;
+	}*/
+	
+	/**
+	 * Constructor de la clase GameObjectContainer.
+	 * Inicializa la lista de objetos.
+	 */
+	public GameObjectContainer() {
+		gameObjects = new ArrayList<>();
 	}
 	
 	/**
-	 * Añade un lemming al contenedor.
+	 * Añade un objeto al contenedor.
 	 * 
-	 * @param lemming Objeto Lemming a añadir.
+	 * @param o Objeto GameObject a añadir.
 	 */
-    public void add(Lemming lemming) {
-    	arrayLemmings.add(lemming);
-    }
-    
-    /**
-	 * Añade una wall al contenedor.
-	 * 
-	 * @param wall Objeto Wall a añadir.
-	 */
-    public void add(Wall wall) {
-    	arrayWalls.add(wall);
-    }
-	
-    /**
-	 * Añade la exit door al contenedor.
-	 * 
-	 * @param exitDoor Objeto ExitDoor a añadir.
-	 */
-    public void add(ExitDoor exitDoor) {
-    	this.exitDoor = exitDoor;
+    public void add(GameObject o) {
+    	gameObjects.add(o);
     }
 	
     /**
@@ -62,14 +51,11 @@ public class GameObjectContainer {
 	 */
     public void update() {
     	
-    	for(Lemming l : arrayLemmings) {
-    		l.update();
+    	for(GameObject o : gameObjects) {
+    		if(o.isAlive()) o.update();
     	}
     	
-    	for(Wall w : arrayWalls) {
-    		w.update();
-    	}
-    	
+    	//QUITAR
     	removeDeadLemmings();
     	removeFreedLemmings();
     	
@@ -110,7 +96,9 @@ public class GameObjectContainer {
 	 */
     public boolean isWallAtPos(Position comparison) {
     	
-    	int i = 0;
+    	//isSolid??
+    	
+    	/*int i = 0;
     	boolean stop = false;
     	while(i < arrayWalls.size() && !stop) {
     		if(arrayWalls.get(i).isAtPosition(comparison)) stop = true;
@@ -118,6 +106,17 @@ public class GameObjectContainer {
     	}
     		
     	return (i < arrayWalls.size() || stop);
+    	*/
+    	
+    	int i = 0;
+    	boolean stop = false;
+    	while(i < gameObjects.size() && !stop) {
+    		if(gameObjects.get(i).isAtPosition(comparison) && gameObjects.get(i).isSolid()) stop = true;
+    		i++;
+    	}
+    		
+    	return (i < gameObjects.size() || stop);
+    	
     }
     
     /**
@@ -143,22 +142,13 @@ public class GameObjectContainer {
     	String str = null;
     	Position pos = new Position(col, row);
     	
-    	for(Lemming l : arrayLemmings) {
-    		if(l.isAtPosition(pos)) {
-    			res.append(l);
+    	for(GameObject o : gameObjects) {
+    		if(o.isAtPosition(pos)) {
+    			res.append(o);
     		}
-    		
-    	}
-    	
-    	if(exitDoor.isAtPosition(pos)) {
-    		res.append(exitDoor);
     	}
     	
     	str = res.toString();
-    	
-    	for(Wall w : arrayWalls) {
-    			if(w.isAtPosition(pos)) str = w.toString();
-    	}
     	
     	return str;
     }

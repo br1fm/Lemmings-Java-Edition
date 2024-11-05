@@ -1,13 +1,14 @@
 package tp1.logic.gameobjects;
 
+import tp1.logic.Game;
 import tp1.logic.Position;
 
 /**
  * Clase que representa la puerta de salida en el tablero del juego.
  */
-public class ExitDoor {
+public class ExitDoor extends GameObject{
 	
-	private Position pos;
+	//private Position pos;
 	
 
 	/**
@@ -15,8 +16,9 @@ public class ExitDoor {
 	 * 
 	 * @param pos Posición de la puerta de salida.
 	 */
-	public ExitDoor(Position pos) {
-		this.pos = pos;
+	public ExitDoor(Position pos, Game game) {
+		super(pos, game);
+		//this.pos = pos;
 	}
 	
 	/**
@@ -28,15 +30,17 @@ public class ExitDoor {
 	public String toString() {
 		return "🚪";
 	}
-	
-	/**
-	 * Comprueba si la exit door está en la posición especificada.
-	 * 
-	 * @param comparison La posición con la que se va a comparar.
-	 * @return true si la puerta de salida está en la posición pasada por parámetro, false en caso contrario.
-	 */
-	public Boolean isAtPosition(Position comparison) {
-		return (comparison.equals(pos));
+
+	@Override
+	public void update() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public boolean isSolid() {
+		// TODO Auto-generated method stub
+		return false;
 	}
 	
 }

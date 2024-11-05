@@ -12,12 +12,17 @@ public class UpdateCommand extends NoParamsCommand {
 	
 	public UpdateCommand() {
 		super(NAME, SHORTCUT, DETAILS, HELP);
-		// TODO Auto-generated constructor stub
 	}
 	
 	public void execute(Game game, GameView gameview) {
 		game.update();
 		gameview.showGame();
 	}
-
+	
+	@Override
+	protected boolean matchCommand(String command) {
+		if( command.equalsIgnoreCase(name) || command.equalsIgnoreCase(shortcut) || command.equals("")) return true;
+		else return false;
+	}
+	
 }

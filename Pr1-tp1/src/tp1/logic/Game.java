@@ -3,6 +3,7 @@ package tp1.logic;
 import tp1.logic.gameobjects.Lemming;
 import tp1.logic.gameobjects.Wall;
 import tp1.logic.gameobjects.ExitDoor;
+import tp1.logic.gameobjects.GameObject;
 
 /**
  * Clase principal del juego que gestiona la lógica, objetos y niveles del juego.
@@ -15,6 +16,7 @@ public class Game {
 	private GameObjectContainer container;
 	private int game_cycle = 0;
 	private int level; 
+	private boolean exit = false;
 	
 	/**
 	 * Constructor de la clase Game.
@@ -50,7 +52,7 @@ public class Game {
 			initGame1();
 			break;
 		default:
-			System.out.println("Level not supported !");
+			System.out.println("Level not supported !"); //TODO: CAMBIAR
 		}
 	}
 	
@@ -59,61 +61,69 @@ public class Game {
 	 */
 	private void initGame0() {
 		
-		addWalls(new Wall(4, 6));
-		addWalls(new Wall(5, 6));
-		addWalls(new Wall(6, 6));
-		addWalls(new Wall(7, 6));
-		addWalls(new Wall(7, 5));
-		addWalls(new Wall(8, 9));
-		addWalls(new Wall(9, 9));
-		addWalls(new Wall(8, 8));
-		addWalls(new Wall(0, 9));
-		addWalls(new Wall(1, 9));
-		addWalls(new Wall(4, 4));
-		addWalls(new Wall(3, 4));
-		addWalls(new Wall(2, 4));
-		addWalls(new Wall(8, 1));
-		addWalls(new Wall(9, 1));
+		// Paredes
+		addObject(new Wall(new Position(4, 6), this));
+		addObject(new Wall(new Position(5, 6), this));
+		addObject(new Wall(new Position(6, 6), this));
+		addObject(new Wall(new Position(7, 6), this));
+		addObject(new Wall(new Position(7, 5), this));
+		addObject(new Wall(new Position(8, 9), this));
+		addObject(new Wall(new Position(9, 9), this));
+		addObject(new Wall(new Position(8, 8), this));
+		addObject(new Wall(new Position(0, 9), this));
+		addObject(new Wall(new Position(1, 9), this));
+		addObject(new Wall(new Position(4, 4), this));
+		addObject(new Wall(new Position(3, 4), this));
+		addObject(new Wall(new Position(2, 4), this));
+		addObject(new Wall(new Position(8, 1), this));
+		addObject(new Wall(new Position(9, 1), this));
 		
-		addExitDoor(new ExitDoor(new Position(4, 5)));
+		// Puerta de salida
+		addObject(new ExitDoor(new Position(4, 5), this));
 		
-		addLemmings(new Lemming(new Position (9, 0), this));
-		addLemmings(new Lemming(new Position (3, 3), this));
-		addLemmings(new Lemming(new Position (0, 8), this));
+		// Lemmings
+		addObject(new Lemming(new Position(9, 0), this));
+		addObject(new Lemming(new Position(3, 3), this));
+		addObject(new Lemming(new Position(0, 8), this));
 		lems_to_win = 2;
 
 	}
-	
+
 	/**
 	 * Inicializa el nivel 1 del juego, agregando paredes, lemmings y la puerta de salida.
 	 */
 	private void initGame1() {
 		
-		addWalls(new Wall(4, 6));
-		addWalls(new Wall(5, 6));
-		addWalls(new Wall(6, 6));
-		addWalls(new Wall(7, 6));
-		addWalls(new Wall(7, 5));
-		addWalls(new Wall(8, 9));
-		addWalls(new Wall(9, 9));
-		addWalls(new Wall(8, 8));
-		addWalls(new Wall(0, 9));
-		addWalls(new Wall(1, 9));
-		addWalls(new Wall(4, 4));
-		addWalls(new Wall(3, 4));
-		addWalls(new Wall(2, 4));
-		addWalls(new Wall(8, 1));
-		addWalls(new Wall(9, 1));
+		// Paredes
+		addObject(new Wall(new Position(4, 6), this));
+		addObject(new Wall(new Position(5, 6), this));
+		addObject(new Wall(new Position(6, 6), this));
+		addObject(new Wall(new Position(7, 6), this));
+		addObject(new Wall(new Position(7, 5), this));
+		addObject(new Wall(new Position(8, 9), this));
+		addObject(new Wall(new Position(9, 9), this));
+		addObject(new Wall(new Position(8, 8), this));
+		addObject(new Wall(new Position(0, 9), this));
+		addObject(new Wall(new Position(1, 9), this));
+		addObject(new Wall(new Position(4, 4), this));
+		addObject(new Wall(new Position(3, 4), this));
+		addObject(new Wall(new Position(2, 4), this));
+		addObject(new Wall(new Position(8, 1), this));
+		addObject(new Wall(new Position(9, 1), this));
 		
-		addExitDoor(new ExitDoor(new Position(4, 5)));
+		// Puerta de salida
+		addObject(new ExitDoor(new Position(4, 5), this));
 		
-		addLemmings(new Lemming(new Position (9, 0), this));
-		addLemmings(new Lemming(new Position (2, 3), this));
-		addLemmings(new Lemming(new Position (3, 3), this));
-		addLemmings(new Lemming(new Position (0, 8), this));
+		// Lemmings
+		addObject(new Lemming(new Position(9, 0), this));
+		addObject(new Lemming(new Position(2, 3), this));
+		addObject(new Lemming(new Position(3, 3), this));
+		addObject(new Lemming(new Position(0, 8), this));
 		lems_to_win = 2;
 		
 	}
+
+
 	
 	/**
 	 * Devuelve el número del ciclo actual del juego.
@@ -190,6 +200,10 @@ public class Game {
 	public boolean playerLooses() {
 		return (numLemmingsInBoard() == 0 && numLemmingsToWin() != 0);
 	}
+	
+	public void gameExit() {
+		exit = true;
+	}
 
 	/**
 	 * Comprueba si el juego ha terminado, ya sea porque el jugador ha ganado o perdido.
@@ -197,7 +211,7 @@ public class Game {
 	 * @return true si el juego ha terminado, false en caso contrario.
 	 */
 	public boolean gameEnds() {
-		return (playerLooses() || playerWins());
+		return (playerLooses() || playerWins() || exit);
 	}
 	
 	/**
@@ -221,33 +235,12 @@ public class Game {
 	}
 	
 	/**
-	 * Agrega un lemming al contenedor del juego.
+	 * Agrega un GameObject al contenedor del juego.
 	 * 
-	 * @param lemming Objeto Lemming a agregar.
+	 * @param o Objeto GameObject a agregar.
 	 */
-	private void addLemmings(Lemming lemming) {
-		container.add(lemming);
-
-	}
-	
-
-	/**
-	 * Agrega una pared al contenedor del juego.
-	 * 
-	 * @param wall Objeto Wall a agregar.
-	 */
-	private void addWalls(Wall wall) {
-		container.add(wall);
-
-	}
-	
-	/**
-	 * Agrega una puerta de salida al contenedor del juego.
-	 * 
-	 * @param exitDoor Objeto ExitDoor a agregar.
-	 */
-	private void addExitDoor(ExitDoor exitDoor) {
-		container.add(exitDoor);
+	private void addObject(GameObject o) {
+		container.add(o);
 	}
 	
 	/**
@@ -270,7 +263,7 @@ public class Game {
 		
 	 /**
 	 * Comprueba si la posición está fuera del tablero (en el vacío).
-	 * 
+	 * @param pos objeto de tipo Position que indica la posición a comparar.
 	 * @return true si la posición está en el vacío, false en caso contrario.
 	 */
 	public boolean isAtVoid(Position pos) {

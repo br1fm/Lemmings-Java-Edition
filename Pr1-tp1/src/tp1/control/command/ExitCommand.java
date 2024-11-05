@@ -17,8 +17,7 @@ public class ExitCommand extends NoParamsCommand {
 	
 	public void execute(Game game, GameView gameview) {
 		gameview.showGame();
-		gameview.showEndMessage();
-		game.reset(); //no sé si es necesario
+		game.gameExit();
 	}
 	
 }
