@@ -154,38 +154,14 @@ public class GameObjectContainer {
     }
     
     /**
-	 * Elimina los lemmings muertos de la lista de lemmings.
-	 * Actualiza el contador de lemmings muertos.
+	 * Elimina un objeto de la lista de objetos.
+	 * Actualiza el contador de lemmings muertos o libres.
+	 * @param o El objeto GameObject a eliminar.
 	 */
-    public void removeDeadLemmings() {
-    	
-        ArrayList<Lemming> tempList = new ArrayList<>();
-        for(Lemming l : arrayLemmings) {
-            if(l.isAlive()) {
-                tempList.add(l);
-            }
-            else dead_lemmings++;
-        }
-        
-        arrayLemmings = tempList;
-    }
-    
-    /**
-	 * Elimina los lemmings que han alcanzado la puerta de salida de la lista de lemmings.
-	 * Actualiza el contador de lemmings liberados.
-	 */
-    public void removeFreedLemmings() {
-    	
-    	ArrayList<Lemming> tempList = new ArrayList<>();
-    	for(Lemming l : arrayLemmings) {
-			if(!l.isOut()) {
-    			tempList.add(l);
-    		}
-    		else freed_lemmings++;
-    	}
-    	
-    	arrayLemmings = tempList;
-    	
+    public void removeObject(GameObject o) {
+    	gameObjects.remove(o);
+    	if(o.isAlive()) freed_lemmings++;
+    	else dead_lemmings++;
     }
     
 }
