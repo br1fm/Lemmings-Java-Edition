@@ -55,10 +55,6 @@ public class GameObjectContainer {
     		if(o.isAlive()) o.update();
     	}
     	
-    	//QUITAR
-    	removeDeadLemmings();
-    	removeFreedLemmings();
-    	
     }
     
     /**
@@ -95,18 +91,6 @@ public class GameObjectContainer {
 	 * @return true si hay una pared en la posición, false en caso contrario.
 	 */
     public boolean isWallAtPos(Position comparison) {
-    	
-    	//isSolid??
-    	
-    	/*int i = 0;
-    	boolean stop = false;
-    	while(i < arrayWalls.size() && !stop) {
-    		if(arrayWalls.get(i).isAtPosition(comparison)) stop = true;
-    		i++;
-    	}
-    		
-    	return (i < arrayWalls.size() || stop);
-    	*/
     	
     	int i = 0;
     	boolean stop = false;
