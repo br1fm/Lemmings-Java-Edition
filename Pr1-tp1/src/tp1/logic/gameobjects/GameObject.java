@@ -18,35 +18,48 @@ import tp1.logic.Game;
 public abstract class GameObject {
 
 	private Position pos;
-	private boolean is_alive;
+	private boolean is_alive, is_out;
 	private Game game;
 	
 	GameObject(Position pos, Game game){
 		this.game = game;
 		this.pos = pos;
+		this.is_out = false;
 		is_alive = true;
 	}
 	
-	public abstract void update();
+	//TEMPORAL
+	//------------------------------------------------------------------------------
 	
 	public abstract boolean isSolid();
+	public abstract boolean isExit();
+	
+	//------------------------------------------------------------------------------
+	//TEMPORAL
+	
+	public abstract void update();
 	
 	public boolean isAlive() {
 		return is_alive;
 	}
 	
-	/**
-	 * Hace que el lemming camine en la dirección actual.
-	 * Cambia la dirección si hay una pared o si el lemming está en el borde.
-	 */
-	protected void walk(Direction dir) {
-		Position next_pos = pos.nextPosition(dir);
-		if(game.isWallAtPos(next_pos) || game.isAtBorder(next_pos)) {
-			dir = dir.changeDirection(); 
-		}
-		else {
-		pos = next_pos;
-		}
+	//No me gusta nada
+	public boolean isFreed() {
+		return is_out;
+	}
+	
+	protected void escape() {
+		is_out = true;
+	}
+	
+	protected void die() {
+		is_alive = false;
+	}
+	
+	
+	protected Position updatePosition(Direction dir) {
+		pos = pos.nextPosition(dir);
+		return pos;
 	}
 	
 	/**
@@ -56,11 +69,6 @@ public abstract class GameObject {
 	 */
 	protected Boolean isOnGround() {
 		return (game.isWallAtPos(pos.nextPosition(Direction.DOWN)));
-	}
-	
-	protected void die() {
-		is_alive = false;
-		
 	}
 	
 	/**
@@ -74,12 +82,24 @@ public abstract class GameObject {
 	}
 	
 	/**
-	 * Llama a la función isAtVoid de {@link Game#isAtVoid(dir)}
+	 * Llama a la función isAtVoid de {@link Game#isAtVoid(Position pos)}
 	 * 
 	 * @return true si la función de Game es verdadera, false en caso contrario.
 	 */
 	protected boolean isAtVoid() {
 		return game.isAtVoid(pos);
+	}
+
+	protected boolean isWallAtPos() {
+		return game.isWallAtPos(pos);
+	}
+	
+	protected boolean isAtBorder() {
+		return game.isAtBorder(pos);
+	}
+	
+	public boolean isOut() {
+		return game.isDoorAtPos(pos);
 	}
 	
 }

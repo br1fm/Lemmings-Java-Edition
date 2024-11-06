@@ -18,7 +18,6 @@ public class ExitDoor extends GameObject{
 	 */
 	public ExitDoor(Position pos, Game game) {
 		super(pos, game);
-		//this.pos = pos;
 	}
 	
 	/**
@@ -36,11 +35,21 @@ public class ExitDoor extends GameObject{
 		// TODO Auto-generated method stub
 		
 	}
+	
+	//TEMPORAL
+		//------------------------------------------------------------------------------
+		
+		@Override
+		public boolean isSolid() {
+			return false;
+		}
 
-	@Override
-	public boolean isSolid() {
-		// TODO Auto-generated method stub
-		return false;
-	}
+		@Override
+		public boolean isExit() {
+			return true;
+		}
+		
+		//------------------------------------------------------------------------------
+		//TEMPORAL
 	
 }

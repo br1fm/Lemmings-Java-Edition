@@ -1,13 +1,8 @@
 package tp1.logic;
-import tp1.logic.gameobjects.Lemming;
-
-import tp1.logic.gameobjects.Wall;
 
 import java.util.ArrayList;
 
 import java.util.List;
-
-import tp1.logic.gameobjects.ExitDoor;
 
 import tp1.logic.gameobjects.GameObject;
 
@@ -17,7 +12,6 @@ import tp1.logic.gameobjects.GameObject;
 public class GameObjectContainer {
 
 	private List<GameObject> gameObjects;
-	private ExitDoor exitDoor;
 	private int dead_lemmings = 0;
 	private int freed_lemmings = 0;
 	
@@ -55,6 +49,10 @@ public class GameObjectContainer {
     		if(o.isAlive()) o.update();
     	}
     	
+<<<<<<< Updated upstream
+=======
+    	removeObjects();
+>>>>>>> Stashed changes
     }
     
     /**
@@ -63,7 +61,8 @@ public class GameObjectContainer {
 	 * @return Número de lemmings en el tablero.
 	 */
     public int numLemmingsInBoard() {
-    	return arrayLemmings.size();
+    	return 5;
+    	//return arrayLemmings.size();
     }
     
     /**
@@ -104,13 +103,22 @@ public class GameObjectContainer {
     }
     
     /**
-	 * Comprueba si hay una puerta de salida en la posición especificada.
-	 * 
-	 * @param comparison Objeto Position a comparar.
-	 * @return true si hay una puerta de salida en la posición, false en caso contrario.
-	 */
+   	 * Comprueba si hay una puerta de salida en la posición especificada.
+   	 * 
+   	 * @param comparison Objeto Position a comparar.
+   	 * @return true si hay una puerta de salida en la posición, false en caso contrario.
+   	 */
     public boolean isDoorAtPos(Position comparison) {
-    	return (exitDoor.isAtPosition(comparison));
+    	
+    	int i = 0;
+    	boolean stop = false;
+    	while(i < gameObjects.size() && !stop) {
+    		if(gameObjects.get(i).isAtPosition(comparison) && gameObjects.get(i).isExit()) stop = true;
+    		i++;
+    	}
+    		
+    	return (i < gameObjects.size() || stop);
+    	
     }
     
     /**
@@ -137,6 +145,7 @@ public class GameObjectContainer {
     	return str;
     }
     
+<<<<<<< Updated upstream
     /**
 	 * Elimina un objeto de la lista de objetos.
 	 * Actualiza el contador de lemmings muertos o libres.
@@ -146,6 +155,21 @@ public class GameObjectContainer {
     	gameObjects.remove(o);
     	if(o.isAlive()) freed_lemmings++;
     	else dead_lemmings++;
+=======
+    
+    public void removeObjects() {
+        List<GameObject> toRemove = new ArrayList<>();
+        for (GameObject o : gameObjects) {
+            if (!o.isAlive()) {
+                toRemove.add(o);
+                dead_lemmings++;
+            } else if (o.isFreed()) {
+                toRemove.add(o);
+                freed_lemmings++;
+            }
+        }
+        gameObjects.removeAll(toRemove); 
+>>>>>>> Stashed changes
     }
     
 }

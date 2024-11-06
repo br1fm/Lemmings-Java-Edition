@@ -269,6 +269,5 @@ public class Game {
 	public boolean isAtVoid(Position pos) {
 			return (pos.getRow() == DIM_Y);
 	}
-	
 
 }

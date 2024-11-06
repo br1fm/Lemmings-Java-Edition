@@ -8,8 +8,6 @@ import tp1.logic.Position;
  */
 public class Wall extends GameObject{
 	
-	private Position pos;
-	
 	/**
 	 * Constructor de la clase Wall.
 	 * 
@@ -36,9 +34,21 @@ public class Wall extends GameObject{
 	 */
 	@Override
 	public void update() {}
+	
+	//TEMPORAL
+		//------------------------------------------------------------------------------
+		
+		@Override
+		public boolean isSolid() {
+			return true;
+		}
 
-	@Override
-	public boolean isSolid() {
-		return false;
-	}
+		@Override
+		public boolean isExit() {
+			return false;
+		}
+		
+		//------------------------------------------------------------------------------
+		//TEMPORAL
+
 }

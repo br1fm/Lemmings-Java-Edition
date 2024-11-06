@@ -10,12 +10,9 @@ import tp1.logic.lemmingRoles.WalkerRole;
  */
 public class Lemming extends GameObject{
 
-	private Position pos;
 	private Direction dir;
-	private boolean is_alive, is_out;
 	private int fall_force;
 	private WalkerRole role;
-	private Game game;
 	
 	/**
 	 * Constructor de la clase Lemming.
@@ -26,8 +23,6 @@ public class Lemming extends GameObject{
 	public Lemming(Position pos, Game game) {
 		super(pos, game);
 		dir = Direction.RIGHT;
-		is_alive = true;
-		is_out = false;
 		fall_force = 0;
 		role = new WalkerRole();
 	}
@@ -38,10 +33,8 @@ public class Lemming extends GameObject{
 	 */
 	@Override
 	public void update() {
-		if(is_alive) { //creo que de esto se puede prescindir en el futuro
-			if(game.isDoorAtPos(pos)) is_out = true;
-			else role.play(this);
-		}
+		if(!isOut()) role.play(this);
+		else escape();
 	}
 	
 	/**
@@ -59,7 +52,7 @@ public class Lemming extends GameObject{
 		else{
 			if(role.manageLanding(fall_force)) die();
 			else {
-				walk(dir);
+				walk();
 				fall_force = 0;
 			}
 		}
@@ -77,23 +70,24 @@ public class Lemming extends GameObject{
 	}
 	
 	/**
-	 * Comprueba si el lemming ha salido del juego.
-	 * 
-	 * @return true si el lemming ha salido, false en caso contrario.
-	 */
-	public boolean isOut() {
-		return is_out; //TODO: Cambiar más adelante por una función que aumente en 1 
-	}
-	
-	/**
-	 * Hace que el lemming caiga a la posición ìnmediatamente abajo.
+	 * Hace que el lemming caiga a la posición inmediatamente abajo.
 	 */
 	public void fall() {		
-		pos = pos.nextPosition(Direction.DOWN);
-		walk(Direction.DOWN);
+		updatePosition(Direction.DOWN);
 		fall_force++;
 	}
 	
+	/**
+	 * Hace que el lemming camine en la dirección actual.
+	 * Cambia la dirección si hay una pared o si el lemming está en el borde.
+	 */
+	protected void walk() {
+		updatePosition(dir);
+		if(isWallAtPos() || isAtBorder()) {
+			dir = dir.changeDirection();
+			updatePosition(dir);
+		}
+	}
 	
 	/**
 	 * Devuelve un String del lemming.
@@ -105,9 +99,20 @@ public class Lemming extends GameObject{
 		return role.getIcon(this);
 	}
 
+	//------------------------------------------------------------------------------
+	//TEMPORAL
+	
 	@Override
 	public boolean isSolid() {
 		return false;
 	}
+
+	@Override
+	public boolean isExit() {
+		return false;
+	}
+	
+	//------------------------------------------------------------------------------
+	//TEMPORAL
 	
 }
