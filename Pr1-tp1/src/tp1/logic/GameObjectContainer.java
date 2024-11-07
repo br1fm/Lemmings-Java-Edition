@@ -15,13 +15,6 @@ public class GameObjectContainer {
 	private int dead_lemmings = 0;
 	private int freed_lemmings = 0;
 	
-	
-	/*
-	public GameObjectContainer() {
-		arrayLemmings = new ArrayList<>();
-		arrayWalls = new ArrayList<>();
-	}*/
-	
 	/**
 	 * Constructor de la clase GameObjectContainer.
 	 * Inicializa la lista de objetos.
@@ -49,10 +42,7 @@ public class GameObjectContainer {
     		if(o.isAlive()) o.update();
     	}
     	
-<<<<<<< Updated upstream
-=======
     	removeObjects();
->>>>>>> Stashed changes
     }
     
     /**
@@ -60,8 +50,8 @@ public class GameObjectContainer {
 	 * 
 	 * @return Número de lemmings en el tablero.
 	 */
-    public int numLemmingsInBoard() {
-    	return 5;
+    public int numLemmingsInBoard() { //TODO: CAMBIAR.
+    	return 3;
     	//return arrayLemmings.size();
     }
     
@@ -130,7 +120,7 @@ public class GameObjectContainer {
 	 */
     public String positionToString(int col, int row) {
     	
-    	StringBuilder res = new StringBuilder(5);
+    	StringBuilder res = new StringBuilder();
     	String str = null;
     	Position pos = new Position(col, row);
     	
@@ -145,18 +135,6 @@ public class GameObjectContainer {
     	return str;
     }
     
-<<<<<<< Updated upstream
-    /**
-	 * Elimina un objeto de la lista de objetos.
-	 * Actualiza el contador de lemmings muertos o libres.
-	 * @param o El objeto GameObject a eliminar.
-	 */
-    public void removeObject(GameObject o) {
-    	gameObjects.remove(o);
-    	if(o.isAlive()) freed_lemmings++;
-    	else dead_lemmings++;
-=======
-    
     public void removeObjects() {
         List<GameObject> toRemove = new ArrayList<>();
         for (GameObject o : gameObjects) {
@@ -168,8 +146,7 @@ public class GameObjectContainer {
                 freed_lemmings++;
             }
         }
-        gameObjects.removeAll(toRemove); 
->>>>>>> Stashed changes
+        gameObjects.removeAll(toRemove);
     }
     
 }

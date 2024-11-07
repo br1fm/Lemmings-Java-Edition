@@ -4,7 +4,7 @@ import static tp1.util.MyStringUtils.repeat;
 
 import java.util.Scanner;
 
-import tp1.logic.Game;
+import tp1.logic.GameStatus;
 import tp1.util.MyStringUtils;
 
 public class ConsoleView extends GameView {
@@ -22,7 +22,7 @@ public class ConsoleView extends GameView {
 
 	private static final String CELL_BORDER = repeat(CELL_BORDER_CHAR, CELL_SIZE);
 
-	private static final String ROW_BORDER = repeat(CELL_BORDER, Game.DIM_X);
+	private static final String ROW_BORDER = repeat(CELL_BORDER, GameStatus.DIM_X);
 
 	private static final String UPPER_ROW_BORDER = "┌" + ROW_BORDER + "┐" + NEW_LINE;
 	private static final String LOWER_ROW_BORDER = "└" + ROW_BORDER + "┘" + NEW_LINE;
@@ -34,7 +34,7 @@ public class ConsoleView extends GameView {
 
 	Scanner scanner;
 
-	public ConsoleView(Game game) {
+	public ConsoleView(GameStatus game) {
 		super(game);
 		scanner = new Scanner(System.in);
 	}
@@ -71,13 +71,13 @@ public class ConsoleView extends GameView {
 		str.append(UPPER_ROW_BORDER);
 
 		String colName;
-		for (int row = 0; row < Game.DIM_Y; row++) {
+		for (int row = 0; row < GameStatus.DIM_Y; row++) {
 			str.append(LATERAL_TAB);
 			colName = Character.toString('A'+row%27);
 			str.append(colName);
 			str.append(VERTICAL_DELIMITER);
 
-			for (int col = 0; col < Game.DIM_X; col++) {
+			for (int col = 0; col < GameStatus.DIM_X; col++) {
 				str.append(consoleCell(game.positionToString(col, row)));
 				//str.append(VERTICAL_DELIMITER);
 			}
@@ -97,7 +97,7 @@ public class ConsoleView extends GameView {
 	private static String colNumbersLine() {
 		StringBuilder str = new StringBuilder();
 		str.append(LATERAL_TAB + SPACE+ SPACE);
-		for (int col = 0; col < Game.DIM_X; col++) {
+		for (int col = 0; col < GameStatus.DIM_X; col++) {
 			str.append(MyStringUtils.center(Integer.toString((col+1)%100), CELL_SIZE));
 		}
 		str.append(NEW_LINE);

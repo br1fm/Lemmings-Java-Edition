@@ -1,5 +1,5 @@
 package tp1.control.command;
-import tp1.logic.Game;
+import tp1.logic.GameModel;
 import tp1.view.GameView;
 
 public abstract class Command {
@@ -47,7 +47,8 @@ public abstract class Command {
 	}
 	
 	public abstract Command parse(String[] command);
-	public abstract void execute(Game game, GameView gameview);
+	
+	public abstract void execute(GameModel game, GameView gameview);
 		
 }
 

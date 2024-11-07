@@ -3,6 +3,8 @@ package tp1.logic.gameobjects;
 import tp1.logic.Direction;
 import tp1.logic.Game;
 import tp1.logic.Position;
+import tp1.logic.lemmingRoles.LemmingRole;
+import tp1.logic.lemmingRoles.ParachuterRole;
 import tp1.logic.lemmingRoles.WalkerRole;
 
 /**
@@ -12,7 +14,7 @@ public class Lemming extends GameObject{
 
 	private Direction dir;
 	private int fall_force;
-	private WalkerRole role;
+	private LemmingRole role;
 	
 	/**
 	 * Constructor de la clase Lemming.
@@ -24,7 +26,7 @@ public class Lemming extends GameObject{
 		super(pos, game);
 		dir = Direction.RIGHT;
 		fall_force = 0;
-		role = new WalkerRole();
+		role = new ParachuterRole(); //cuando lo quites, quita el import
 	}
 	
 	/**
@@ -43,14 +45,12 @@ public class Lemming extends GameObject{
 	 */
 	public void move() {
 		
-		isAlive();
-		
 		if(!isOnGround()){
 			role.manageFall(this);
 		}
 		
 		else{
-			if(role.manageLanding(fall_force)) die();
+			if(role.manageLanding(this)) die();
 			else {
 				walk();
 				fall_force = 0;
@@ -89,6 +89,14 @@ public class Lemming extends GameObject{
 		}
 	}
 	
+	public void setRole(LemmingRole role) {
+		this.role = role;
+	}
+	
+	public void disableRole() {
+		role = new WalkerRole();
+	}
+	
 	/**
 	 * Devuelve un String del lemming.
 	 * 
@@ -110,6 +118,10 @@ public class Lemming extends GameObject{
 	@Override
 	public boolean isExit() {
 		return false;
+	}
+
+	public int getFall_force() {
+		return fall_force;
 	}
 	
 	//------------------------------------------------------------------------------

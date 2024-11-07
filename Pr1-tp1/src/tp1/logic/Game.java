@@ -8,10 +8,8 @@ import tp1.logic.gameobjects.GameObject;
 /**
  * Clase principal del juego que gestiona la lógica, objetos y niveles del juego.
  */
-public class Game {
+public class Game implements GameModel, GameStatus, GameWorld{
 
-	public static final int DIM_X = 10;
-	public static final int DIM_Y = 10;
 	private int lems_to_win;
 	private GameObjectContainer container;
 	private int game_cycle = 0;
@@ -117,7 +115,7 @@ public class Game {
 		// Lemmings
 		addObject(new Lemming(new Position(9, 0), this));
 		addObject(new Lemming(new Position(2, 3), this));
-		addObject(new Lemming(new Position(3, 3), this));
+		addObject(new Lemming(new Position(6, 0), this));
 		addObject(new Lemming(new Position(0, 8), this));
 		lems_to_win = 2;
 		
@@ -210,7 +208,7 @@ public class Game {
 	 * 
 	 * @return true si el juego ha terminado, false en caso contrario.
 	 */
-	public boolean gameEnds() {
+	public boolean isFinished() {
 		return (playerLooses() || playerWins() || exit);
 	}
 	

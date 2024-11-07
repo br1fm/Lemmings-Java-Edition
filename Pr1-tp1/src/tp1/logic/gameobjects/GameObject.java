@@ -2,7 +2,7 @@ package tp1.logic.gameobjects;
 
 import tp1.logic.Position;
 import tp1.logic.Direction;
-import tp1.logic.Game;
+import tp1.logic.GameWorld;
 
 /*Todos los GameObject tienen al menos un atributo para almacenar su posición en el juego 
  * y otro booleano que indica si el objeto está vivo o no, y métodos auxiliares para 
@@ -19,9 +19,9 @@ public abstract class GameObject {
 
 	private Position pos;
 	private boolean is_alive, is_out;
-	private Game game;
+	private GameWorld game;
 	
-	GameObject(Position pos, Game game){
+	GameObject(Position pos, GameWorld game){
 		this.game = game;
 		this.pos = pos;
 		this.is_out = false;
@@ -43,7 +43,6 @@ public abstract class GameObject {
 		return is_alive;
 	}
 	
-	//No me gusta nada
 	public boolean isFreed() {
 		return is_out;
 	}

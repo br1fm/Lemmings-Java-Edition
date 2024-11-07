@@ -4,7 +4,7 @@ import tp1.util.MyStringUtils;
 
 public class Messages {
 	
-	public static final String VERSION = "1.0";
+	public static final String VERSION = "2.2";
 
 	public static final String GAME_NAME = "Lemmings";
 
@@ -93,5 +93,6 @@ public class Messages {
 	public static final String EXIT_DOOR = "🚪";
 	public static final String LEMMING_RIGHT = "B";
 	public static final String LEMMING_LEFT = "ᗺ";
+	public static final String PARACHUTE = "🪂";
 
 }

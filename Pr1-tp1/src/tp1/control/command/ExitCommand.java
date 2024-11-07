@@ -1,5 +1,6 @@
 package tp1.control.command;
 import tp1.logic.Game;
+import tp1.logic.GameModel;
 import tp1.view.GameView;
 import tp1.view.Messages;
 
@@ -15,7 +16,7 @@ public class ExitCommand extends NoParamsCommand {
 		// TODO Auto-generated constructor stub
 	}
 	
-	public void execute(Game game, GameView gameview) {
+	public void execute(GameModel game, GameView gameview) {
 		gameview.showGame();
 		game.gameExit();
 	}

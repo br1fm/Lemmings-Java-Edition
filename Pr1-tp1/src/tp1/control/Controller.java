@@ -1,18 +1,14 @@
 package tp1.control;
 
-
-import java.util.Arrays;
-import java.util.Scanner;
-
-import tp1.logic.Game;
 import tp1.view.GameView;
 import tp1.view.Messages;
 import tp1.control.command.Command;
 import tp1.control.command.CommandGenerator;
+import tp1.logic.GameModel;
 
 public class Controller {
 
-	private Game game;
+	private GameModel game;
 	private GameView view;
 
 	/**
@@ -22,7 +18,7 @@ public class Controller {
 	 * @param game El objeto de la clase Game que gestiona la lógica del juego.
 	 * @param view El objeto de la clase GameView que gestiona la visualización del juego.
 	 */
-	public Controller(Game game, GameView view) {
+	public Controller(GameModel game, GameView view) {
 		this.game = game;
 		this.view = view;
 	}
@@ -34,9 +30,10 @@ public class Controller {
 	 */
 	public void run() {
 		
+		view.showWelcome();
 		view.showGame();
 		
-		while (!game.gameEnds()) {
+		while (!game.isFinished()) {
 
 		    String[] userWords = view.getPrompt();
 		    Command command = CommandGenerator.parse(userWords);
@@ -45,7 +42,6 @@ public class Controller {
 				command.execute(game, view);
 		    else 
 		        view.showError(Messages.UNKNOWN_COMMAND.formatted(userWords[0]));
-		    
 		} 
 		
 		view.showEndMessage();

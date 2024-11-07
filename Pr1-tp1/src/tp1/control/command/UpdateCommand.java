@@ -1,5 +1,5 @@
 package tp1.control.command;
-import tp1.logic.Game;
+import tp1.logic.GameModel;
 import tp1.view.GameView;
 import tp1.view.Messages;
 
@@ -14,7 +14,7 @@ public class UpdateCommand extends NoParamsCommand {
 		super(NAME, SHORTCUT, DETAILS, HELP);
 	}
 	
-	public void execute(Game game, GameView gameview) {
+	public void execute(GameModel game, GameView gameview) {
 		game.update();
 		gameview.showGame();
 	}

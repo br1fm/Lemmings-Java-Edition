@@ -1,5 +1,5 @@
 package tp1.control.command;
-import tp1.logic.Game;
+import tp1.logic.GameModel;
 import tp1.view.GameView;
 
 public class ResetCommand extends NoParamsCommand {
@@ -13,7 +13,7 @@ public class ResetCommand extends NoParamsCommand {
 		// TODO Auto-generated constructor stub
 	}
 	
-	public void execute(Game game, GameView gameview) {
+	public void execute(GameModel game, GameView gameview) {
 		game.reset();
 		gameview.showGame();
 	}

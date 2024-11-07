@@ -2,6 +2,7 @@ package tp1.logic.gameobjects;
 
 import tp1.logic.Game;
 import tp1.logic.Position;
+import tp1.view.Messages;
 
 /**
  * Clase que representa la puerta de salida en el tablero del juego.
@@ -27,7 +28,7 @@ public class ExitDoor extends GameObject{
 	 */
 	@Override
 	public String toString() {
-		return "🚪";
+		return Messages.EXIT_DOOR;
 	}
 
 	@Override
