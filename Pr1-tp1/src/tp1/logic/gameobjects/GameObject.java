@@ -1,6 +1,7 @@
 package tp1.logic.gameobjects;
 
 import tp1.logic.Position;
+import tp1.logic.lemmingRoles.LemmingRole;
 import tp1.logic.Direction;
 import tp1.logic.GameWorld;
 
@@ -99,6 +100,10 @@ public abstract class GameObject {
 	
 	public boolean isOut() {
 		return game.isDoorAtPos(pos);
+	}
+	
+	public boolean setRole(LemmingRole role) {
+		return false;
 	}
 	
 }

@@ -9,7 +9,14 @@ import tp1.view.Messages;
  */
 public class WalkerRole implements LemmingRole{
 	
+	private static final String NAME = Messages.ROLE_WALKER_NAME;
+	private static final String SHORTCUT = Messages.ROLE_WALKER_SHORTCUT;
+	private static final String DETAILS = Messages.ROLE_WALKER_DETAILS;
+	
 	private final int MAX_FALL = 2;
+	
+	public WalkerRole() {
+	}
 	
 	@Override
 	public void start(Lemming lemming) {
@@ -34,9 +41,18 @@ public class WalkerRole implements LemmingRole{
 	 */
     public String getIcon(Lemming lemming){
     	String str;
-    	if(lemming.getDirection() == Direction.LEFT) str = Messages.LEMMING_LEFT;
+    	if(lemming.getDirection() == Direction.LEFT) str = Messages.LEMMING_LEFT; 
     	else str = Messages.LEMMING_RIGHT;
     	return str;
+    }
+    
+    /**
+	 * Hace que el lemming caiga.
+	 * 
+	 * @param lemming El lemming que va a caer.
+	 */
+    public void manageFall(Lemming lemming) {
+    	lemming.fall();
     }
     
     /**
@@ -48,14 +64,18 @@ public class WalkerRole implements LemmingRole{
     public boolean manageLanding(Lemming lemming) {
     	return (lemming.getFall_force() > MAX_FALL);
     }
-    
-    /**
-	 * Hace que el lemming caiga.
-	 * 
-	 * @param lemming El lemming que va a caer.
-	 */
-    public void manageFall(Lemming lemming) {
-    	lemming.fall();
-    }
+
+	@Override
+	public String helpText() {
+		return DETAILS;
+	}
+
+	@Override
+	public LemmingRole parse(String role) {
+		if(role.equalsIgnoreCase(NAME) || role.equalsIgnoreCase(SHORTCUT)){
+			return new WalkerRole();
+		}
+		return null;
+	}
     
 }

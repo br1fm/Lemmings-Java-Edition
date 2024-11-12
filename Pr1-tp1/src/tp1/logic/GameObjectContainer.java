@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import tp1.logic.gameobjects.GameObject;
+import tp1.logic.lemmingRoles.LemmingRole;
 
 /**
  * Contenedor de objetos del juego, gestiona los lemmings, las paredes y la puerta de salida.
@@ -148,5 +149,16 @@ public class GameObjectContainer {
         }
         gameObjects.removeAll(toRemove);
     }
+
+	public boolean setRole(LemmingRole role, Position comparison) {
+		int i = 0;
+    	boolean stop = false;
+    	while(i < gameObjects.size() && !stop) {
+    		if(gameObjects.get(i).isAtPosition(comparison) && gameObjects.get(i).setRole(role)) stop = true;
+    		i++;
+    	}
+    		
+    	return (stop);
+	}
     
 }

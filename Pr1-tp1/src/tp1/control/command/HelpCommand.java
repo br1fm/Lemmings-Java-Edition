@@ -1,5 +1,4 @@
 package tp1.control.command;
-import tp1.control.command.CommandGenerator;
 import tp1.logic.GameModel;
 import tp1.view.GameView;
 import tp1.view.Messages;
@@ -15,7 +14,6 @@ public class HelpCommand extends NoParamsCommand {
 		super(NAME, SHORTCUT, DETAILS, HELP);
 	}
 	
-	//NO SÉ SI ES ASÍ
 	public void execute(GameModel game, GameView gameview) {	
 		gameview.showMessage(Messages.HELP_AVAILABLE_COMMANDS);
 		gameview.showMessage(CommandGenerator.commandHelp());

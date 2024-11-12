@@ -8,5 +8,7 @@ public interface LemmingRole {
     public String getIcon(Lemming lemming);
     public void manageFall(Lemming lemming);
     public boolean manageLanding(Lemming lemming);
+    public String helpText();
+    public LemmingRole parse(String role);
     
 }

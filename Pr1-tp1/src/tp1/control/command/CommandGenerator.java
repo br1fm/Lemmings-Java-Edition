@@ -9,7 +9,8 @@ import tp1.view.Messages;
 public class CommandGenerator {
 
     private static final List<Command> AVAILABLE_COMMANDS = Arrays.asList(
-            new UpdateCommand(),
+    		new SetRoleCommand(),
+    		new UpdateCommand(),
             new ResetCommand(),
             new HelpCommand(),
             new ExitCommand());
@@ -32,7 +33,7 @@ public class CommandGenerator {
 		
 		for(Command i : AVAILABLE_COMMANDS) {
 			
-			str += i.detailsText() + Messages.HELP_DETAILS_COMMAND_HELP_SEPARATOR + " "+ i.helpText() + '\n';
+			str += i.detailsText() + Messages.HELP_DETAILS_COMMAND_HELP_SEPARATOR + " " + i.helpText() + '\n';
 		}
 		
 		return str;

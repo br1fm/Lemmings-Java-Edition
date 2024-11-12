@@ -41,6 +41,8 @@ public class Messages {
 	public static final String HELP = String.join(LINE_SEPARATOR+"   ", HELP_LINES) + LINE_SEPARATOR;
 	
 	public static final String UNKNOWN_COMMAND = "Unknown command";
+	
+	public static final String UNKNOWN_ROLE = "Unknown Role";
 
 	public static final String COMMAND_PARAMETERS_MISSING = "Missing parameters";
 
@@ -86,7 +88,22 @@ public class Messages {
 	public static final String COMMAND_HELP_SHORTCUT = "h";
 	public static final String COMMAND_HELP_DETAILS = "[h]elp";
 	public static final String COMMAND_HELP_HELP = "shows this help";
+	
+	public static final String COMMAND_SET_ROLE_NAME = "setRole";
+	public static final String COMMAND_SET_ROLE_SHORTCUT = "sr";
+	public static final String COMMAND_SET_ROLE_DETAILS = "[s]et[R]ole ROLE ROW COL";
+	public static final String COMMAND_SET_ROLE_HELP = "sets the lemming in position (ROW,COL) to role ROLE";
 
+//Roles
+	
+	public static final String ROLE_PARACHUTER_NAME = "Parachuter";
+	public static final String ROLE_PARACHUTER_SHORTCUT = "p";
+	public static final String ROLE_PARACHUTER_DETAILS = "[P]arachuter: Lemming falls with a parachute";
+	
+	public static final String ROLE_WALKER_NAME = "Walker";
+	public static final String ROLE_WALKER_SHORTCUT = "w";
+	public static final String ROLE_WALKER_DETAILS = "[W]alker: Lemming that walks";
+	
 //Symbols
 	public static final String EMPTY = "";
 	public static final String WALL = MyStringUtils.repeat("▓",ConsoleView.CELL_SIZE);

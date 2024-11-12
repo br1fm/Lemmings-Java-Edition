@@ -2,6 +2,7 @@ package tp1.logic;
 
 public interface GameStatus {
 
+	//Preguntar si está bien
 	public static final int DIM_X = 10;
 	public static final int DIM_Y = 10;
 	

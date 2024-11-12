@@ -13,7 +13,6 @@ public class ExitCommand extends NoParamsCommand {
 	
 	public ExitCommand() {
 		super(NAME, SHORTCUT, DETAILS, HELP);
-		// TODO Auto-generated constructor stub
 	}
 	
 	public void execute(GameModel game, GameView gameview) {
