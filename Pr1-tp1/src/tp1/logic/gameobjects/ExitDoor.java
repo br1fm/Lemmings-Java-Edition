@@ -32,25 +32,13 @@ public class ExitDoor extends GameObject{
 	}
 
 	@Override
-	public void update() {
-		// TODO Auto-generated method stub
-		
+	public boolean isExit() {
+		return true;
 	}
-	
-	//TEMPORAL
-		//------------------------------------------------------------------------------
 		
-		@Override
-		public boolean isSolid() {
-			return false;
-		}
-
-		@Override
-		public boolean isExit() {
-			return true;
-		}
-		
-		//------------------------------------------------------------------------------
-		//TEMPORAL
+	@Override
+	public boolean receiveInteraction(GameItem other) {
+		return other.interactWith(this);
+	}	
 	
 }

@@ -1,6 +1,5 @@
 package tp1.control.command;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -18,8 +17,9 @@ public class CommandGenerator {
 	public static Command parse(String[] command) {
 		
 		for(Command i : AVAILABLE_COMMANDS) {
-			if(i.parse(command) != null) {
-				return i;
+			Command c = i.parse(command);
+			if(c != null) {
+				return c;
 			}
 		}
 		
@@ -32,7 +32,6 @@ public class CommandGenerator {
 		String str = "";
 		
 		for(Command i : AVAILABLE_COMMANDS) {
-			
 			str += i.detailsText() + Messages.HELP_DETAILS_COMMAND_HELP_SEPARATOR + " " + i.helpText() + '\n';
 		}
 		

@@ -37,7 +37,7 @@ public class Controller {
 
 		    String[] userWords = view.getPrompt();
 		    Command command = CommandGenerator.parse(userWords);
-
+		    
 		    if (command != null) {
 				command.execute(game, view);
 		    }

@@ -112,24 +112,13 @@ public class Lemming extends GameObject{
 		return role.getIcon(this);
 	}
 
-	//------------------------------------------------------------------------------
-	//TEMPORAL
-	
-	@Override
-	public boolean isSolid() {
-		return false;
-	}
-
-	@Override
-	public boolean isExit() {
-		return false;
-	}
-
 	public int getFall_force() {
 		return fall_force;
 	}
-	
-	//------------------------------------------------------------------------------
-	//TEMPORAL
+
+	@Override
+	public boolean receiveInteraction(GameItem other) {
+		return role.receiveInteraction(other, this);
+	}
 	
 }

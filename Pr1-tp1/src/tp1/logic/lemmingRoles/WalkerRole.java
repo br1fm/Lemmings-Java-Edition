@@ -7,15 +7,14 @@ import tp1.view.Messages;
 /**
  * Clase que representa el rol de un lemming caminante.
  */
-public class WalkerRole implements LemmingRole{
+public class WalkerRole extends AbstractRole implements LemmingRole{
 	
 	private static final String NAME = Messages.ROLE_WALKER_NAME;
 	private static final String SHORTCUT = Messages.ROLE_WALKER_SHORTCUT;
 	private static final String DETAILS = Messages.ROLE_WALKER_DETAILS;
 	
-	private final int MAX_FALL = 2;
-	
 	public WalkerRole() {
+		super(NAME, SHORTCUT, DETAILS);
 	}
 	
 	@Override
@@ -64,18 +63,5 @@ public class WalkerRole implements LemmingRole{
     public boolean manageLanding(Lemming lemming) {
     	return (lemming.getFall_force() > MAX_FALL);
     }
-
-	@Override
-	public String helpText() {
-		return DETAILS;
-	}
-
-	@Override
-	public LemmingRole parse(String role) {
-		if(role.equalsIgnoreCase(NAME) || role.equalsIgnoreCase(SHORTCUT)){
-			return new WalkerRole();
-		}
-		return null;
-	}
-    
+	
 }

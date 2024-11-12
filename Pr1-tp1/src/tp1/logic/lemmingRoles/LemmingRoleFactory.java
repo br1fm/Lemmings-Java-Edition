@@ -5,13 +5,14 @@ import java.util.List;
 
 public class LemmingRoleFactory {
 	
-	private static final List<LemmingRole> AVAILABLE_ROLES = Arrays.asList(
+	private static final List<AbstractRole> AVAILABLE_ROLES = Arrays.asList(
+			new DownCaverRole(),
             new ParachuterRole(),
             new WalkerRole()
     );
 	
-	public static LemmingRole parse(String input) {
-		for(LemmingRole i : AVAILABLE_ROLES) {
+	public static LemmingRole parse(String input) { //ver si cambiar a AbstractRole el tipo de valor devuelto
+		for(AbstractRole i : AVAILABLE_ROLES) {
 			if(i.parse(input) != null) {
 				return i;
 			}

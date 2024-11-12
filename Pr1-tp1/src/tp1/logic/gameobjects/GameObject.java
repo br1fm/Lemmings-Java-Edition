@@ -16,7 +16,7 @@ import tp1.logic.GameWorld;
     De GameObject heredarán las clases Lemming, Wall y ExitDoor.
 */
 
-public abstract class GameObject {
+public abstract class GameObject implements GameItem{
 
 	private Position pos;
 	private boolean is_alive, is_out;
@@ -29,16 +29,7 @@ public abstract class GameObject {
 		is_alive = true;
 	}
 	
-	//TEMPORAL
-	//------------------------------------------------------------------------------
-	
-	public abstract boolean isSolid();
-	public abstract boolean isExit();
-	
-	//------------------------------------------------------------------------------
-	//TEMPORAL
-	
-	public abstract void update();
+	public void update() {};
 	
 	public boolean isAlive() {
 		return is_alive;
@@ -67,18 +58,18 @@ public abstract class GameObject {
 	 * 
 	 * @return true si el lemming está en el suelo, false en caso contrario.
 	 */
-	protected Boolean isOnGround() {
+	protected boolean isOnGround() {
 		return (game.isWallAtPos(pos.nextPosition(Direction.DOWN)));
 	}
 	
 	/**
 	 * Comprueba si el lemming está en la posición especificada.
 	 * 
-	 * @param comparison La posición con la que se va a comparar.
+	 * @param pos La posición con la que se va a comparar.
 	 * @return true si el lemming está en la posición proporcionada, false en caso contrario.
 	 */
-	public Boolean isAtPosition(Position comparison) {
-		return (comparison.equals(pos));
+	public boolean isInPosition(Position pos) {
+		return (pos.equals(this.pos));
 	}
 	
 	/**
@@ -105,5 +96,20 @@ public abstract class GameObject {
 	public boolean setRole(LemmingRole role) {
 		return false;
 	}
+	
+	public boolean isSolid(){
+		return false;
+	}
+	
+	public boolean isExit() {
+		return false;
+	}
+	
+	@Override
+	public boolean interactWith(Lemming lemming) { return false; }
+	@Override
+	public boolean interactWith(Wall wall) { return false; }
+	@Override
+	public boolean interactWith(ExitDoor door) { return false; }
 	
 }

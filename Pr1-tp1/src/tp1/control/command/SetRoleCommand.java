@@ -9,7 +9,7 @@ import tp1.view.Messages;
 
 public class SetRoleCommand extends Command{
 	
-	private String input;
+	private String role;
 	private Position pos;
 	
 	
@@ -24,27 +24,28 @@ public class SetRoleCommand extends Command{
 	
 	public SetRoleCommand(String role, int col, int row) {
 		super(NAME, SHORTCUT, DETAILS, HELP);
-		this.input = role;
+		this.role = role;
 		this.pos = new Position(col, row);
 	}
 	
 	public Command parse(String[] command) {
 		if(matchCommand(command[0])) {
 			char caracter = command[2].charAt(0);
-			int row = caracter - 'A';
+			int row = (caracter - 'a');
 			int col = Integer.parseInt(command[3]);
-			return new SetRoleCommand(command[1], col, row);
+			return new SetRoleCommand(command[1], col - 1, row);
 		}
 		return null;
 	}
-		
+
+
 	public void execute(GameModel game, GameView gameview) {
-		LemmingRole role = LemmingRoleFactory.parse(input);
-			if(role != null) {
-				game.setRole(role, pos);
+		LemmingRole r = LemmingRoleFactory.parse(role);
+			if(r != null) {
+				game.setRole(r, pos);
 			}
-			
 		else gameview.showError(Messages.UNKNOWN_ROLE);
+		game.update();
 		gameview.showGame();
 	}
 	

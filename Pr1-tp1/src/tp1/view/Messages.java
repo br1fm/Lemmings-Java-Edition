@@ -104,6 +104,10 @@ public class Messages {
 	public static final String ROLE_WALKER_SHORTCUT = "w";
 	public static final String ROLE_WALKER_DETAILS = "[W]alker: Lemming that walks";
 	
+	public static final String ROLE_DOWN_CAVER_NAME = "DownCaver";
+	public static final String ROLE_DOWN_CAVER_SHORTCUT = "dw";
+	public static final String ROLE_DOWN_CAVER_DETAILS = "[D]own [C]aver: Lemming caves downwards";
+	
 //Symbols
 	public static final String EMPTY = "";
 	public static final String WALL = MyStringUtils.repeat("▓",ConsoleView.CELL_SIZE);
@@ -111,5 +115,8 @@ public class Messages {
 	public static final String LEMMING_RIGHT = "B";
 	public static final String LEMMING_LEFT = "ᗺ";
 	public static final String PARACHUTE = "🪂";
+	public static final String LEMMING_DOWN_CAVER = "´･ω･`";
+
+	
 
 }

@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 import java.util.List;
 
+import tp1.logic.gameobjects.GameItem;
 import tp1.logic.gameobjects.GameObject;
 import tp1.logic.lemmingRoles.LemmingRole;
 
@@ -85,7 +86,7 @@ public class GameObjectContainer {
     	int i = 0;
     	boolean stop = false;
     	while(i < gameObjects.size() && !stop) {
-    		if(gameObjects.get(i).isAtPosition(comparison) && gameObjects.get(i).isSolid()) stop = true;
+    		if(gameObjects.get(i).isInPosition(comparison) && gameObjects.get(i).isSolid()) stop = true;
     		i++;
     	}
     		
@@ -104,7 +105,7 @@ public class GameObjectContainer {
     	int i = 0;
     	boolean stop = false;
     	while(i < gameObjects.size() && !stop) {
-    		if(gameObjects.get(i).isAtPosition(comparison) && gameObjects.get(i).isExit()) stop = true;
+    		if(gameObjects.get(i).isInPosition(comparison) && gameObjects.get(i).isExit()) stop = true;
     		i++;
     	}
     		
@@ -126,7 +127,7 @@ public class GameObjectContainer {
     	Position pos = new Position(col, row);
     	
     	for(GameObject o : gameObjects) {
-    		if(o.isAtPosition(pos)) {
+    		if(o.isInPosition(pos)) {
     			res.append(o);
     		}
     	}
@@ -134,6 +135,10 @@ public class GameObjectContainer {
     	str = res.toString();
     	
     	return str;
+    }
+    
+    public boolean receiveInteractionsFrom(GameItem obj){
+    	return false;
     }
     
     public void removeObjects() {
@@ -154,7 +159,7 @@ public class GameObjectContainer {
 		int i = 0;
     	boolean stop = false;
     	while(i < gameObjects.size() && !stop) {
-    		if(gameObjects.get(i).isAtPosition(comparison) && gameObjects.get(i).setRole(role)) stop = true;
+    		if(gameObjects.get(i).isInPosition(comparison) && gameObjects.get(i).setRole(role)) stop = true;
     		i++;
     	}
     		

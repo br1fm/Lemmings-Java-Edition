@@ -28,28 +28,15 @@ public class Wall extends GameObject{
 	public String toString() {
 		return Messages.WALL;
 	}
-	
-	/**
-	 * Actualiza el estado de la pared.
-	 * No hace nada en el caso del objeto wall.
-	 */
+		
 	@Override
-	public void update() {}
+	public boolean isSolid() {
+		return true;
+	}
 	
-	//TEMPORAL
-		//------------------------------------------------------------------------------
-		
-		@Override
-		public boolean isSolid() {
-			return true;
-		}
-
-		@Override
-		public boolean isExit() {
-			return false;
-		}
-		
-		//------------------------------------------------------------------------------
-		//TEMPORAL
+	@Override
+	public boolean receiveInteraction(GameItem other) {
+		return other.interactWith(this);
+	}
 
 }

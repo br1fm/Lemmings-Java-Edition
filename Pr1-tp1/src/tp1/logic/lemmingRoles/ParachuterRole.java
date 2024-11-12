@@ -3,11 +3,15 @@ package tp1.logic.lemmingRoles;
 import tp1.logic.gameobjects.Lemming;
 import tp1.view.Messages;
 
-public class ParachuterRole implements LemmingRole{
+public class ParachuterRole extends AbstractRole{
 	
 	private static final String NAME = Messages.ROLE_PARACHUTER_NAME;
 	private static final String SHORTCUT = Messages.ROLE_PARACHUTER_SHORTCUT;
 	private static final String DETAILS = Messages.ROLE_PARACHUTER_DETAILS;
+	
+	public ParachuterRole() {
+		super(NAME, SHORTCUT, DETAILS);
+	}
 	
 	@Override
 	public void start(Lemming lemming) {
@@ -44,14 +48,5 @@ public class ParachuterRole implements LemmingRole{
 	public String helpText() {
 		return DETAILS;
 	}
-
-	@Override
-	public LemmingRole parse(String role) {
-		if(role.equalsIgnoreCase(NAME) || role.equalsIgnoreCase(SHORTCUT)){
-			return new ParachuterRole();
-		}
-		return null;
-	}
-	
 
 }
