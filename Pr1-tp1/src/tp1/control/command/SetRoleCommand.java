@@ -4,6 +4,7 @@ import tp1.logic.Position;
 import tp1.logic.lemmingRoles.LemmingRole;
 import tp1.logic.lemmingRoles.LemmingRoleFactory;
 import tp1.logic.GameModel;
+import tp1.logic.GameWorld;
 import tp1.view.GameView;
 import tp1.view.Messages;
 
@@ -42,11 +43,16 @@ public class SetRoleCommand extends Command{
 	public void execute(GameModel game, GameView gameview) {
 		LemmingRole r = LemmingRoleFactory.parse(role);
 			if(r != null) {
-				game.setRole(r, pos);
+				if(game.isInBoard(pos)) {
+					game.setRole(r, pos);
+					game.update();
+					gameview.showGame();
+				}
+				else gameview.showError(Messages.SET_COMMAND_ERROR);
 			}
 		else gameview.showError(Messages.UNKNOWN_ROLE);
-		game.update();
-		gameview.showGame();
+		//game.update();
+		//gameview.showGame();
 	}
 	
 	@Override

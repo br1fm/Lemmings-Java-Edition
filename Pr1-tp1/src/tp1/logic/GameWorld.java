@@ -9,5 +9,6 @@ public interface GameWorld {
 	boolean isAtBorder(Position pos);
 	boolean isDoorAtPos(Position pos); //Quitar 
 	public boolean receiveInteractionsFrom(GameItem obj);
+	public boolean isInBoard(Position pos);
 	
 }

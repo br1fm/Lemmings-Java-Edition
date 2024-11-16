@@ -270,6 +270,11 @@ public class Game implements GameModel, GameStatus, GameWorld{
 	public boolean isAtVoid(Position pos) {
 			return (pos.getRow() == DIM_Y);
 	}
+	
+	public boolean isInBoard(Position pos) {
+		return ((pos.getCol() >= 0 && pos.getCol() < DIM_X - 1) &&
+				(pos.getRow() >= 0 && pos.getRow() < DIM_Y - 1));
+	}
 
 	@Override
 	public boolean setRole(LemmingRole role, Position comparison) {

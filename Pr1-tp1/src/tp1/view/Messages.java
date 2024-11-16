@@ -72,6 +72,8 @@ public class Messages {
 	public static final String PLAYER_LOOSES = "Player looses...";
 
 	public static final String POSITION = "(%s,%s)";
+	
+	public static final String SET_COMMAND_ERROR = "SetRoleCommand error (Incorrect position or no object in that position admits that role)";
 
 //Commands
 	public static final String COMMAND_NONE_NAME = "none";
