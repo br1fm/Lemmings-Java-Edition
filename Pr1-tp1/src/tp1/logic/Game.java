@@ -1,6 +1,7 @@
 package tp1.logic;
 
 import tp1.logic.gameobjects.Lemming;
+import tp1.logic.gameobjects.MetalWall;
 import tp1.logic.gameobjects.Wall;
 import tp1.logic.lemmingRoles.LemmingRole;
 import tp1.logic.gameobjects.ExitDoor;
@@ -98,7 +99,7 @@ public class Game implements GameModel, GameStatus, GameWorld{
 		addObject(new Wall(new Position(4, 6), this));
 		addObject(new Wall(new Position(5, 6), this));
 		addObject(new Wall(new Position(6, 6), this));
-		addObject(new Wall(new Position(7, 6), this));
+		addObject(new MetalWall(new Position(7, 6), this));
 		addObject(new Wall(new Position(7, 5), this));
 		addObject(new Wall(new Position(8, 9), this));
 		addObject(new Wall(new Position(9, 9), this));
@@ -277,7 +278,7 @@ public class Game implements GameModel, GameStatus, GameWorld{
 
 	@Override
 	public boolean receiveInteractionsFrom(GameItem obj) {
-		return false;
+		return container.receiveInteractionsFrom(obj);
 	}
 
 }

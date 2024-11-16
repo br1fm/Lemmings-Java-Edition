@@ -36,7 +36,6 @@ public class Wall extends GameObject{
 	
 	@Override
 	public boolean receiveInteraction(GameItem other) {
-		this.die();
 		return other.interactWith(this);
 	}
 	

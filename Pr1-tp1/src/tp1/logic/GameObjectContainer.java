@@ -142,7 +142,7 @@ public class GameObjectContainer {
     	int i = 0;
     	boolean stop = false;
     	while(i < gameObjects.size() && !stop) {
-    		if(obj.isInPosition(gameObjects.get(i).getPos()) && gameObjects.get(i).isAlive()) {
+    		if(gameObjects.get(i).isAlive()) { //implementar en las interacciones lo de las pos.
     			if(gameObjects.get(i).receiveInteraction(obj)) stop = true;
     		}
     		i++;

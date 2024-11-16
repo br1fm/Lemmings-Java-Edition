@@ -1,5 +1,6 @@
 package tp1.logic.lemmingRoles;
 
+import tp1.logic.Direction;
 import tp1.logic.gameobjects.Lemming;
 import tp1.logic.gameobjects.Wall;
 import tp1.view.Messages;
@@ -10,13 +11,24 @@ public class DownCaverRole extends AbstractRole{
 	private static final String SHORTCUT = Messages.ROLE_DOWN_CAVER_SHORTCUT;
 	private static final String DETAILS = Messages.ROLE_DOWN_CAVER_DETAILS;
 	
+	private boolean hasCaved;
+	
 	public DownCaverRole() {
 		super(NAME, SHORTCUT, DETAILS);
+		hasCaved = false;
+	}
+	
+	private void excavate() {
+		hasCaved = true;
 	}
 
 	@Override
 	public void play(Lemming lemming) {
-		if(!lemming.isOnGround()) lemming.disableRole();
+		if(!lemming.interact()) {
+			lemming.disableRole();
+			lemming.move();
+		}
+		else lemming.resetFall_force();
 	}
 
 	@Override
@@ -32,8 +44,15 @@ public class DownCaverRole extends AbstractRole{
 	
 	@Override
     public boolean interactWith(Wall wall, Lemming owner){
-		wall.receiveInteraction(owner);
-		return true;
+		
+		if(owner.isOnRelativePos(wall.getPos(), Direction.DOWN)) {
+			wall.die();
+			owner.fall();
+			excavate();
+			return true;
+		}
+		
+		else return false;
     }
 	
 }

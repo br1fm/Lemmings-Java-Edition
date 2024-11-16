@@ -12,11 +12,6 @@ public class ParachuterRole extends AbstractRole{
 	public ParachuterRole() {
 		super(NAME, SHORTCUT, DETAILS);
 	}
-	
-	@Override
-	public void start(Lemming lemming) {
-		lemming.setRole(this);
-	}
 
 	@Override
 	public void play(Lemming lemming) {

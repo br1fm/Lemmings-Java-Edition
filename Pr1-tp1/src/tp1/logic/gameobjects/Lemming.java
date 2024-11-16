@@ -53,7 +53,7 @@ public class Lemming extends GameObject{
 			if(role.manageLanding(this)) die();
 			else {
 				walk();
-				fall_force = 0;
+				resetFall_force();
 			}
 		}
 		
@@ -111,18 +111,22 @@ public class Lemming extends GameObject{
 	public String toString() {
 		return role.getIcon(this);
 	}
-
-	public int getFall_force() {
-		return fall_force;
+	
+	@Override
+	public boolean interactWith(Wall wall) {
+		return role.interactWith(wall, this);
 	}
 
 	@Override
 	public boolean receiveInteraction(GameItem other) {
 		return role.receiveInteraction(other, this);
 	}
-	
-	@Override
-	public boolean interactWith(Wall wall) {
-		return role.interactWith(wall, this);
+
+	public void resetFall_force() {
+		fall_force = 0;
+	}
+
+	public int getFall_force() {
+		return fall_force;
 	}
 }

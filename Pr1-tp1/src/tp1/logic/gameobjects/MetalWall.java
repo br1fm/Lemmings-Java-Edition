@@ -6,7 +6,7 @@ import tp1.view.Messages;
 
 public class MetalWall extends GameObject{
 
-	MetalWall(Position pos, GameWorld game) {
+	public MetalWall(Position pos, GameWorld game) {
 		super(pos, game);
 	}
 

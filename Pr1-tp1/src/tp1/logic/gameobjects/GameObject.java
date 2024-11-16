@@ -39,11 +39,11 @@ public abstract class GameObject implements GameItem{
 		return is_out;
 	}
 	
-	protected void escape() {
+	public void escape() {
 		is_out = true;
 	}
 	
-	protected void die() {
+	public void die() {
 		is_alive = false;
 	}
 	
@@ -60,6 +60,15 @@ public abstract class GameObject implements GameItem{
 	 */
 	public boolean isOnGround() {
 		return (game.isWallAtPos(pos.nextPosition(Direction.DOWN)));
+	}
+	
+	public boolean isOnRelativePos(Position other, Direction dir){
+		Position aux = pos.nextPosition(dir);
+		System.out.print(other.getCol());
+		System.out.println(" " + other.getRow());
+		System.out.print(aux.getCol());
+		System.out.println(" " + aux.getRow());
+		return (aux.equals(other));
 	}
 	
 	/**
@@ -107,6 +116,10 @@ public abstract class GameObject implements GameItem{
 	
 	public Position getPos() {
 		return pos;
+	}
+	
+	public boolean interact() {
+		return game.receiveInteractionsFrom(this);
 	}
 	
 	@Override

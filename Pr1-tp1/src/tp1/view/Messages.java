@@ -105,7 +105,7 @@ public class Messages {
 	public static final String ROLE_WALKER_DETAILS = "[W]alker: Lemming that walks";
 	
 	public static final String ROLE_DOWN_CAVER_NAME = "DownCaver";
-	public static final String ROLE_DOWN_CAVER_SHORTCUT = "dw";
+	public static final String ROLE_DOWN_CAVER_SHORTCUT = "dc";
 	public static final String ROLE_DOWN_CAVER_DETAILS = "[D]own [C]aver: Lemming caves downwards";
 	
 //Symbols
