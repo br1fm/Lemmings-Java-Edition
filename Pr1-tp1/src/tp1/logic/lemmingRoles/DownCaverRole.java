@@ -1,6 +1,7 @@
 package tp1.logic.lemmingRoles;
 
 import tp1.logic.gameobjects.Lemming;
+import tp1.logic.gameobjects.Wall;
 import tp1.view.Messages;
 
 public class DownCaverRole extends AbstractRole{
@@ -15,7 +16,7 @@ public class DownCaverRole extends AbstractRole{
 
 	@Override
 	public void play(Lemming lemming) {
-		
+		if(!lemming.isOnGround()) lemming.disableRole();
 	}
 
 	@Override
@@ -24,13 +25,15 @@ public class DownCaverRole extends AbstractRole{
 	}
 
 	@Override
-	public void manageFall(Lemming lemming) {
-		lemming.fall();
-	}
+	public void manageFall(Lemming lemming) {}
 
 	@Override
-	public boolean manageLanding(Lemming lemming) {
-		return (lemming.getFall_force() > MAX_FALL);
-	}
+	public boolean manageLanding(Lemming lemming) { return false; }
+	
+	@Override
+    public boolean interactWith(Wall wall, Lemming owner){
+		wall.receiveInteraction(owner);
+		return true;
+    }
 	
 }

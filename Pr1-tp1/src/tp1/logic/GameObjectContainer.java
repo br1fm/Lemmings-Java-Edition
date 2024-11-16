@@ -138,7 +138,18 @@ public class GameObjectContainer {
     }
     
     public boolean receiveInteractionsFrom(GameItem obj){
-    	return false;
+    	
+    	int i = 0;
+    	boolean stop = false;
+    	while(i < gameObjects.size() && !stop) {
+    		if(obj.isInPosition(gameObjects.get(i).getPos()) && gameObjects.get(i).isAlive()) {
+    			if(gameObjects.get(i).receiveInteraction(obj)) stop = true;
+    		}
+    		i++;
+    	}
+    	
+    	return (i < gameObjects.size());
+    	
     }
     
     public void removeObjects() {

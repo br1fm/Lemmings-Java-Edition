@@ -11,7 +11,7 @@ public class LemmingRoleFactory {
             new WalkerRole()
     );
 	
-	public static LemmingRole parse(String input) { //ver si cambiar a AbstractRole el tipo de valor devuelto
+	public static LemmingRole parse(String input) { //ver si cambiar desde AbstractRole el tipo de valor devuelto
 		for(AbstractRole i : AVAILABLE_ROLES) {
 			if(i.parse(input) != null) {
 				return i;

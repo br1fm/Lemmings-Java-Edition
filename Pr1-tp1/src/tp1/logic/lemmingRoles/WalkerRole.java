@@ -63,5 +63,7 @@ public class WalkerRole extends AbstractRole implements LemmingRole{
     public boolean manageLanding(Lemming lemming) {
     	return (lemming.getFall_force() > MAX_FALL);
     }
+    
+    
 	
 }

@@ -4,6 +4,7 @@ import tp1.logic.gameobjects.Lemming;
 import tp1.logic.gameobjects.Wall;
 import tp1.logic.lemmingRoles.LemmingRole;
 import tp1.logic.gameobjects.ExitDoor;
+import tp1.logic.gameobjects.GameItem;
 import tp1.logic.gameobjects.GameObject;
 
 /**
@@ -272,6 +273,11 @@ public class Game implements GameModel, GameStatus, GameWorld{
 	@Override
 	public boolean setRole(LemmingRole role, Position comparison) {
 		return container.setRole(role, comparison);
+	}
+
+	@Override
+	public boolean receiveInteractionsFrom(GameItem obj) {
+		return false;
 	}
 
 }

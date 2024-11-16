@@ -121,4 +121,8 @@ public class Lemming extends GameObject{
 		return role.receiveInteraction(other, this);
 	}
 	
+	@Override
+	public boolean interactWith(Wall wall) {
+		return role.interactWith(wall, this);
+	}
 }

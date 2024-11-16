@@ -58,7 +58,7 @@ public abstract class GameObject implements GameItem{
 	 * 
 	 * @return true si el lemming está en el suelo, false en caso contrario.
 	 */
-	protected boolean isOnGround() {
+	public boolean isOnGround() {
 		return (game.isWallAtPos(pos.nextPosition(Direction.DOWN)));
 	}
 	
@@ -77,15 +77,15 @@ public abstract class GameObject implements GameItem{
 	 * 
 	 * @return true si la función de Game es verdadera, false en caso contrario.
 	 */
-	protected boolean isAtVoid() {
+	public boolean isAtVoid() {
 		return game.isAtVoid(pos);
 	}
 
-	protected boolean isWallAtPos() {
+	public boolean isWallAtPos() {
 		return game.isWallAtPos(pos);
 	}
 	
-	protected boolean isAtBorder() {
+	public boolean isAtBorder() {
 		return game.isAtBorder(pos);
 	}
 	
@@ -103,6 +103,10 @@ public abstract class GameObject implements GameItem{
 	
 	public boolean isExit() {
 		return false;
+	}
+	
+	public Position getPos() {
+		return pos;
 	}
 	
 	@Override
