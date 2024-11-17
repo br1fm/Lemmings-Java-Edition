@@ -312,16 +312,32 @@ public class Game implements GameModel, GameStatus, GameWorld{
 			return (pos.getRow() == DIM_Y);
 	}
 	
+	 /**
+	 * Comprueba si la posición está dentro del tablero.
+	 * @param pos objeto de tipo Position que indica la posición a comparar.
+	 * @return true si la posición está en el tablero, false en caso contrario.
+	 */
 	public boolean isInBoard(Position pos) {
 		return ((pos.getCol() > -1 && pos.getCol() < DIM_X) &&
 				(pos.getRow() > -1 && pos.getRow() < DIM_Y));
 	}
 
+	 /**
+	 * LLama y devuelve el resultado del setRole del contenedor de objetos.
+	 * @param role parametro de tipo LemmingRole que indica el rol del lemming.
+	 * @param comparison objeto de tipo Position que indica la posición a comparar.
+	 * @return true si el rol se ha aplicado correctamente, false en caso contrario.
+	 */
 	@Override
 	public boolean setRole(LemmingRole role, Position comparison) {
 		return container.setRole(role, comparison);
 	}
-
+	
+	 /**
+	 * LLama y devuelve el resultado del receiveInteractionsFrom del contenedor de objetos.
+	 * @param obj parametro de tipo GameItem que hace referencia al objeto.
+	 * @return true si el rol se ha aplicado correctamente, false en caso contrario.
+	 */
 	@Override
 	public boolean receiveInteractionsFrom(GameItem obj) {
 		return container.receiveInteractionsFrom(obj);

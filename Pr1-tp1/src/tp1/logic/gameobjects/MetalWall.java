@@ -15,6 +15,11 @@ public class MetalWall extends GameObject{
 		return other.receiveInteraction(this);
 	}
 
+	/**
+	 * Devuelve un String del MetalWall.
+	 * 
+	 * @return Un string que representa una pared de metal.
+	 */
 	@Override
 	public String toString() {
 		return Messages.METAL_WALL;

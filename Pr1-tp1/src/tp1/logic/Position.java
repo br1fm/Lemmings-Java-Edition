@@ -50,6 +50,12 @@ public final class Position {
 		 return row;
 	 }
 	 
+	 /**
+	 * Devuelve la posicion actualizada al aplicar una cierta dirección.
+	 * 
+	 * @param dir parametro de tipo Direction que indica la direccion de la siguiente posicion.
+	 * @return La siguiente posicion.
+	 */
 	 public Position nextPosition(Direction dir) {
 		 Position pos = new Position(col + dir.getX(), row + dir.getY());
 		 return pos;

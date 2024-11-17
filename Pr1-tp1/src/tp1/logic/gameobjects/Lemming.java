@@ -26,7 +26,7 @@ public class Lemming extends GameObject{
 		super(pos, game);
 		dir = Direction.RIGHT;
 		fall_force = 0;
-		role = new ParachuterRole(); //cuando lo quites, quita el import
+		role = new WalkerRole(); //cuando lo quites, quita el import
 	}
 	
 	/**
@@ -122,10 +122,17 @@ public class Lemming extends GameObject{
 		return role.receiveInteraction(other, this);
 	}
 
+	/**
+	 *  Resetea el valor de la fuerza de caída, estableciendo su valor a 0.
+	 */
 	public void resetFall_force() {
 		fall_force = 0;
 	}
-
+	
+	/**
+	 * Devuelve el valor de la fuerza de caída.
+	 * @return fall_force entero que indica fuerza de caída del lemming.
+	 */
 	public int getFall_force() {
 		return fall_force;
 	}

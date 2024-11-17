@@ -56,6 +56,7 @@ public class SetRoleCommand extends Command{
 	public Command parse(String[] command) {
 		if(matchCommand(command[0])) {
 			char caracter = command[2].charAt(0);
+			caracter = Character.toLowerCase(caracter);
 			int row = (caracter - 'a');
 			int col = Integer.parseInt(command[3]);
 			return new SetRoleCommand(command[1], col - 1, row);
