@@ -14,6 +14,7 @@ import tp1.logic.gameobjects.GameObject;
 public class Game implements GameModel, GameStatus, GameWorld{
 
 	private int lems_to_win;
+	private int lems_in_board;
 	private GameObjectContainer container;
 	private int game_cycle = 0;
 	private int level; 
@@ -87,6 +88,7 @@ public class Game implements GameModel, GameStatus, GameWorld{
 		addObject(new Lemming(new Position(3, 3), this));
 		addObject(new Lemming(new Position(0, 8), this));
 		lems_to_win = 2;
+		lems_in_board = 3;
 
 	}
 
@@ -121,7 +123,7 @@ public class Game implements GameModel, GameStatus, GameWorld{
 		addObject(new Lemming(new Position(6, 0), this));
 		addObject(new Lemming(new Position(0, 8), this));
 		lems_to_win = 2;
-		
+		lems_in_board = 4;
 	}
 
 
@@ -141,7 +143,7 @@ public class Game implements GameModel, GameStatus, GameWorld{
 	 * @return Número de lemmings en el tablero.
 	 */
 	public int numLemmingsInBoard() {
-		return container.numLemmingsInBoard();
+		return container.numLemmingsInBoard(lems_in_board);
 	}
 
 	/**
@@ -272,8 +274,8 @@ public class Game implements GameModel, GameStatus, GameWorld{
 	}
 	
 	public boolean isInBoard(Position pos) {
-		return ((pos.getCol() >= 0 && pos.getCol() < DIM_X - 1) &&
-				(pos.getRow() >= 0 && pos.getRow() < DIM_Y - 1));
+		return ((pos.getCol() > -1 && pos.getCol() < DIM_X) &&
+				(pos.getRow() > -1 && pos.getRow() < DIM_Y));
 	}
 
 	@Override

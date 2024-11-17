@@ -35,7 +35,8 @@ public class Controller {
 		
 		while (!game.isFinished()) {
 
-		    String[] userWords = view.getPrompt();
+
+			String[] userWords = view.getPrompt();
 		    Command command = CommandGenerator.parse(userWords);
 		    
 		    if (command != null) {

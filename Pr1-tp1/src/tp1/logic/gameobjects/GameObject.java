@@ -64,10 +64,10 @@ public abstract class GameObject implements GameItem{
 	
 	public boolean isOnRelativePos(Position other, Direction dir){
 		Position aux = pos.nextPosition(dir);
-		System.out.print(other.getCol());
-		System.out.println(" " + other.getRow());
-		System.out.print(aux.getCol());
-		System.out.println(" " + aux.getRow());
+		//System.out.print(other.getCol());
+		//System.out.println(" " + other.getRow());
+		//System.out.print(aux.getCol());
+		//System.out.println(" " + aux.getRow());
 		return (aux.equals(other));
 	}
 	

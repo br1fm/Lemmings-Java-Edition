@@ -8,4 +8,5 @@ public interface GameModel {
 	public void reset();
 	public void gameExit();
 	public boolean setRole(LemmingRole role, Position comparison);
+	public boolean isInBoard(Position pos);
 }

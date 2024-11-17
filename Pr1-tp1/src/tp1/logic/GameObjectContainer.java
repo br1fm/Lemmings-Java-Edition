@@ -52,9 +52,9 @@ public class GameObjectContainer {
 	 * 
 	 * @return Número de lemmings en el tablero.
 	 */
-    public int numLemmingsInBoard() { //TODO: CAMBIAR.
-    	return 3;
-    	//return arrayLemmings.size();
+    public int numLemmingsInBoard(int lems_in_board) { //TODO: CAMBIAR.
+    	
+    	return lems_in_board - dead_lemmings - freed_lemmings;
     }
     
     /**
