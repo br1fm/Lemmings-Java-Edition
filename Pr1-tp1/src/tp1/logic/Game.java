@@ -53,6 +53,8 @@ public class Game implements GameModel, GameStatus, GameWorld{
 		case 1:
 			initGame1();
 			break;
+		case 2:
+			initGame2();
 		default:
 			System.out.println("Level not supported !"); //TODO: CAMBIAR
 		}
@@ -124,6 +126,43 @@ public class Game implements GameModel, GameStatus, GameWorld{
 		addObject(new Lemming(new Position(0, 8), this));
 		lems_to_win = 2;
 		lems_in_board = 4;
+	}
+	
+	private void initGame2() {
+		
+		// Paredes
+		addObject(new Wall(new Position(4, 6), this));
+		addObject(new Wall(new Position(5, 6), this));
+		addObject(new Wall(new Position(6, 6), this));
+		addObject(new Wall(new Position(7, 6), this));
+		addObject(new Wall(new Position(7, 5), this));
+		addObject(new Wall(new Position(8, 9), this));
+		addObject(new Wall(new Position(9, 9), this));
+		addObject(new Wall(new Position(8, 8), this));
+		addObject(new Wall(new Position(0, 9), this));
+		addObject(new Wall(new Position(1, 9), this));
+		addObject(new Wall(new Position(4, 4), this));
+		addObject(new Wall(new Position(3, 4), this));
+		addObject(new Wall(new Position(2, 4), this));
+		addObject(new Wall(new Position(8, 1), this));
+		addObject(new Wall(new Position(9, 1), this));
+		addObject(new Wall(new Position(3, 5), this));
+		addObject(new MetalWall(new Position(3, 6), this));
+
+		
+		// Puerta de salida
+		addObject(new ExitDoor(new Position(4, 5), this));
+		
+		// Lemmings
+		addObject(new Lemming(new Position(9, 0), this));
+		addObject(new Lemming(new Position(6, 0), this));
+		addObject(new Lemming(new Position(6, 0), this));
+		addObject(new Lemming(new Position(0, 8), this));
+		addObject(new Lemming(new Position(2, 3), this));
+		addObject(new Lemming(new Position(3, 3), this));
+
+		lems_to_win = 2;
+		lems_in_board = 6;
 	}
 
 

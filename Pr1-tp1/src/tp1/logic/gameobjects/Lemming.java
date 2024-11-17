@@ -95,7 +95,7 @@ public class Lemming extends GameObject{
 	
 	@Override
 	public boolean setRole(LemmingRole role) {
-		if(this.role != role) {
+		if(this.role.helpText() != role.helpText()) {
 			this.role = role;
 			return true;
 		}

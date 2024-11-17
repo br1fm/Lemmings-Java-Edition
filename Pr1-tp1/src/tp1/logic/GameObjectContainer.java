@@ -170,7 +170,9 @@ public class GameObjectContainer {
 		int i = 0;
     	boolean stop = false;
     	while(i < gameObjects.size() && !stop) {
-    		if(gameObjects.get(i).isInPosition(comparison) && gameObjects.get(i).setRole(role)) stop = true;
+    		if(gameObjects.get(i).isInPosition(comparison)) {
+    			if(gameObjects.get(i).setRole(role)) stop = true;
+    		}
     		i++;
     	}
     		
