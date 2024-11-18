@@ -5,17 +5,6 @@ import tp1.logic.lemmingRoles.LemmingRole;
 import tp1.logic.Direction;
 import tp1.logic.GameWorld;
 
-/*Todos los GameObject tienen al menos un atributo para almacenar su posición en el juego 
- * y otro booleano que indica si el objeto está vivo o no, y métodos auxiliares para 
- * manipular esa posición o para saber si el objeto está vivo o no. Por último, 
- * necesitaremos el siguiente método:*/
-
-/*
-    La clase abstracta GameObject tendrá los atributos y métodos básicos para 
-    controlar la posición en el tablero y una referencia a la clase Game.
-    De GameObject heredarán las clases Lemming, Wall y ExitDoor.
-*/
-
 public abstract class GameObject implements GameItem{
 
 	private Position pos;
@@ -29,67 +18,91 @@ public abstract class GameObject implements GameItem{
 		is_alive = true;
 	}
 	
+	/**
+	 * Actualiza el estado del objeto en cada ciclo del juego.
+	 */
 	public void update() {};
 	
-	public boolean isAlive() {
-		return is_alive;
-	}
-	
+	/**
+	 * Comprueba si el objeto ha escapado del nivel.
+	 * 
+	 * @return true si el objeto ha escapado, false en caso contrario.
+	 */
 	public boolean isFreed() {
 		return is_out;
 	}
 	
+	/**
+	 * Marca el objeto como escapado del nivel.
+	 */
 	public void escape() {
 		is_out = true;
 	}
 	
+	/**
+	 * Marca el objeto como muerto.
+	 */
 	public void die() {
 		is_alive = false;
 	}
 	
-	
+	/**
+	 * Actualiza la posición del objeto según la dirección proporcionada.
+	 * 
+	 * @param dir La dirección en la que se quiere mover el objeto.
+	 * @return La nueva posición del objeto después de moverse.
+	 */
 	protected Position updatePosition(Direction dir) {
 		pos = pos.nextPosition(dir);
 		return pos;
 	}
 	
 	/**
-	 * Comprueba si el lemming está en el suelo.
+	 * Comprueba si el objeto está en el suelo.
 	 * 
-	 * @return true si el lemming está en el suelo, false en caso contrario.
+	 * @return true si el objeto está en el suelo, false en caso contrario.
 	 */
 	public boolean isOnGround() {
 		return (game.isSolidAtPos(pos.nextPosition(Direction.DOWN)));
 	}
 	
+	/**
+	 * Comprueba si el objeto está en una posición relativa a otra posición especificada en una dirección dada.
+	 * 
+	 * @param other La posición con la que se quiere comparar.
+	 * @param dir La dirección relativa en la que se busca la comparación.
+	 * @return true si el objeto está en la posición relativa especificada, false en caso contrario.
+	 */
 	public boolean isOnRelativePos(Position other, Direction dir){
 		Position aux = pos.nextPosition(dir);
 		return (aux.equals(other));
 	}
 	
 	/**
-	 * Comprueba si el lemming está en la posición especificada.
+	 * Verifica si el objeto está en el vacío utilizando la función isAtVoid de {@link Game#isAtVoid(Position pos)}.
 	 * 
-	 * @param pos La posición con la que se va a comparar.
-	 * @return true si el lemming está en la posición proporcionada, false en caso contrario.
-	 */
-	public boolean isInPosition(Position pos) {
-		return (pos.equals(this.pos));
-	}
-	
-	/**
-	 * Llama a la función isAtVoid de {@link Game#isAtVoid(Position pos)}
-	 * 
-	 * @return true si la función de Game es verdadera, false en caso contrario.
+	 * @return true si la función de Game devuelve true, false en caso contrario.
 	 */
 	public boolean isAtVoid() {
 		return game.isAtVoid(pos);
 	}
 
+
+	/**
+	 * Comprueba si la posición actual del objeto está ocupada por un elemento sólido.
+	 * 
+	 * @return true si la posición es sólida, false en caso contrario.
+	 */
 	public boolean isSolidAtPos() {
 		return game.isSolidAtPos(pos);
 	}
 	
+
+	/**
+	 * Comprueba si el objeto está en el borde del mundo del juego.
+	 * 
+	 * @return true si el objeto está en el borde, false en caso contrario.
+	 */
 	public boolean isAtBorder() {
 		return game.isAtBorder(pos);
 	}
@@ -102,26 +115,51 @@ public abstract class GameObject implements GameItem{
 		return false;
 	}
 	
-	public boolean isSolid(){
-		return false;
-	}
-	
-	public boolean isExit() {
-		return false;
-	}
-	
+	/**
+	 * Devuelve la posición actual del objeto.
+	 * 
+	 * @return La posición actual del objeto.
+	 */
 	public Position getPos() {
 		return pos;
 	}
 	
+	/**
+	 * Permite que el objeto interactúe con otros elementos en el juego.
+	 * 
+	 * @return true si la interacción fue exitosa, false en caso contrario.
+	 */
 	public boolean interact() {
 		return game.receiveInteractionsFrom(this);
 	}
 	
 	@Override
+	public boolean isSolid(){
+		return false;
+	}
+	
+	@Override
+	public boolean isExit() {
+		return false;
+	}
+	
+	@Override
+	public boolean isAlive() {
+		return is_alive;
+	}
+	
+	@Override
+	public boolean isInPosition(Position pos) {
+		return (pos.equals(this.pos));
+	}
+	
+	
+	@Override
 	public boolean interactWith(Lemming lemming) { return false; }
+	
 	@Override
 	public boolean interactWith(Wall wall) { return false; }
+	
 	@Override
 	public boolean interactWith(ExitDoor door) { return false; }
 	

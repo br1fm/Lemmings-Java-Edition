@@ -11,17 +11,34 @@ public abstract class AbstractRole implements LemmingRole{
 	private String shortcut;
 	private String details;
 	
+	/**
+	 * Constructor para inicializar un rol abstracto.
+	 * 
+	 * @param name El nombre del rol.
+	 * @param shortcut El atajo que representa el rol.
+	 * @param details Los detalles descriptivos sobre el rol.
+	 */
 	AbstractRole(String name, String shortcut, String details){
 		this.name = name;
 		this.shortcut = shortcut;
 		this.details = details;
 	}
 	
+	/**
+	 * La constante que define el valor máximo de caída para el lemming que tiene el rol.
+	 */
 	protected final int MAX_FALL = 2;
 	
+	@Override
 	public boolean receiveInteraction(GameItem other, Lemming owner) { return false; }
+	
+	@Override
     public boolean interactWith(Lemming receiver, Lemming owner) { return false; }
+	
+	@Override
     public boolean interactWith(Wall wall, Lemming owner) { return false; }
+	
+	@Override
     public boolean interactWith(ExitDoor door, Lemming owner) { return false; }
     
 	@Override
