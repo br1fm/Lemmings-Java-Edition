@@ -1,7 +1,7 @@
 Lemmings 2.2
 
 Number of cycles: 0
-Lemmings in board: 3
+Lemmings in board: 4
 Dead lemmings: 0
 Lemmings exit door: 0 ┃2
 
@@ -22,16 +22,16 @@ Lemmings exit door: 0 ┃2
 
 Command > [DEBUG] Executing: setRole Parachuter A 10
 
-[ERROR] Error: Unknown command
+[ERROR] Error: SetRoleCommand error (Incorrect position or no object in that position admits that role)
 
 Command > [DEBUG] Executing: setRole Parachuter A 10
 
-[ERROR] Error: Unknown command
+[ERROR] Error: SetRoleCommand error (Incorrect position or no object in that position admits that role)
 
 Command > [DEBUG] Executing: none
 
 Number of cycles: 1
-Lemmings in board: 3
+Lemmings in board: 4
 Dead lemmings: 0
 Lemmings exit door: 0 ┃2
 
@@ -52,16 +52,16 @@ Lemmings exit door: 0 ┃2
 
 Command > [DEBUG] Executing: setRole Parachuter A 8
 
-[ERROR] Error: Unknown command
+[ERROR] Error: SetRoleCommand error (Incorrect position or no object in that position admits that role)
 
 Command > [DEBUG] Executing: setRole Walker B 8
 
-[ERROR] Error: Unknown command
+[ERROR] Error: SetRoleCommand error (Incorrect position or no object in that position admits that role)
 
 Command > [DEBUG] Executing: none
 
 Number of cycles: 2
-Lemmings in board: 3
+Lemmings in board: 4
 Dead lemmings: 0
 Lemmings exit door: 0 ┃2
 
@@ -83,7 +83,7 @@ Lemmings exit door: 0 ┃2
 Command > [DEBUG] Executing: 
 
 Number of cycles: 3
-Lemmings in board: 3
+Lemmings in board: 4
 Dead lemmings: 0
 Lemmings exit door: 0 ┃2
 
@@ -126,7 +126,7 @@ Lemmings exit door: 0 ┃2
 
 Command > [DEBUG] Executing: setRole DownCaver F 6
 
-[ERROR] Error: Unknown command
+[ERROR] Error: SetRoleCommand error (Incorrect position or no object in that position admits that role)
 
 Command > [DEBUG] Executing: none
 
@@ -175,7 +175,7 @@ Lemmings exit door: 0 ┃2
 Command > [DEBUG] Executing: reset
 
 Number of cycles: 6
-Lemmings in board: 3
+Lemmings in board: 4
 Dead lemmings: 0
 Lemmings exit door: 0 ┃2
 
@@ -197,7 +197,7 @@ Lemmings exit door: 0 ┃2
 Command > [DEBUG] Executing: none
 
 Number of cycles: 7
-Lemmings in board: 3
+Lemmings in board: 4
 Dead lemmings: 0
 Lemmings exit door: 0 ┃2
 
@@ -219,7 +219,7 @@ Lemmings exit door: 0 ┃2
 Command > [DEBUG] Executing: n
 
 Number of cycles: 8
-Lemmings in board: 3
+Lemmings in board: 4
 Dead lemmings: 0
 Lemmings exit door: 0 ┃2
 
@@ -240,12 +240,12 @@ Lemmings exit door: 0 ┃2
 
 Command > [DEBUG] Executing: setRole DownCaver D 5
 
-[ERROR] Error: Unknown command
+[ERROR] Error: SetRoleCommand error (Incorrect position or no object in that position admits that role)
 
 Command > [DEBUG] Executing: 
 
 Number of cycles: 9
-Lemmings in board: 3
+Lemmings in board: 4
 Dead lemmings: 0
 Lemmings exit door: 0 ┃2
 
@@ -310,7 +310,7 @@ Lemmings exit door: 0 ┃2
 
 Command > [DEBUG] Executing: setRole Parachuter D 8
 
-[ERROR] Error: Unknown command
+[ERROR] Error: SetRoleCommand error (Incorrect position or no object in that position admits that role)
 
 Command > [DEBUG] Executing: noNe
 
@@ -359,7 +359,7 @@ Lemmings exit door: 0 ┃2
 Command > [DEBUG] Executing: n
 
 Number of cycles: 14
-Lemmings in board: 3
+Lemmings in board: 2
 Dead lemmings: 2
 Lemmings exit door: 0 ┃2
 
@@ -381,7 +381,7 @@ Lemmings exit door: 0 ┃2
 Command > [DEBUG] Executing: 
 
 Number of cycles: 15
-Lemmings in board: 3
+Lemmings in board: 1
 Dead lemmings: 2
 Lemmings exit door: 1 ┃1
 
@@ -403,7 +403,7 @@ Lemmings exit door: 1 ┃1
 Command > [DEBUG] Executing: nonE
 
 Number of cycles: 16
-Lemmings in board: 3
+Lemmings in board: 0
 Dead lemmings: 2
 Lemmings exit door: 2 ┃0
 

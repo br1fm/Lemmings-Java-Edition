@@ -4,6 +4,8 @@ import tp1.logic.gameobjects.Lemming;
 import tp1.logic.gameobjects.MetalWall;
 import tp1.logic.gameobjects.Wall;
 import tp1.logic.lemmingRoles.LemmingRole;
+import tp1.logic.lemmingRoles.ParachuterRole;
+import tp1.logic.lemmingRoles.WalkerRole;
 import tp1.logic.gameobjects.ExitDoor;
 import tp1.logic.gameobjects.GameItem;
 import tp1.logic.gameobjects.GameObject;
@@ -56,7 +58,7 @@ public class Game implements GameModel, GameStatus, GameWorld{
 		case 2:
 			initGame2();
 		default:
-			System.out.println("Level not supported !"); //TODO: CAMBIAR
+			System.out.println("Level not supported !");
 		}
 	}
 	
@@ -86,9 +88,9 @@ public class Game implements GameModel, GameStatus, GameWorld{
 		addObject(new ExitDoor(new Position(4, 5), this));
 		
 		// Lemmings
-		addObject(new Lemming(new Position(9, 0), this));
-		addObject(new Lemming(new Position(3, 3), this));
-		addObject(new Lemming(new Position(0, 8), this));
+		addObject(new Lemming(new Position(9, 0), this, new WalkerRole()));
+		addObject(new Lemming(new Position(3, 3), this, new WalkerRole()));
+		addObject(new Lemming(new Position(0, 8), this, new WalkerRole()));
 		lems_to_win = 2;
 		lems_in_board = 3;
 
@@ -103,7 +105,7 @@ public class Game implements GameModel, GameStatus, GameWorld{
 		addObject(new Wall(new Position(4, 6), this));
 		addObject(new Wall(new Position(5, 6), this));
 		addObject(new Wall(new Position(6, 6), this));
-		addObject(new MetalWall(new Position(7, 6), this));
+		addObject(new Wall(new Position(7, 6), this));
 		addObject(new Wall(new Position(7, 5), this));
 		addObject(new Wall(new Position(8, 9), this));
 		addObject(new Wall(new Position(9, 9), this));
@@ -120,10 +122,10 @@ public class Game implements GameModel, GameStatus, GameWorld{
 		addObject(new ExitDoor(new Position(4, 5), this));
 		
 		// Lemmings
-		addObject(new Lemming(new Position(9, 0), this));
-		addObject(new Lemming(new Position(2, 3), this));
-		addObject(new Lemming(new Position(6, 0), this));
-		addObject(new Lemming(new Position(0, 8), this));
+		addObject(new Lemming(new Position(9, 0), this, new WalkerRole()));
+		addObject(new Lemming(new Position(2, 3), this, new WalkerRole()));
+		addObject(new Lemming(new Position(3, 3), this, new WalkerRole()));
+		addObject(new Lemming(new Position(0, 8), this, new WalkerRole()));
 		lems_to_win = 2;
 		lems_in_board = 4;
 	}
@@ -154,12 +156,12 @@ public class Game implements GameModel, GameStatus, GameWorld{
 		addObject(new ExitDoor(new Position(4, 5), this));
 		
 		// Lemmings
-		addObject(new Lemming(new Position(9, 0), this));
-		addObject(new Lemming(new Position(6, 0), this));
-		addObject(new Lemming(new Position(6, 0), this));
-		addObject(new Lemming(new Position(0, 8), this));
-		addObject(new Lemming(new Position(2, 3), this));
-		addObject(new Lemming(new Position(3, 3), this));
+		addObject(new Lemming(new Position(9, 0), this, new WalkerRole()));
+		addObject(new Lemming(new Position(6, 0), this, new WalkerRole()));
+		addObject(new Lemming(new Position(6, 0), this, new ParachuterRole()));
+		addObject(new Lemming(new Position(0, 8), this, new WalkerRole()));
+		addObject(new Lemming(new Position(2, 3), this, new WalkerRole()));
+		addObject(new Lemming(new Position(3, 3), this, new WalkerRole()));
 
 		lems_to_win = 2;
 		lems_in_board = 6;

@@ -4,7 +4,6 @@ import tp1.logic.Direction;
 import tp1.logic.Game;
 import tp1.logic.Position;
 import tp1.logic.lemmingRoles.LemmingRole;
-import tp1.logic.lemmingRoles.ParachuterRole;
 import tp1.logic.lemmingRoles.WalkerRole;
 
 /**
@@ -22,11 +21,15 @@ public class Lemming extends GameObject{
 	 * @param pos La posición inicial del lemming.
 	 * @param game El juego en el que está el lemming.
 	 */
-	public Lemming(Position pos, Game game) {
+	public Lemming(Position pos, Game game, LemmingRole role) {
 		super(pos, game);
 		dir = Direction.RIGHT;
 		fall_force = 0;
+<<<<<<< Updated upstream
 		role = new WalkerRole(); //cuando lo quites, quita el import
+=======
+		this.role = role; //cuando lo quites, quita el import
+>>>>>>> Stashed changes
 	}
 	
 	/**

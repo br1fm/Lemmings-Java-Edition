@@ -52,8 +52,7 @@ public class GameObjectContainer {
 	 * 
 	 * @return Número de lemmings en el tablero.
 	 */
-    public int numLemmingsInBoard(int lems_in_board) { //TODO: CAMBIAR.
-    	
+    public int numLemmingsInBoard(int lems_in_board) {
     	return lems_in_board - dead_lemmings - freed_lemmings;
     }
     
@@ -142,7 +141,7 @@ public class GameObjectContainer {
     	int i = 0;
     	boolean stop = false;
     	while(i < gameObjects.size() && !stop) {
-    		if(gameObjects.get(i).isAlive()) { //implementar en las interacciones lo de las pos.
+    		if(gameObjects.get(i).isAlive()) { 
     			if(gameObjects.get(i).receiveInteraction(obj)) stop = true;
     		}
     		i++;

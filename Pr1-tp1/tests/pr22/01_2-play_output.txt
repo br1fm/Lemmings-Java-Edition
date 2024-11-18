@@ -1,7 +1,7 @@
 Lemmings 2.2
 
 Number of cycles: 0
-Lemmings in board: 3
+Lemmings in board: 4
 Dead lemmings: 0
 Lemmings exit door: 0 ┃2
 
@@ -23,7 +23,7 @@ Lemmings exit door: 0 ┃2
 Command > [DEBUG] Executing: 
 
 Number of cycles: 1
-Lemmings in board: 3
+Lemmings in board: 4
 Dead lemmings: 0
 Lemmings exit door: 0 ┃2
 
@@ -45,7 +45,7 @@ Lemmings exit door: 0 ┃2
 Command > [DEBUG] Executing: n
 
 Number of cycles: 2
-Lemmings in board: 3
+Lemmings in board: 4
 Dead lemmings: 0
 Lemmings exit door: 0 ┃2
 
@@ -67,7 +67,7 @@ Lemmings exit door: 0 ┃2
 Command > [DEBUG] Executing: none
 
 Number of cycles: 3
-Lemmings in board: 3
+Lemmings in board: 4
 Dead lemmings: 0
 Lemmings exit door: 0 ┃2
 
@@ -177,7 +177,7 @@ Lemmings exit door: 0 ┃2
 Command > [DEBUG] Executing: 
 
 Number of cycles: 8
-Lemmings in board: 3
+Lemmings in board: 2
 Dead lemmings: 2
 Lemmings exit door: 0 ┃2
 
@@ -199,7 +199,7 @@ Lemmings exit door: 0 ┃2
 Command > [DEBUG] Executing: n
 
 Number of cycles: 9
-Lemmings in board: 3
+Lemmings in board: 1
 Dead lemmings: 2
 Lemmings exit door: 1 ┃1
 
@@ -221,7 +221,7 @@ Lemmings exit door: 1 ┃1
 Command > [DEBUG] Executing: none
 
 Number of cycles: 10
-Lemmings in board: 3
+Lemmings in board: 0
 Dead lemmings: 2
 Lemmings exit door: 2 ┃0
 

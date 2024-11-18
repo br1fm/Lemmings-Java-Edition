@@ -11,15 +11,8 @@ public class DownCaverRole extends AbstractRole{
 	private static final String SHORTCUT = Messages.ROLE_DOWN_CAVER_SHORTCUT;
 	private static final String DETAILS = Messages.ROLE_DOWN_CAVER_DETAILS;
 	
-	private boolean hasCaved;
-	
 	public DownCaverRole() {
 		super(NAME, SHORTCUT, DETAILS);
-		hasCaved = false;
-	}
-	
-	private void excavate() {
-		hasCaved = true;
 	}
 
 	@Override
@@ -48,7 +41,6 @@ public class DownCaverRole extends AbstractRole{
 		if(owner.isOnRelativePos(wall.getPos(), Direction.DOWN)) {
 			wall.die();
 			owner.fall();
-			excavate();
 			return true;
 		}
 		

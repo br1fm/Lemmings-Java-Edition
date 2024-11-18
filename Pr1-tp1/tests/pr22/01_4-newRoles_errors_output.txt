@@ -1,7 +1,7 @@
 Lemmings 2.2
 
 Number of cycles: 0
-Lemmings in board: 3
+Lemmings in board: 4
 Dead lemmings: 0
 Lemmings exit door: 0 ┃2
 
@@ -22,56 +22,56 @@ Lemmings exit door: 0 ┃2
 
 Command > [DEBUG] Executing: setRole Walker I 2 33
 
-[ERROR] Error: Unknown command
+[ERROR] Error: SetRoleCommand error (Incorrect position or no object in that position admits that role)
 
 Command > [DEBUG] Executing: setRole Patata I 2
 
-[ERROR] Error: Unknown command
+[ERROR] Error: Unknown Role
 
 Command > [DEBUG] Executing: sEtROle Walker I 1
 
-[ERROR] Error: Unknown command
+[ERROR] Error: SetRoleCommand error (Incorrect position or no object in that position admits that role)
 
 Command > [DEBUG] Executing: sEtROle w I 1
 
-[ERROR] Error: Unknown command
+[ERROR] Error: SetRoleCommand error (Incorrect position or no object in that position admits that role)
 
 Command > [DEBUG] Executing: setRole Parachuter A 1
 
-[ERROR] Error: Unknown command
+[ERROR] Error: SetRoleCommand error (Incorrect position or no object in that position admits that role)
 
 Command > [DEBUG] Executing: setRole Parachuter A 100
 
-[ERROR] Error: Unknown command
+[ERROR] Error: SetRoleCommand error (Incorrect position or no object in that position admits that role)
 
 Command > [DEBUG] Executing: setRole Parachu A 10
 
-[ERROR] Error: Unknown command
+[ERROR] Error: Unknown Role
 
 Command > [DEBUG] Executing: sEtROle doWnCaVer A 10
 
-[ERROR] Error: Unknown command
+[ERROR] Error: SetRoleCommand error (Incorrect position or no object in that position admits that role)
 
 Command > [DEBUG] Executing: setRole Parachuter B 10
 
-[ERROR] Error: Unknown command
+[ERROR] Error: SetRoleCommand error (Incorrect position or no object in that position admits that role)
 
 Command > [DEBUG] Executing: setRole Parachuter C 10
 
-[ERROR] Error: Unknown command
+[ERROR] Error: SetRoleCommand error (Incorrect position or no object in that position admits that role)
 
 Command > [DEBUG] Executing: sr walKEr C 10
 
-[ERROR] Error: Unknown command
+[ERROR] Error: SetRoleCommand error (Incorrect position or no object in that position admits that role)
 
 Command > [DEBUG] Executing: setRole Parachuter D 10
 
-[ERROR] Error: Unknown command
+[ERROR] Error: SetRoleCommand error (Incorrect position or no object in that position admits that role)
 
 Command > [DEBUG] Executing: none
 
 Number of cycles: 1
-Lemmings in board: 3
+Lemmings in board: 4
 Dead lemmings: 0
 Lemmings exit door: 0 ┃2
 
@@ -93,7 +93,7 @@ Lemmings exit door: 0 ┃2
 Command > [DEBUG] Executing: n
 
 Number of cycles: 2
-Lemmings in board: 3
+Lemmings in board: 4
 Dead lemmings: 0
 Lemmings exit door: 0 ┃2
 
@@ -115,7 +115,7 @@ Lemmings exit door: 0 ┃2
 Command > [DEBUG] Executing: noNe
 
 Number of cycles: 3
-Lemmings in board: 3
+Lemmings in board: 4
 Dead lemmings: 0
 Lemmings exit door: 0 ┃2
 
