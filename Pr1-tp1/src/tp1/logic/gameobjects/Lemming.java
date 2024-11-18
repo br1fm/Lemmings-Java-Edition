@@ -25,11 +25,8 @@ public class Lemming extends GameObject{
 		super(pos, game);
 		dir = Direction.RIGHT;
 		fall_force = 0;
-<<<<<<< Updated upstream
-		role = new WalkerRole(); //cuando lo quites, quita el import
-=======
-		this.role = role; //cuando lo quites, quita el import
->>>>>>> Stashed changes
+		role = new WalkerRole();
+		this.role = role;
 	}
 	
 	/**
