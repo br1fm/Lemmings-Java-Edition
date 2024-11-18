@@ -25,7 +25,6 @@ public class Lemming extends GameObject{
 		super(pos, game);
 		dir = Direction.RIGHT;
 		fall_force = 0;
-		role = new WalkerRole();
 		this.role = role;
 	}
 	
