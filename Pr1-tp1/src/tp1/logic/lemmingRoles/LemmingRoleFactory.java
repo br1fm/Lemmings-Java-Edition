@@ -13,6 +13,12 @@ public class LemmingRoleFactory {
             new WalkerRole()
     );
 	
+	/**
+     * Analiza una cadena de texto para determinar el rol correspondiente.
+     * 
+     * @param input La cadena de texto que representa el rol que se desea parsear.
+     * @return El rol correspondiente si se encuentra, null en caso contrario.
+     */
 	public static LemmingRole parse(String input) { 
 		for(AbstractRole i : AVAILABLE_ROLES) {
 			if(i.parse(input) != null) {
@@ -22,6 +28,12 @@ public class LemmingRoleFactory {
 		return null;
 	}
 	
+
+    /**
+     * Genera una cadena con la descripción de ayuda de todos los roles disponibles.
+     * 
+     * @return Una cadena que contiene la descripción de todos los roles y su ayuda asociada.
+     */
 	public static String roleHelp() {
 		
 		String str = "";
