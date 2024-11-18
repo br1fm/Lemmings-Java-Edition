@@ -136,6 +136,13 @@ public class GameObjectContainer {
     	return str;
     }
     
+    /**
+     * Recibe interacciones de un objeto GameItem y las transmite a los objetos correspondientes
+     * dentro del contenedor que estén vivos.
+     * 
+     * @param obj Objeto del tipo GameItem con el que interactuar.
+     * @return true si alguna interacción fue procesada correctamente, false en caso contrario.
+     */
     public boolean receiveInteractionsFrom(GameItem obj){
     	
     	int i = 0;
@@ -151,6 +158,10 @@ public class GameObjectContainer {
     	
     }
     
+    /**
+     * Elimina de la lista de objetos aquellos que no están vivos (muertos) o han sido liberados.
+     * También actualiza los contadores de lemmings muertos y liberados.
+     */
     public void removeObjects() {
         List<GameObject> toRemove = new ArrayList<>();
         for (GameObject o : gameObjects) {
@@ -165,6 +176,13 @@ public class GameObjectContainer {
         gameObjects.removeAll(toRemove);
     }
 
+    /**
+     * Asigna un rol a un lemming en una posición específica del tablero.
+     * 
+     * @param role El rol a asignar al lemming.
+     * @param comparison La posición del lemming al que se le asignará el rol.
+     * @return true si el rol fue asignado exitosamente, false en caso contrario.
+     */
 	public boolean setRole(LemmingRole role, Position comparison) {
 		int i = 0;
     	boolean stop = false;

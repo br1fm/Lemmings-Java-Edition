@@ -24,7 +24,6 @@ public abstract class AbstractRole implements LemmingRole{
     public boolean interactWith(Wall wall, Lemming owner) { return false; }
     public boolean interactWith(ExitDoor door, Lemming owner) { return false; }
     
-    //TODO: de momento la dejo aquí
 	@Override
 	public void start(Lemming lemming) {
 		lemming.setRole(this);
