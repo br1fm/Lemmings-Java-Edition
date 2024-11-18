@@ -1,6 +1,4 @@
 package tp1.control.command;
-import tp1.logic.GameModel;
-import tp1.view.GameView;
 
 /**
  * Clase abstracta que representa un comando que no requiere parámetros adicionales
@@ -41,7 +39,8 @@ public abstract class NoParamsCommand extends Command {
      *         si no coincide.
      */
 	public Command parse(String[] command) {
-		if(matchCommand(command[0])) 
+		if(1 < command.length) return null;
+		else if(matchCommand(command[0])) 
 			return this;
 		else return null;
 	}

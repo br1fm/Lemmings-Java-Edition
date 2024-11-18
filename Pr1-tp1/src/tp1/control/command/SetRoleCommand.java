@@ -54,7 +54,8 @@ public class SetRoleCommand extends Command{
      * @return Un nuevo SetRoleCommand si el comando es válido, o null si no lo es.
      */
 	public Command parse(String[] command) {
-		if(matchCommand(command[0])) {
+		
+		if(matchCommand(command[0]) && command.length == 4) {
 			char caracter = command[2].charAt(0);
 			caracter = Character.toLowerCase(caracter);
 			int row = (caracter - 'a');
@@ -82,7 +83,11 @@ public class SetRoleCommand extends Command{
 				}
 				else gameview.showError(Messages.SET_COMMAND_ERROR);
 			}
-		else gameview.showError(Messages.UNKNOWN_ROLE);
+			
+		else {
+			String error = Messages.UNKNOWN_COMMAND + Messages.HELP_DETAILS_COMMAND_HELP_SEPARATOR + NAME;
+			gameview.showError(error);
+		}
 
 	}
 	

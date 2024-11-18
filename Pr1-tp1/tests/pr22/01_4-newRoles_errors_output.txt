@@ -22,11 +22,11 @@ Lemmings exit door: 0 ┃2
 
 Command > [DEBUG] Executing: setRole Walker I 2 33
 
-[ERROR] Error: SetRoleCommand error (Incorrect position or no object in that position admits that role)
+[ERROR] Error: Unknown command: setRole
 
 Command > [DEBUG] Executing: setRole Patata I 2
 
-[ERROR] Error: Unknown Role
+[ERROR] Error: Unknown command: setRole
 
 Command > [DEBUG] Executing: sEtROle Walker I 1
 
@@ -46,29 +46,9 @@ Command > [DEBUG] Executing: setRole Parachuter A 100
 
 Command > [DEBUG] Executing: setRole Parachu A 10
 
-[ERROR] Error: Unknown Role
+[ERROR] Error: Unknown command: setRole
 
 Command > [DEBUG] Executing: sEtROle doWnCaVer A 10
-
-[ERROR] Error: SetRoleCommand error (Incorrect position or no object in that position admits that role)
-
-Command > [DEBUG] Executing: setRole Parachuter B 10
-
-[ERROR] Error: SetRoleCommand error (Incorrect position or no object in that position admits that role)
-
-Command > [DEBUG] Executing: setRole Parachuter C 10
-
-[ERROR] Error: SetRoleCommand error (Incorrect position or no object in that position admits that role)
-
-Command > [DEBUG] Executing: sr walKEr C 10
-
-[ERROR] Error: SetRoleCommand error (Incorrect position or no object in that position admits that role)
-
-Command > [DEBUG] Executing: setRole Parachuter D 10
-
-[ERROR] Error: SetRoleCommand error (Incorrect position or no object in that position admits that role)
-
-Command > [DEBUG] Executing: none
 
 Number of cycles: 1
 Lemmings in board: 4
@@ -77,8 +57,8 @@ Lemmings exit door: 0 ┃2
 
       1    2    3    4    5    6    7    8    9   10  
    ┌——————————————————————————————————————————————————┐
-  A┃                                               ᗺ  ┃A
-  B┃                                        ▓▓▓▓▓▓▓▓▓▓┃B
+  A┃                                                  ┃A
+  B┃                                        ▓▓▓▓▓´･ω･`┃B
   C┃                                                  ┃C
   D┃                 B    B                           ┃D
   E┃          ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓                         ┃E
@@ -90,7 +70,7 @@ Lemmings exit door: 0 ┃2
    └——————————————————————————————————————————————————┘
       1    2    3    4    5    6    7    8    9   10  
 
-Command > [DEBUG] Executing: n
+Command > [DEBUG] Executing: setRole Parachuter B 10
 
 Number of cycles: 2
 Lemmings in board: 4
@@ -99,9 +79,9 @@ Lemmings exit door: 0 ┃2
 
       1    2    3    4    5    6    7    8    9   10  
    ┌——————————————————————————————————————————————————┐
-  A┃                                          ᗺ       ┃A
-  B┃                                        ▓▓▓▓▓▓▓▓▓▓┃B
-  C┃                                                  ┃C
+  A┃                                                  ┃A
+  B┃                                        ▓▓▓▓▓     ┃B
+  C┃                                              🪂  ┃C
   D┃                      B    B                      ┃D
   E┃          ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓                         ┃E
   F┃                     🚪            ▓▓▓▓▓          ┃F
@@ -112,7 +92,11 @@ Lemmings exit door: 0 ┃2
    └——————————————————————————————————————————————————┘
       1    2    3    4    5    6    7    8    9   10  
 
-Command > [DEBUG] Executing: noNe
+Command > [DEBUG] Executing: setRole Parachuter C 10
+
+[ERROR] Error: SetRoleCommand error (Incorrect position or no object in that position admits that role)
+
+Command > [DEBUG] Executing: sr walKEr C 10
 
 Number of cycles: 3
 Lemmings in board: 4
@@ -121,10 +105,10 @@ Lemmings exit door: 0 ┃2
 
       1    2    3    4    5    6    7    8    9   10  
    ┌——————————————————————————————————————————————————┐
-  A┃                                     ᗺ            ┃A
-  B┃                                        ▓▓▓▓▓▓▓▓▓▓┃B
+  A┃                                                  ┃A
+  B┃                                        ▓▓▓▓▓     ┃B
   C┃                                                  ┃C
-  D┃                           B                      ┃D
+  D┃                           B                   B  ┃D
   E┃          ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓  B                      ┃E
   F┃                     🚪            ▓▓▓▓▓          ┃F
   G┃                    ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓          ┃G
@@ -134,7 +118,7 @@ Lemmings exit door: 0 ┃2
    └——————————————————————————————————————————————————┘
       1    2    3    4    5    6    7    8    9   10  
 
-Command > [DEBUG] Executing: nonE
+Command > [DEBUG] Executing: setRole Parachuter D 10
 
 Number of cycles: 4
 Lemmings in board: 3
@@ -144,10 +128,10 @@ Lemmings exit door: 0 ┃2
       1    2    3    4    5    6    7    8    9   10  
    ┌——————————————————————————————————————————————————┐
   A┃                                                  ┃A
-  B┃                                     ᗺ  ▓▓▓▓▓▓▓▓▓▓┃B
+  B┃                                        ▓▓▓▓▓     ┃B
   C┃                                                  ┃C
   D┃                                                  ┃D
-  E┃          ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓  B                      ┃E
+  E┃          ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓  B                  🪂  ┃E
   F┃                     🚪    B       ▓▓▓▓▓          ┃F
   G┃                    ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓          ┃G
   H┃                                                  ┃H
@@ -156,7 +140,7 @@ Lemmings exit door: 0 ┃2
    └——————————————————————————————————————————————————┘
       1    2    3    4    5    6    7    8    9   10  
 
-Command > [DEBUG] Executing: None
+Command > [DEBUG] Executing: none
 
 Number of cycles: 5
 Lemmings in board: 3
@@ -166,60 +150,128 @@ Lemmings exit door: 0 ┃2
       1    2    3    4    5    6    7    8    9   10  
    ┌——————————————————————————————————————————————————┐
   A┃                                                  ┃A
-  B┃                                        ▓▓▓▓▓▓▓▓▓▓┃B
-  C┃                                     ᗺ            ┃C
+  B┃                                        ▓▓▓▓▓     ┃B
+  C┃                                                  ┃C
   D┃                                                  ┃D
   E┃          ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓                         ┃E
-  F┃                     🚪    B    B  ▓▓▓▓▓          ┃F
+  F┃                     🚪    B    B  ▓▓▓▓▓      🪂  ┃F
   G┃                    ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓          ┃G
   H┃                                                  ┃H
   I┃                                        ▓▓▓▓▓     ┃I
+  J┃▓▓▓▓▓▓▓▓▓▓                              ▓▓▓▓▓▓▓▓▓▓┃J
+   └——————————————————————————————————————————————————┘
+      1    2    3    4    5    6    7    8    9   10  
+
+Command > [DEBUG] Executing: n
+
+Number of cycles: 6
+Lemmings in board: 3
+Dead lemmings: 1
+Lemmings exit door: 0 ┃2
+
+      1    2    3    4    5    6    7    8    9   10  
+   ┌——————————————————————————————————————————————————┐
+  A┃                                                  ┃A
+  B┃                                        ▓▓▓▓▓     ┃B
+  C┃                                                  ┃C
+  D┃                                                  ┃D
+  E┃          ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓                         ┃E
+  F┃                     🚪        Bᗺ  ▓▓▓▓▓          ┃F
+  G┃                    ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓      🪂  ┃G
+  H┃                                                  ┃H
+  I┃                                        ▓▓▓▓▓     ┃I
+  J┃▓▓▓▓▓▓▓▓▓▓                              ▓▓▓▓▓▓▓▓▓▓┃J
+   └——————————————————————————————————————————————————┘
+      1    2    3    4    5    6    7    8    9   10  
+
+Command > [DEBUG] Executing: noNe
+
+Number of cycles: 7
+Lemmings in board: 3
+Dead lemmings: 1
+Lemmings exit door: 0 ┃2
+
+      1    2    3    4    5    6    7    8    9   10  
+   ┌——————————————————————————————————————————————————┐
+  A┃                                                  ┃A
+  B┃                                        ▓▓▓▓▓     ┃B
+  C┃                                                  ┃C
+  D┃                                                  ┃D
+  E┃          ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓                         ┃E
+  F┃                     🚪    ᗺ    ᗺ  ▓▓▓▓▓          ┃F
+  G┃                    ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓          ┃G
+  H┃                                              🪂  ┃H
+  I┃                                        ▓▓▓▓▓     ┃I
+  J┃▓▓▓▓▓▓▓▓▓▓                              ▓▓▓▓▓▓▓▓▓▓┃J
+   └——————————————————————————————————————————————————┘
+      1    2    3    4    5    6    7    8    9   10  
+
+Command > [DEBUG] Executing: nonE
+
+Number of cycles: 8
+Lemmings in board: 3
+Dead lemmings: 1
+Lemmings exit door: 0 ┃2
+
+      1    2    3    4    5    6    7    8    9   10  
+   ┌——————————————————————————————————————————————————┐
+  A┃                                                  ┃A
+  B┃                                        ▓▓▓▓▓     ┃B
+  C┃                                                  ┃C
+  D┃                                                  ┃D
+  E┃          ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓                         ┃E
+  F┃                     🚪ᗺ   ᗺ       ▓▓▓▓▓          ┃F
+  G┃                    ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓          ┃G
+  H┃                                                  ┃H
+  I┃                                        ▓▓▓▓▓ 🪂  ┃I
+  J┃▓▓▓▓▓▓▓▓▓▓                              ▓▓▓▓▓▓▓▓▓▓┃J
+   └——————————————————————————————————————————————————┘
+      1    2    3    4    5    6    7    8    9   10  
+
+Command > [DEBUG] Executing: None
+
+Number of cycles: 9
+Lemmings in board: 2
+Dead lemmings: 1
+Lemmings exit door: 1 ┃2
+
+      1    2    3    4    5    6    7    8    9   10  
+   ┌——————————————————————————————————————————————————┐
+  A┃                                                  ┃A
+  B┃                                        ▓▓▓▓▓     ┃B
+  C┃                                                  ┃C
+  D┃                                                  ┃D
+  E┃          ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓                         ┃E
+  F┃                     🚪ᗺ           ▓▓▓▓▓          ┃F
+  G┃                    ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓          ┃G
+  H┃                                                  ┃H
+  I┃                                        ▓▓▓▓▓  ᗺ  ┃I
   J┃▓▓▓▓▓▓▓▓▓▓                              ▓▓▓▓▓▓▓▓▓▓┃J
    └——————————————————————————————————————————————————┘
       1    2    3    4    5    6    7    8    9   10  
 
 Command > [DEBUG] Executing: N
 
-Number of cycles: 6
-Lemmings in board: 3
+Number of cycles: 10
+Lemmings in board: 1
 Dead lemmings: 1
-Lemmings exit door: 0 ┃2
+Lemmings exit door: 2 ┃2
 
       1    2    3    4    5    6    7    8    9   10  
    ┌——————————————————————————————————————————————————┐
   A┃                                                  ┃A
-  B┃                                        ▓▓▓▓▓▓▓▓▓▓┃B
+  B┃                                        ▓▓▓▓▓     ┃B
   C┃                                                  ┃C
-  D┃                                     ᗺ            ┃D
+  D┃                                                  ┃D
   E┃          ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓                         ┃E
-  F┃                     🚪        Bᗺ  ▓▓▓▓▓          ┃F
+  F┃                     🚪            ▓▓▓▓▓          ┃F
   G┃                    ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓          ┃G
   H┃                                                  ┃H
-  I┃                                        ▓▓▓▓▓     ┃I
+  I┃                                        ▓▓▓▓▓  B  ┃I
   J┃▓▓▓▓▓▓▓▓▓▓                              ▓▓▓▓▓▓▓▓▓▓┃J
    └——————————————————————————————————————————————————┘
       1    2    3    4    5    6    7    8    9   10  
 
 Command > [DEBUG] Executing: exit
-
-Number of cycles: 6
-Lemmings in board: 3
-Dead lemmings: 1
-Lemmings exit door: 0 ┃2
-
-      1    2    3    4    5    6    7    8    9   10  
-   ┌——————————————————————————————————————————————————┐
-  A┃                                                  ┃A
-  B┃                                        ▓▓▓▓▓▓▓▓▓▓┃B
-  C┃                                                  ┃C
-  D┃                                     ᗺ            ┃D
-  E┃          ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓                         ┃E
-  F┃                     🚪        Bᗺ  ▓▓▓▓▓          ┃F
-  G┃                    ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓          ┃G
-  H┃                                                  ┃H
-  I┃                                        ▓▓▓▓▓     ┃I
-  J┃▓▓▓▓▓▓▓▓▓▓                              ▓▓▓▓▓▓▓▓▓▓┃J
-   └——————————————————————————————————————————————————┘
-      1    2    3    4    5    6    7    8    9   10  
 
 Player leaves the game

@@ -3,6 +3,8 @@ package tp1.logic.lemmingRoles;
 import java.util.Arrays;
 import java.util.List;
 
+import tp1.view.Messages;
+
 public class LemmingRoleFactory {
 	
 	private static final List<AbstractRole> AVAILABLE_ROLES = Arrays.asList(
@@ -25,7 +27,7 @@ public class LemmingRoleFactory {
 		String str = "";
 		
 		for(LemmingRole i : AVAILABLE_ROLES) {
-			str += '\n' + " " + i.helpText();
+			str += Messages.NEWLINE + Messages.HELP_ROLE_MARGIN + i.helpText();
 		}
 		
 		return str;

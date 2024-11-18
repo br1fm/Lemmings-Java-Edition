@@ -42,8 +42,10 @@ public class Controller {
 		    if (command != null) {
 				command.execute(game, view);
 		    }
-		    else 
-		        view.showError(Messages.UNKNOWN_COMMAND.formatted(userWords[0]));
+		    else {
+		    	String error = Messages.UNKNOWN_COMMAND + Messages.HELP_DETAILS_COMMAND_HELP_SEPARATOR + userWords[0];
+		        view.showError(error);
+		    }
 		} 
 		
 		view.showEndMessage();

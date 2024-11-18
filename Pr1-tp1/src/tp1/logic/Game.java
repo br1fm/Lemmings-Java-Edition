@@ -39,7 +39,12 @@ public class Game implements GameModel, GameStatus, GameWorld{
 	 */
 	public void reset() {
 		this.container = new GameObjectContainer();
+		resetGame_cycle();
 		initGames(this.level);
+	}
+	
+	private void resetGame_cycle() {
+		game_cycle = 0;
 	}
 	
 	/**
@@ -55,10 +60,8 @@ public class Game implements GameModel, GameStatus, GameWorld{
 		case 1:
 			initGame1();
 			break;
-		case 2:
-			initGame2();
 		default:
-			System.out.println("Level not supported !");
+			initGame2();
 		}
 	}
 	
@@ -66,6 +69,9 @@ public class Game implements GameModel, GameStatus, GameWorld{
 	 * Inicializa el nivel 0 del juego, agregando paredes, lemmings y la puerta de salida.
 	 */
 	private void initGame0() {
+		
+		// Puerta de salida
+		addObject(new ExitDoor(new Position(4, 5), this));
 		
 		// Paredes
 		addObject(new Wall(new Position(4, 6), this));
@@ -84,13 +90,11 @@ public class Game implements GameModel, GameStatus, GameWorld{
 		addObject(new Wall(new Position(8, 1), this));
 		addObject(new Wall(new Position(9, 1), this));
 		
-		// Puerta de salida
-		addObject(new ExitDoor(new Position(4, 5), this));
-		
 		// Lemmings
 		addObject(new Lemming(new Position(9, 0), this, new WalkerRole()));
-		addObject(new Lemming(new Position(3, 3), this, new WalkerRole()));
+		addObject(new Lemming(new Position(2, 3), this, new WalkerRole()));
 		addObject(new Lemming(new Position(0, 8), this, new WalkerRole()));
+		
 		lems_to_win = 2;
 		lems_in_board = 3;
 
@@ -101,6 +105,9 @@ public class Game implements GameModel, GameStatus, GameWorld{
 	 */
 	private void initGame1() {
 		
+		// Puerta de salida
+		addObject(new ExitDoor(new Position(4, 5), this));
+		
 		// Paredes
 		addObject(new Wall(new Position(4, 6), this));
 		addObject(new Wall(new Position(5, 6), this));
@@ -118,14 +125,12 @@ public class Game implements GameModel, GameStatus, GameWorld{
 		addObject(new Wall(new Position(8, 1), this));
 		addObject(new Wall(new Position(9, 1), this));
 		
-		// Puerta de salida
-		addObject(new ExitDoor(new Position(4, 5), this));
-		
 		// Lemmings
 		addObject(new Lemming(new Position(9, 0), this, new WalkerRole()));
 		addObject(new Lemming(new Position(2, 3), this, new WalkerRole()));
 		addObject(new Lemming(new Position(3, 3), this, new WalkerRole()));
 		addObject(new Lemming(new Position(0, 8), this, new WalkerRole()));
+		
 		lems_to_win = 2;
 		lems_in_board = 4;
 	}
@@ -150,10 +155,6 @@ public class Game implements GameModel, GameStatus, GameWorld{
 		addObject(new Wall(new Position(9, 1), this));
 		addObject(new Wall(new Position(3, 5), this));
 		addObject(new MetalWall(new Position(3, 6), this));
-
-		
-		// Puerta de salida
-		addObject(new ExitDoor(new Position(4, 5), this));
 		
 		// Lemmings
 		addObject(new Lemming(new Position(9, 0), this, new WalkerRole()));
@@ -162,6 +163,9 @@ public class Game implements GameModel, GameStatus, GameWorld{
 		addObject(new Lemming(new Position(0, 8), this, new WalkerRole()));
 		addObject(new Lemming(new Position(2, 3), this, new WalkerRole()));
 		addObject(new Lemming(new Position(3, 3), this, new WalkerRole()));
+		
+		// Puerta de salida
+		addObject(new ExitDoor(new Position(4, 5), this));
 
 		lems_to_win = 2;
 		lems_in_board = 6;
@@ -212,7 +216,7 @@ public class Game implements GameModel, GameStatus, GameWorld{
 	 * @return Número de lemmings restantes para ganar.
 	 */
 	public int numLemmingsToWin() {
-		return ((lems_to_win - container.numLemmingsExit()));
+		return lems_to_win;
 	}
 
 	/**
@@ -264,8 +268,8 @@ public class Game implements GameModel, GameStatus, GameWorld{
 	 * @param comparison Posición a comparar.
 	 * @return true si hay una pared en la posición, false en caso contrario.
 	 */
-	public boolean isWallAtPos(Position comparison) {
-		return container.isWallAtPos(comparison);
+	public boolean isSolidAtPos(Position comparison) {
+		return container.isSolidAtPos(comparison);
 	}
 	
 	/**
@@ -274,8 +278,8 @@ public class Game implements GameModel, GameStatus, GameWorld{
 	 * @param comparison Posición a comparar.
 	 * @return true si hay una puerta de salida en la posición, false en caso contrario.
 	 */
-	public boolean isDoorAtPos(Position comparison) {
-		return container.isDoorAtPos(comparison);
+	public boolean isExitAtPos(Position comparison) {
+		return container.isExitAtPos(comparison);
 	}
 	
 	/**

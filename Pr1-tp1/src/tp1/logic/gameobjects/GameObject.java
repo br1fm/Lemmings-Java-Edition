@@ -59,15 +59,11 @@ public abstract class GameObject implements GameItem{
 	 * @return true si el lemming está en el suelo, false en caso contrario.
 	 */
 	public boolean isOnGround() {
-		return (game.isWallAtPos(pos.nextPosition(Direction.DOWN)));
+		return (game.isSolidAtPos(pos.nextPosition(Direction.DOWN)));
 	}
 	
 	public boolean isOnRelativePos(Position other, Direction dir){
 		Position aux = pos.nextPosition(dir);
-		//System.out.print(other.getCol());
-		//System.out.println(" " + other.getRow());
-		//System.out.print(aux.getCol());
-		//System.out.println(" " + aux.getRow());
 		return (aux.equals(other));
 	}
 	
@@ -90,8 +86,8 @@ public abstract class GameObject implements GameItem{
 		return game.isAtVoid(pos);
 	}
 
-	public boolean isWallAtPos() {
-		return game.isWallAtPos(pos);
+	public boolean isSolidAtPos() {
+		return game.isSolidAtPos(pos);
 	}
 	
 	public boolean isAtBorder() {
@@ -99,7 +95,7 @@ public abstract class GameObject implements GameItem{
 	}
 	
 	public boolean isOut() {
-		return game.isDoorAtPos(pos);
+		return game.isExitAtPos(pos);
 	}
 	
 	public boolean setRole(LemmingRole role) {

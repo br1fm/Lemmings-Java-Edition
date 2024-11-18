@@ -29,6 +29,12 @@ public class Messages {
 	public static final String HELP_AVAILABLE_COMMANDS = "Available commands:";
 
 	public static final String HELP_DETAILS_COMMAND_HELP_SEPARATOR = ": ";
+	
+	public static final String HELP_COMMAND_MARGIN = "   ";
+	
+	public static final String HELP_ROLE_MARGIN = "      ";
+	
+	public static final Character NEWLINE = '\n';
 
 	/* @formatter:off */
 	public static final String[] HELP_LINES = new String[] { "Available commands:",
@@ -89,12 +95,12 @@ public class Messages {
 	public static final String COMMAND_HELP_NAME = "help";
 	public static final String COMMAND_HELP_SHORTCUT = "h";
 	public static final String COMMAND_HELP_DETAILS = "[h]elp";
-	public static final String COMMAND_HELP_HELP = "shows this help";
+	public static final String COMMAND_HELP_HELP = "print this help message";
 	
 	public static final String COMMAND_SET_ROLE_NAME = "setRole";
 	public static final String COMMAND_SET_ROLE_SHORTCUT = "sr";
 	public static final String COMMAND_SET_ROLE_DETAILS = "[s]et[R]ole ROLE ROW COL";
-	public static final String COMMAND_SET_ROLE_HELP = "sets the lemming in position (ROW,COL) to role ROLE";
+	public static final String COMMAND_SET_ROLE_HELP = "sets the lemming in position (ROW,COL) to role ROL";
 
 //Roles
 	

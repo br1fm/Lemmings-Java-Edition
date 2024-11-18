@@ -33,7 +33,6 @@ public class ExitCommand extends NoParamsCommand {
      * @param gameview La vista del juego, utilizada para mostrar la interfaz antes de salir.
      */
 	public void execute(GameModel game, GameView gameview) {
-		gameview.showGame();
 		game.gameExit();
 	}
 	

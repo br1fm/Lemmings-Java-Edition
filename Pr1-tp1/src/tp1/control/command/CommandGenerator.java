@@ -32,7 +32,7 @@ public class CommandGenerator {
 		String str = "";
 		
 		for(Command i : AVAILABLE_COMMANDS) {
-			str += i.detailsText() + Messages.HELP_DETAILS_COMMAND_HELP_SEPARATOR + " " + i.helpText() + '\n';
+			str += Messages.HELP_COMMAND_MARGIN + i.detailsText() + Messages.HELP_DETAILS_COMMAND_HELP_SEPARATOR + i.helpText() + Messages.NEWLINE;
 		}
 		
 		return str;

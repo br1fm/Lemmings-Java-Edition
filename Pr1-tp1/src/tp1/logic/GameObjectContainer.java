@@ -80,7 +80,7 @@ public class GameObjectContainer {
 	 * @param comparison Objeto Position a comparar.
 	 * @return true si hay una pared en la posición, false en caso contrario.
 	 */
-    public boolean isWallAtPos(Position comparison) {
+    public boolean isSolidAtPos(Position comparison) {
     	
     	int i = 0;
     	boolean stop = false;
@@ -99,7 +99,7 @@ public class GameObjectContainer {
    	 * @param comparison Objeto Position a comparar.
    	 * @return true si hay una puerta de salida en la posición, false en caso contrario.
    	 */
-    public boolean isDoorAtPos(Position comparison) {
+    public boolean isExitAtPos(Position comparison) {
     	
     	int i = 0;
     	boolean stop = false;
@@ -156,7 +156,7 @@ public class GameObjectContainer {
         for (GameObject o : gameObjects) {
             if (!o.isAlive()) {
                 toRemove.add(o);
-                dead_lemmings++;
+                if(!o.isSolid()) dead_lemmings++;
             } else if (o.isFreed()) {
                 toRemove.add(o);
                 freed_lemmings++;

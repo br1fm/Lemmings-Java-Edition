@@ -82,7 +82,7 @@ public class Lemming extends GameObject{
 	 */
 	protected void walk() {
 		updatePosition(dir);
-		if(isWallAtPos() || isAtBorder()) {
+		if(isSolidAtPos() || isAtBorder()) {
 			dir = dir.changeDirection();
 			updatePosition(dir);
 		}
