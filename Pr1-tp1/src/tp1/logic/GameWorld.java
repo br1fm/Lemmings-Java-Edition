@@ -49,12 +49,5 @@ public interface GameWorld {
      */
 	public boolean receiveInteractionsFrom(GameItem obj);
 	
-	/**
-     * Verifica si una posición está dentro de los límites del tablero.
-     * 
-     * @param pos La posición a verificar.
-     * @return true si la posición está dentro del tablero, false si está fuera.
-     */
-	public boolean isInBoard(Position pos);
 	
 }

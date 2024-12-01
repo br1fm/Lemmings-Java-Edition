@@ -39,10 +39,10 @@ public abstract class NoParamsCommand extends Command {
      *         si no coincide.
      */
 	public Command parse(String[] command) {
-		if(1 < command.length) return null;
-		else if(matchCommand(command[0])) 
-			return this;
-		else return null;
+		if(1 == command.length){
+			if(matchCommand(command[0])) return this;
+		}
+		return null;
 	}
 	
 }

@@ -93,7 +93,7 @@ public class Lemming extends GameObject{
 	}
 	
 	@Override
-	public boolean setRole(LemmingRole role) {
+	public boolean setRole(LemmingRole role) { //He puesto el equals y no funciona :(
 		if(this.role.helpText() != role.helpText()) {
 			this.role = role;
 			return true;

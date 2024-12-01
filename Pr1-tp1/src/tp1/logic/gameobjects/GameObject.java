@@ -153,7 +153,6 @@ public abstract class GameObject implements GameItem{
 		return (pos.equals(this.pos));
 	}
 	
-	
 	@Override
 	public boolean interactWith(Lemming lemming) { return false; }
 	

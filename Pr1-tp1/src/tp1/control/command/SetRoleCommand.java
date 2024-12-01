@@ -77,7 +77,7 @@ public class SetRoleCommand extends Command{
 	public void execute(GameModel game, GameView gameview) {
 		LemmingRole r = LemmingRoleFactory.parse(role);
 			if(r != null) {
-				if(game.isInBoard(pos) && game.setRole(r, pos)) {
+				if(game.setRole(r, pos)) {
 					game.update();
 					gameview.showGame();
 				}
