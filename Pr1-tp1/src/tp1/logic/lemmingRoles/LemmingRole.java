@@ -1,4 +1,5 @@
 package tp1.logic.lemmingRoles;
+import tp1.exceptions.RoleParseException;
 import tp1.logic.gameobjects.ExitDoor;
 import tp1.logic.gameobjects.GameItem;
 import tp1.logic.gameobjects.Lemming;

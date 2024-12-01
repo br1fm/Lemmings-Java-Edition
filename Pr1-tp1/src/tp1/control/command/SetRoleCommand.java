@@ -3,6 +3,11 @@ package tp1.control.command;
 import tp1.logic.Position;
 import tp1.logic.lemmingRoles.LemmingRole;
 import tp1.logic.lemmingRoles.LemmingRoleFactory;
+import tp1.exceptions.CommandExecuteException;
+import tp1.exceptions.CommandParseException;
+import tp1.exceptions.GameModelException;
+import tp1.exceptions.OffBoardException;
+import tp1.exceptions.RoleParseException;
 import tp1.logic.GameModel;
 import tp1.logic.GameWorld;
 import tp1.view.GameView;
@@ -52,16 +57,30 @@ public class SetRoleCommand extends Command{
      *
      * @param command Un arreglo de cadenas que contiene el comando recibido y sus parámetros.
      * @return Un nuevo SetRoleCommand si el comando es válido, o null si no lo es.
+     * @throws CommandParseException 
      */
-	public Command parse(String[] command) {
+	public Command parse(String[] command) throws CommandParseException {
+		
+		/*Sobran parámetros
+		▪ No se puede obtener un rol: excepción provocada por la factoría de roles
+		▪ No se puede obtener una posición:*/
 		
 		if(matchCommand(command[0]) && command.length == 4) {
+			int row = 0;
+			int col = 0;
+			
+			try {
 			char caracter = command[2].charAt(0);
 			caracter = Character.toLowerCase(caracter);
-			int row = (caracter - 'a');
-			int col = Integer.parseInt(command[3]);
+			row = (caracter - 'a');
+			col = Integer.parseInt(command[3]);
+			}catch (NumberFormatException e) {
+			 	throw new CommandParseException(Messages.INVALID_POSITION.formatted
+			 	 		(Messages.POSITION.formatted(row, col)));
+			}
 			return new SetRoleCommand(command[1], col - 1, row);
 		}
+		
 		return null;
 	}
 
@@ -72,23 +91,23 @@ public class SetRoleCommand extends Command{
      * la asignación del rol sea exitosa. Si alguna de estas condiciones falla, muestra un mensaje de error.</p>
      *
      * @param game El modelo del juego, utilizado para gestionar el estado del juego.
-     * @param gameview La vista del juego, utilizada para mostrar los resultados del comando.
+     * @param gameview La vista del juego, utilizada para mostrar los resultados del comando. 
      */
-	public void execute(GameModel game, GameView gameview) {
-		LemmingRole r = LemmingRoleFactory.parse(role);
-			if(r != null) {
-				if(game.isInBoard(pos) && game.setRole(r, pos)) {
-					game.update();
-					gameview.showGame();
-				}
-				else gameview.showError(Messages.SET_COMMAND_ERROR);
-			}
-			
-		else {
-			String error = Messages.UNKNOWN_COMMAND + Messages.HELP_DETAILS_COMMAND_HELP_SEPARATOR + NAME;
-			gameview.showError(error);
+	public void execute(GameModel game, GameView gameview) throws CommandExecuteException{
+		
+		try {
+		LemmingRole r = LemmingRoleFactory.parse(role); //AQUí hay exception ! ! ! 
+		if(!game.setRole(r, pos)) gameview.showError("No lemming in position (" + pos.getRow() + "," + pos.getCol() + ") admits role Walker"); //AQUÍ hay exception ! ! !
+		else {	
+			game.update();
+			gameview.showGame();
 		}
-
+		}catch(RoleParseException e) {
+			throw new CommandExecuteException("Invalid command parameters", e);
+		}
+		catch(OffBoardException e) {
+			throw new CommandExecuteException("Command execute problem", e);
+		}
 	}
 	
     /**

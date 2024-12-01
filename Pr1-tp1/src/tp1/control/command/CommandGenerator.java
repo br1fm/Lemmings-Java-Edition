@@ -3,6 +3,7 @@ package tp1.control.command;
 import java.util.Arrays;
 import java.util.List;
 
+import tp1.exceptions.CommandParseException;
 import tp1.view.Messages;
 
 public class CommandGenerator {
@@ -24,9 +25,10 @@ public class CommandGenerator {
      * 
      * @param command un arreglo de cadenas representando el comando a analizar.
      * @return el comando correspondiente si el texto es válido, o null si no se reconoce ningún comando.
+     * @throws CommandParseException 
      */
     
-	public static Command parse(String[] command) {
+	public static Command parse(String[] command) throws CommandParseException {
 		
 		for(Command i : AVAILABLE_COMMANDS) {
 			Command c = i.parse(command);
@@ -35,7 +37,7 @@ public class CommandGenerator {
 			}
 		}
 		
-		return null;
+		throw new CommandParseException(Messages.UNKNOWN_COMMAND.formatted(command[0]));
 			
 	}
 	

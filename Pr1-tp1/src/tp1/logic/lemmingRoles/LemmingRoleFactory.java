@@ -3,6 +3,7 @@ package tp1.logic.lemmingRoles;
 import java.util.Arrays;
 import java.util.List;
 
+import tp1.exceptions.RoleParseException;
 import tp1.view.Messages;
 
 public class LemmingRoleFactory {
@@ -13,13 +14,13 @@ public class LemmingRoleFactory {
             new WalkerRole()
     );
 	
-	public static LemmingRole parse(String input) { 
+	public static LemmingRole parse(String input) throws RoleParseException{ 
 		for(AbstractRole i : AVAILABLE_ROLES) {
 			if(i.parse(input) != null) {
 				return i;
 			}
 		}
-		return null;
+		throw new RoleParseException("Unknown role: " + input);
 	}
 	
 	public static String roleHelp() {

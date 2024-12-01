@@ -1,5 +1,6 @@
 package tp1.logic;
 
+import tp1.exceptions.OffBoardException;
 import tp1.logic.lemmingRoles.LemmingRole;
 
 public interface GameModel {
@@ -7,6 +8,6 @@ public interface GameModel {
 	public void update();
 	public void reset();
 	public void gameExit();
-	public boolean setRole(LemmingRole role, Position comparison);
+	public boolean setRole(LemmingRole role, Position comparison) throws OffBoardException;
 	public boolean isInBoard(Position pos);
 }

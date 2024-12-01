@@ -1,5 +1,8 @@
 package tp1.control.command;
 
+import tp1.exceptions.CommandParseException;
+import tp1.view.Messages;
+
 /**
  * Clase abstracta que representa un comando que no requiere parámetros adicionales
  * para ser ejecutado.
@@ -38,11 +41,14 @@ public abstract class NoParamsCommand extends Command {
      * @return El comando actual si el nombre del comando coincide, o null
      *         si no coincide.
      */
-	public Command parse(String[] command) {
-		if(1 < command.length) return null;
-		else if(matchCommand(command[0])) 
-			return this;
-		else return null;
+	public Command parse(String[] command) throws CommandParseException{
+		if (command.length < 1 || !matchCommand(command[0]))
+	 		return null;
+	         
+	 	if (command.length == 1 && matchCommand(command[0]))
+	 		return this;
+	    
+	 	throw new CommandParseException(Messages.COMMAND_INCORRECT_PARAMETER_NUMBER);
 	}
 	
 }

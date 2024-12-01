@@ -1,4 +1,8 @@
 package tp1.control.command;
+import tp1.exceptions.CommandExecuteException;
+import tp1.exceptions.CommandParseException;
+import tp1.exceptions.GameModelException;
+import tp1.exceptions.RoleParseException;
 import tp1.logic.GameModel;
 import tp1.view.GameView;
 
@@ -91,9 +95,9 @@ public abstract class Command {
 		return details;
 	}
 	
-	public abstract Command parse(String[] command);
+	public abstract Command parse(String[] command) throws CommandParseException;
 	
-	public abstract void execute(GameModel game, GameView gameview);
+	public abstract void execute(GameModel game, GameView gameview) throws CommandExecuteException;
 		
 }
 

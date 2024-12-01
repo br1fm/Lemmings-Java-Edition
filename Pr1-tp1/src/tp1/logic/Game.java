@@ -6,6 +6,7 @@ import tp1.logic.gameobjects.Wall;
 import tp1.logic.lemmingRoles.LemmingRole;
 import tp1.logic.lemmingRoles.ParachuterRole;
 import tp1.logic.lemmingRoles.WalkerRole;
+import tp1.exceptions.OffBoardException;
 import tp1.logic.gameobjects.ExitDoor;
 import tp1.logic.gameobjects.GameItem;
 import tp1.logic.gameobjects.GameObject;
@@ -333,9 +334,12 @@ public class Game implements GameModel, GameStatus, GameWorld{
 	 * @param role parametro de tipo LemmingRole que indica el rol del lemming.
 	 * @param comparison objeto de tipo Position que indica la posición a comparar.
 	 * @return true si el rol se ha aplicado correctamente, false en caso contrario.
+	 * @throws OffBoardException 
 	 */
 	@Override
-	public boolean setRole(LemmingRole role, Position comparison) {
+	public boolean setRole(LemmingRole role, Position comparison) throws OffBoardException {
+		if(!isInBoard(comparison)) throw new OffBoardException("Position (" + comparison.getRow() + "," +
+														       comparison.getCol() + ") is off board");
 		return container.setRole(role, comparison);
 	}
 	

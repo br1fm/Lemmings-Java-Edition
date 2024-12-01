@@ -52,7 +52,7 @@ public abstract class AbstractRole implements LemmingRole{
 	}
     
     @Override
-    public LemmingRole parse(String role) {
+    public LemmingRole parse(String role){
 		if(role.equalsIgnoreCase(name) || role.equalsIgnoreCase(shortcut)){
 			return new WalkerRole();
 		}
