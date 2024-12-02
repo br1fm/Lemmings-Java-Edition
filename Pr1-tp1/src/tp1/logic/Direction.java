@@ -35,7 +35,7 @@ public enum Direction {
 	public int getY() {
 		return y;
 	}
-
+	
 	/**
 	 * .Cambia la dirección this.
 	 * 
@@ -65,5 +65,26 @@ public enum Direction {
 		return aux;
 	}
 	
+	public Direction getDirection(String dir) {
+		Direction aux;
+		
+		switch(dir) {
+		case "LEFT":
+			aux = LEFT;
+			break;
+		case "RIGHT":
+			aux = RIGHT;
+			break;
+		case "UP":
+			aux = UP;
+			break;
+		case "DOWN":
+			aux = DOWN;
+			break;
+		default:
+			aux = null;
+		}
+		return aux;
+	}
 	
 }

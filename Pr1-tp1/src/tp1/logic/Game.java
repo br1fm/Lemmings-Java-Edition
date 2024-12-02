@@ -6,6 +6,7 @@ import tp1.logic.gameobjects.Wall;
 import tp1.logic.lemmingRoles.LemmingRole;
 import tp1.logic.lemmingRoles.ParachuterRole;
 import tp1.logic.lemmingRoles.WalkerRole;
+import tp1.exceptions.GameLoadException;
 import tp1.exceptions.OffBoardException;
 import tp1.logic.gameobjects.ExitDoor;
 import tp1.logic.gameobjects.GameItem;
@@ -22,6 +23,7 @@ public class Game implements GameModel, GameStatus, GameWorld{
 	private int game_cycle = 0;
 	private int level; 
 	private boolean exit = false;
+	private GameConfiguration conf = FileGameConfiguration.NONE;
 	
 	/**
 	 * Constructor de la clase Game.
@@ -39,9 +41,19 @@ public class Game implements GameModel, GameStatus, GameWorld{
 	 * Reinicia el juego al estado inicial del nivel actual.
 	 */
 	public void reset() {
-		this.container = new GameObjectContainer();
-		resetGame_cycle();
-		initGames(this.level);
+		if(conf == FileGameConfiguration.NONE) {
+			this.container = new GameObjectContainer();
+			resetGame_cycle();
+			initGames(this.level);
+		}
+		else {
+			this.container = new GameObjectContainer(conf.getGameObjects());
+			this.lems_to_win = conf.numLemmingsToWin();
+			this.game_cycle = conf.getCycle();
+			this.lems_in_board = conf.numLemmingsInBoard();
+			container.setFreedLemmings(conf.numLemmingsExit());
+			container.setDeadlemmings(conf.numLemmingsDead());
+		}
 	}
 	
 	private void resetGame_cycle() {
@@ -92,9 +104,9 @@ public class Game implements GameModel, GameStatus, GameWorld{
 		addObject(new Wall(new Position(9, 1), this));
 		
 		// Lemmings
-		addObject(new Lemming(new Position(9, 0), this, new WalkerRole()));
-		addObject(new Lemming(new Position(2, 3), this, new WalkerRole()));
-		addObject(new Lemming(new Position(0, 8), this, new WalkerRole()));
+		addObject(new Lemming(new Position(9, 0), this, new WalkerRole(), Direction.RIGHT, 0));
+		addObject(new Lemming(new Position(2, 3), this, new WalkerRole(), Direction.RIGHT, 0));
+		addObject(new Lemming(new Position(0, 8), this, new WalkerRole(), Direction.RIGHT, 0));
 		
 		lems_to_win = 2;
 		lems_in_board = 3;
@@ -127,10 +139,10 @@ public class Game implements GameModel, GameStatus, GameWorld{
 		addObject(new Wall(new Position(9, 1), this));
 		
 		// Lemmings
-		addObject(new Lemming(new Position(9, 0), this, new WalkerRole()));
-		addObject(new Lemming(new Position(2, 3), this, new WalkerRole()));
-		addObject(new Lemming(new Position(3, 3), this, new WalkerRole()));
-		addObject(new Lemming(new Position(0, 8), this, new WalkerRole()));
+		addObject(new Lemming(new Position(9, 0), this, new WalkerRole(), Direction.RIGHT, 0));
+		addObject(new Lemming(new Position(2, 3), this, new WalkerRole(), Direction.RIGHT, 0));
+		addObject(new Lemming(new Position(3, 3), this, new WalkerRole(), Direction.RIGHT, 0));
+		addObject(new Lemming(new Position(0, 8), this, new WalkerRole(), Direction.RIGHT, 0));
 		
 		lems_to_win = 2;
 		lems_in_board = 4;
@@ -158,12 +170,12 @@ public class Game implements GameModel, GameStatus, GameWorld{
 		addObject(new MetalWall(new Position(3, 6), this));
 		
 		// Lemmings
-		addObject(new Lemming(new Position(9, 0), this, new WalkerRole()));
-		addObject(new Lemming(new Position(6, 0), this, new WalkerRole()));
-		addObject(new Lemming(new Position(6, 0), this, new ParachuterRole()));
-		addObject(new Lemming(new Position(0, 8), this, new WalkerRole()));
-		addObject(new Lemming(new Position(2, 3), this, new WalkerRole()));
-		addObject(new Lemming(new Position(3, 3), this, new WalkerRole()));
+		addObject(new Lemming(new Position(9, 0), this, new WalkerRole(), Direction.RIGHT, 0));
+		addObject(new Lemming(new Position(6, 0), this, new WalkerRole(), Direction.RIGHT, 0));
+		addObject(new Lemming(new Position(6, 0), this, new ParachuterRole(), Direction.RIGHT, 0));
+		addObject(new Lemming(new Position(0, 8), this, new WalkerRole(), Direction.RIGHT, 0));
+		addObject(new Lemming(new Position(2, 3), this, new WalkerRole(), Direction.RIGHT, 0));
+		addObject(new Lemming(new Position(3, 3), this, new WalkerRole(), Direction.RIGHT, 0));
 		
 		// Puerta de salida
 		addObject(new ExitDoor(new Position(4, 5), this));
@@ -288,7 +300,7 @@ public class Game implements GameModel, GameStatus, GameWorld{
 	 * 
 	 * @param o Objeto GameObject a agregar.
 	 */
-	private void addObject(GameObject o) {
+	public void addObject(GameObject o) {
 		container.add(o);
 	}
 	
@@ -351,6 +363,12 @@ public class Game implements GameModel, GameStatus, GameWorld{
 	@Override
 	public boolean receiveInteractionsFrom(GameItem obj) {
 		return container.receiveInteractionsFrom(obj);
+	}
+
+	@Override
+	public void load(String fileName) throws GameLoadException {
+		this.conf = new FileGameConfiguration(fileName, this);
+		reset();
 	}
 
 }

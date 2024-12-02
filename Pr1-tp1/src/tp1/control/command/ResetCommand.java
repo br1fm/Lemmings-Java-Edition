@@ -1,6 +1,7 @@
 package tp1.control.command;
 import tp1.logic.GameModel;
 import tp1.view.GameView;
+import tp1.view.Messages;
 
 /**
  * Clase que representa el comando para reiniciar el juego.
@@ -11,10 +12,11 @@ import tp1.view.GameView;
  */
 
 public class ResetCommand extends NoParamsCommand {
-	private static final String NAME = "reset";
-	private static final String SHORTCUT = "r";
-	private static final String DETAILS = "[r]eset";
-	private static final String HELP = "start a new game";
+
+	private static final String NAME = Messages.COMMAND_RESET_NAME;
+	private static final String SHORTCUT = Messages.COMMAND_RESET_SHORTCUT;
+	private static final String DETAILS = Messages.COMMAND_RESET_DETAILS;
+	private static final String HELP = Messages.COMMAND_RESET_HELP;
 	
 	 /**
      * Constructor que inicializa el comando con su nombre, atajo, detalles y ayuda.

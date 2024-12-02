@@ -20,5 +20,4 @@ public interface LemmingRole {
     public boolean interactWith(Lemming receiver, Lemming owner);
     public boolean interactWith(Wall wall, Lemming owner);
     public boolean interactWith(ExitDoor door, Lemming owner);
-    
 }

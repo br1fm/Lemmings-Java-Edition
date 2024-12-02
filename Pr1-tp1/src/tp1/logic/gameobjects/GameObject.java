@@ -2,11 +2,13 @@ package tp1.logic.gameobjects;
 
 import tp1.logic.Position;
 import tp1.logic.lemmingRoles.LemmingRole;
+import tp1.exceptions.ObjectParseException;
+import tp1.exceptions.OffBoardException;
 import tp1.logic.Direction;
 import tp1.logic.GameWorld;
 
 public abstract class GameObject implements GameItem{
-
+	
 	private Position pos;
 	private boolean is_alive, is_out;
 	private GameWorld game;
@@ -17,6 +19,15 @@ public abstract class GameObject implements GameItem{
 		this.is_out = false;
 		is_alive = true;
 	}
+	
+	protected GameObject(GameObject other) {
+        this.pos = new Position(other.pos);
+        this.game = other.game;
+        this.is_out = false;
+		is_alive = true;
+    }
+	
+	GameObject(){}
 	
 	/**
 	 * Actualiza el estado del objeto en cada ciclo del juego.
@@ -153,6 +164,45 @@ public abstract class GameObject implements GameItem{
 		return (pos.equals(this.pos));
 	}
 	
+	//NUEVO
+	public abstract GameObject parse(String line, GameWorld game) throws ObjectParseException, OffBoardException;
+	
+	protected Position getPositionFrom(String line, GameWorld game) throws ObjectParseException, OffBoardException {
+		
+		try {
+			
+			String[] p = line.substring(1, line.length() - 1).split(",");
+			
+            int row = Integer.parseInt(p[0]);
+            int col = Integer.parseInt(p[1]);
+            
+            Position pos = new Position(col, row);
+            if(!game.isInBoard(pos)) throw new OffBoardException("Object position is off board: ");
+            return pos;
+		}
+		catch(NumberFormatException | ArrayIndexOutOfBoundsException | NullPointerException e) {
+			throw new ObjectParseException("Invalid object position: ");
+		}
+		
+	}
+	
+	protected boolean getObjectNameFrom(String line) throws ObjectParseException{
+		
+		try {
+			
+			if(!line.toLowerCase().equals(getName()) && !line.toLowerCase().equals(getShortcut())) {
+				return false;
+			}
+			else return true;
+			
+		}catch(NullPointerException e) {
+			throw new ObjectParseException("Unknown game object: ");
+		}
+	}
+
+	protected abstract String getName();
+	
+	protected abstract String getShortcut();
 	
 	@Override
 	public boolean interactWith(Lemming lemming) { return false; }
@@ -162,5 +212,7 @@ public abstract class GameObject implements GameItem{
 	
 	@Override
 	public boolean interactWith(ExitDoor door) { return false; }
+
+	public abstract GameObject copy();
 	
 }

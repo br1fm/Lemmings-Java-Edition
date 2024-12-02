@@ -1,9 +1,14 @@
 package tp1.logic.gameobjects;
 
+import tp1.exceptions.ObjectParseException;
+import tp1.exceptions.OffBoardException;
+import tp1.exceptions.RoleParseException;
 import tp1.logic.Direction;
 import tp1.logic.Game;
+import tp1.logic.GameWorld;
 import tp1.logic.Position;
 import tp1.logic.lemmingRoles.LemmingRole;
+import tp1.logic.lemmingRoles.LemmingRoleFactory;
 import tp1.logic.lemmingRoles.WalkerRole;
 
 /**
@@ -21,13 +26,24 @@ public class Lemming extends GameObject{
 	 * @param pos La posición inicial del lemming.
 	 * @param game El juego en el que está el lemming.
 	 */
-	public Lemming(Position pos, Game game, LemmingRole role) {
+	public Lemming(Position pos, GameWorld game, LemmingRole role, Direction dir, int fall_force) {
 		super(pos, game);
-		dir = Direction.RIGHT;
-		fall_force = 0;
+		this.dir = dir;
+		this.fall_force = fall_force;
 		this.role = role;
 	}
 	
+	// Constructor de copia profunda
+    protected Lemming(Lemming other) {
+        super(other);
+        this.role = other.role;
+        this.dir = other.dir;
+        this.fall_force = other.fall_force;
+    }
+	
+	//NUEVO
+	public Lemming() {}
+
 	/**
 	 * Actualiza el estado del lemming en cada ciclo del juego.
 	 * Si el lemming está vivo, verifica si ha llegado a la puerta de salida o si debe moverse.
@@ -57,6 +73,11 @@ public class Lemming extends GameObject{
 		}
 		
 		if(isAtVoid()) die();
+	}
+	
+	@Override
+	protected String getName() {
+		return "lemming";
 	}
 	
 	/**
@@ -120,6 +141,51 @@ public class Lemming extends GameObject{
 	public boolean receiveInteraction(GameItem other) {
 		return role.receiveInteraction(other, this);
 	}
+	
+	public GameObject parse(String line, GameWorld game) throws ObjectParseException, OffBoardException{
+		//GameWorld será para comprobar si está dentro del tablero el objeto??
+		//TODO: para lemming hacer OVERWRITE
+		try {
+			String[] words = line.trim().split("\\s+");
+			if(!getObjectNameFrom(words[1])) return null;
+			//meter aquí line como cause?? ( "(a,3) Lemming RIGHT 2 Walker")
+			else {
+				Position p = getPositionFrom(words[0], game);
+				Direction d = getLemmingDirectionFrom(words[2]);
+				int ff = getLemmingHeigthFrom(words[3]);
+				LemmingRole lr = getLemmingRoleFrom(words[4]);
+				return new Lemming(p, game, lr, d, ff);
+			}
+		}catch(ArrayIndexOutOfBoundsException e) {
+			throw new ObjectParseException("Not enough arguments in Lemming: ");
+		}
+		
+	}
+	
+	private static Direction getLemmingDirectionFrom(String line) throws ObjectParseException {
+			Direction d = Direction.NONE;
+			d = d.getDirection(line.toUpperCase());
+			if(d == null) throw new ObjectParseException("Invalid lemming direction: ");
+			return d;
+	}
+	
+	private static int getLemmingHeigthFrom(String line) throws ObjectParseException {
+		try {
+			int ff = Integer.parseInt(line);
+			return ff;
+		}catch(NumberFormatException e) {
+			throw new ObjectParseException("Lemming height from ground must be a number: ");
+		}
+	}
+	
+	private static LemmingRole getLemmingRoleFrom(String line) throws ObjectParseException {
+		try {
+			LemmingRole lr = LemmingRoleFactory.parse(line);
+			return lr;
+		} catch (RoleParseException e) {
+			throw new ObjectParseException("Invalid lemming role: ");
+		}
+	}
 
 	/**
 	 *  Resetea el valor de la fuerza de caída, estableciendo su valor a 0.
@@ -135,4 +201,14 @@ public class Lemming extends GameObject{
 	public int getFall_force() {
 		return fall_force;
 	}
+	
+	@Override
+	protected String getShortcut() {
+		return "l";
+	}
+
+    @Override
+    public GameObject copy() {
+        return new Lemming(this);
+    }
 }

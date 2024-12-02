@@ -21,6 +21,16 @@ public final class Position {
 	}
 	
 	/**
+     * Constructor de copia profunda.
+     * 
+     * @param other La posición que se quiere copiar.
+     */
+    public Position(Position other) {
+        this.col = other.col;
+        this.row = other.row;
+    }
+	
+	/**
 	 * Compara esta posición con otra posición proporcionada.
 	 * 
 	 * @param other_pos La posición con la que se va a comparar.

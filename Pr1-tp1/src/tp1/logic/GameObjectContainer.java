@@ -25,6 +25,14 @@ public class GameObjectContainer {
 		gameObjects = new ArrayList<>();
 	}
 	
+	public GameObjectContainer(GameObjectContainer other) {
+	    // Crear una nueva lista de objetos copiando profundamente cada elemento
+	    this.gameObjects = new ArrayList<>();
+	    for (GameObject obj : other.gameObjects) {
+	        this.gameObjects.add(obj.copy()); 
+	    }
+	}
+	
 	/**
 	 * Añade un objeto al contenedor.
 	 * 
@@ -174,6 +182,14 @@ public class GameObjectContainer {
             }
         }
         gameObjects.removeAll(toRemove);
+    }
+    
+    void setFreedLemmings(int numFreedLemmings) {
+    	this.freed_lemmings = numFreedLemmings;
+    }
+    
+    void setDeadlemmings(int numDeadLemmings) {
+    	this.dead_lemmings = numDeadLemmings;
     }
 
     /**

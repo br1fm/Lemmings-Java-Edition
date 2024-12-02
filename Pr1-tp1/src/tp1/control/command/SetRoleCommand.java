@@ -65,9 +65,11 @@ public class SetRoleCommand extends Command{
 		▪ No se puede obtener un rol: excepción provocada por la factoría de roles
 		▪ No se puede obtener una posición:*/
 		
-		if(matchCommand(command[0]) && command.length == 4) {
+		if(matchCommand(command[0])) {
 			int row = 0;
 			int col = 0;
+			
+			if(command.length != 4) throw new CommandParseException("Incorrect parameter number");
 			
 			try {
 			char caracter = command[2].charAt(0);
@@ -77,6 +79,9 @@ public class SetRoleCommand extends Command{
 			}catch (NumberFormatException e) {
 			 	throw new CommandParseException(Messages.INVALID_POSITION.formatted
 			 	 		(Messages.POSITION.formatted(row, col)));
+			}
+			catch(IndexOutOfBoundsException e) {
+				throw new CommandParseException("Not enough arguments");
 			}
 			return new SetRoleCommand(command[1], col - 1, row);
 		}
@@ -96,7 +101,7 @@ public class SetRoleCommand extends Command{
 	public void execute(GameModel game, GameView gameview) throws CommandExecuteException{
 		
 		try {
-		LemmingRole r = LemmingRoleFactory.parse(role); //AQUí hay exception ! ! ! 
+		LemmingRole r = LemmingRoleFactory.parse(role); 
 		if(!game.setRole(r, pos)) gameview.showError("No lemming in position (" + pos.getRow() + "," + pos.getCol() + ") admits role Walker"); //AQUÍ hay exception ! ! !
 		else {	
 			game.update();

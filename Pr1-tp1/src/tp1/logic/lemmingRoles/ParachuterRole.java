@@ -70,5 +70,6 @@ public class ParachuterRole extends AbstractRole{
 	public String helpText() {
 		return DETAILS;
 	}
+	
 
 }

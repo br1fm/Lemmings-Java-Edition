@@ -17,6 +17,7 @@ public class CommandGenerator {
     		new SetRoleCommand(),
     		new UpdateCommand(),
             new ResetCommand(),
+            new LoadCommand(),
             new HelpCommand(),
             new ExitCommand());
     
@@ -37,7 +38,7 @@ public class CommandGenerator {
 			}
 		}
 		
-		throw new CommandParseException(Messages.UNKNOWN_COMMAND.formatted(command[0]));
+		throw new CommandParseException(Messages.UNKNOWN_COMMAND + ": " + command[0]);
 			
 	}
 	
