@@ -9,6 +9,9 @@ public interface LemmingRole {
     public void start(Lemming lemming);
     public void play(Lemming lemming);
     public String getIcon(Lemming lemming);
+    public String getName();
+    public String getShortcut();
+    public String getDetails();
     
     public String helpText();
     public LemmingRole parse(String role);
@@ -17,4 +20,5 @@ public interface LemmingRole {
     public boolean interactWith(Lemming receiver, Lemming owner);
     public boolean interactWith(Wall wall, Lemming owner);
     public boolean interactWith(ExitDoor door, Lemming owner);
+    boolean equals(LemmingRole other_role);
 }

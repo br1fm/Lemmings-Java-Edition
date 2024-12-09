@@ -24,6 +24,22 @@ public abstract class AbstractRole implements LemmingRole{
 		this.details = details;
 	}
 	
+	  @Override
+	  public String getName() {
+		  return name;
+	  }
+	  
+	  @Override
+	  public String getShortcut() {
+		  return shortcut;
+	  }
+	  
+	  @Override
+	  public String getDetails() {
+		  return details;
+	  }
+	    
+	
 	/**
 	 * La constante que define el valor máximo de caída para el lemming que tiene el rol.
 	 */
@@ -58,5 +74,13 @@ public abstract class AbstractRole implements LemmingRole{
 		}
 		return null;
 	}
+    
+    @Override
+    public boolean equals(LemmingRole other_role) {
+	       if (this == other_role) return true;
+	       if (other_role == null) return false;
+	       return (other_role.getName().equals(name) && other_role.getDetails().equals(details) 
+	    		   && other_role.getShortcut().equals(shortcut)); 
+	 }
 	
 }
