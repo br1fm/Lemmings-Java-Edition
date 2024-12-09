@@ -10,6 +10,5 @@ public interface GameModel {
 	public void reset();
 	public void gameExit();
 	public boolean setRole(LemmingRole role, Position comparison) throws OffBoardException;
-	public boolean isInBoard(Position pos);
 	public void load(String fileName) throws GameLoadException;
 }

@@ -4,7 +4,6 @@ import tp1.exceptions.ObjectParseException;
 import tp1.exceptions.OffBoardException;
 import tp1.exceptions.RoleParseException;
 import tp1.logic.Direction;
-import tp1.logic.Game;
 import tp1.logic.GameWorld;
 import tp1.logic.Position;
 import tp1.logic.lemmingRoles.LemmingRole;
@@ -41,7 +40,6 @@ public class Lemming extends GameObject{
         this.fall_force = other.fall_force;
     }
 	
-	//NUEVO
 	public Lemming() {}
 
 	/**
@@ -50,7 +48,10 @@ public class Lemming extends GameObject{
 	 */
 	@Override
 	public void update() {
-		if(!isOut()) role.play(this);
+		if(!isOut()){
+			interact();
+			role.play(this);
+		}
 		else escape();
 	}
 	
@@ -58,22 +59,6 @@ public class Lemming extends GameObject{
 	 * Mueve al lemming según su estado y las condiciones del juego.
 	 * Si no está en el suelo, intenta caer; si está en el suelo, puede caminar o morir.
 	 */
-	public void move() {
-		
-		if(!isOnGround()){
-			role.manageFall(this);
-		}
-		
-		else{
-			if(role.manageLanding(this)) die();
-			else {
-				walk();
-				resetFall_force();
-			}
-		}
-		
-		if(isAtVoid()) die();
-	}
 	
 	@Override
 	protected String getName() {
@@ -95,13 +80,14 @@ public class Lemming extends GameObject{
 	public void fall() {		
 		updatePosition(Direction.DOWN);
 		fall_force++;
+		if(this.isAtVoid()) this.die();
 	}
 	
 	/**
 	 * Hace que el lemming camine en la dirección actual.
 	 * Cambia la dirección si hay una pared o si el lemming está en el borde.
 	 */
-	protected void walk() {
+	public void walk() {
 		updatePosition(dir);
 		if(isSolidAtPos() || isAtBorder()) {
 			dir = dir.changeDirection();
@@ -143,12 +129,9 @@ public class Lemming extends GameObject{
 	}
 	
 	public GameObject parse(String line, GameWorld game) throws ObjectParseException, OffBoardException{
-		//GameWorld será para comprobar si está dentro del tablero el objeto??
-		//TODO: para lemming hacer OVERWRITE
 		try {
 			String[] words = line.trim().split("\\s+");
 			if(!getObjectNameFrom(words[1])) return null;
-			//meter aquí line como cause?? ( "(a,3) Lemming RIGHT 2 Walker")
 			else {
 				Position p = getPositionFrom(words[0], game);
 				Direction d = getLemmingDirectionFrom(words[2]);
@@ -211,4 +194,5 @@ public class Lemming extends GameObject{
     public GameObject copy() {
         return new Lemming(this);
     }
+    
 }

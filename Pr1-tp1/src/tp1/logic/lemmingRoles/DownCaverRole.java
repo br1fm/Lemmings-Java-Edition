@@ -16,12 +16,15 @@ public class DownCaverRole extends AbstractRole{
 	private static final String SHORTCUT = Messages.ROLE_DOWN_CAVER_SHORTCUT;
 	private static final String DETAILS = Messages.ROLE_DOWN_CAVER_DETAILS;
 	
+	private boolean hasCaved;
+	
 	 /**
      * Constructor de DownCaverRole.
      * Inicializa el rol con el nombre, atajo y detalles definidos en las constantes.
      */
 	public DownCaverRole() {
 		super(NAME, SHORTCUT, DETAILS);
+		hasCaved = false;
 	}
 	
     /**
@@ -31,11 +34,18 @@ public class DownCaverRole extends AbstractRole{
      */
 	@Override
 	public void play(Lemming lemming) {
-		if(!lemming.interact()) {
+		
+		if(!hasCaved) {
 			lemming.disableRole();
-			lemming.move();
+			if(!lemming.isOnGround()) lemming.fall();
+			else lemming.walk();
 		}
-		else lemming.resetFall_force();
+		
+		else {
+		lemming.fall();
+		lemming.resetFall_force();
+		}
+		
 	}
 	
     /**
@@ -48,12 +58,6 @@ public class DownCaverRole extends AbstractRole{
 	public String getIcon(Lemming lemming) {
 		return Messages.LEMMING_DOWN_CAVER;
 	}
-
-	@Override
-	public void manageFall(Lemming lemming) {}
-
-	@Override
-	public boolean manageLanding(Lemming lemming) { return false; }
 	
     /**
      * Define cómo el lemming interactúa con una pared cuando tiene el rol de DownCaver.
@@ -68,11 +72,14 @@ public class DownCaverRole extends AbstractRole{
 		
 		if(owner.isOnRelativePos(wall.getPos(), Direction.DOWN)) {
 			wall.die();
-			owner.fall();
+			hasCaved = true;
 			return true;
 		}
 		
-		else return false;
+		else {
+			hasCaved = false;
+			return false;
+		}
     }
 	
 	

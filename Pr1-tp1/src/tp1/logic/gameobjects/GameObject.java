@@ -29,6 +29,12 @@ public abstract class GameObject implements GameItem{
 	
 	GameObject(){}
 	
+	public GameObject(Position pos) {
+		this.pos = pos;
+        this.is_out = false;
+		is_alive = true;
+	}
+
 	/**
 	 * Actualiza el estado del objeto en cada ciclo del juego.
 	 */

@@ -29,7 +29,14 @@ public class ParachuterRole extends AbstractRole{
      */
 	@Override
 	public void play(Lemming lemming) {
-		lemming.move();
+		if(lemming.isOnGround()) {
+			lemming.disableRole();
+			lemming.walk();
+		}
+		else{
+			lemming.fall();
+			lemming.resetFall_force();
+		}
 	}
 
 	 /**
@@ -41,29 +48,6 @@ public class ParachuterRole extends AbstractRole{
 	@Override
 	public String getIcon(Lemming lemming) {
 		return Messages.PARACHUTE;
-	}
-	
-    /**
-	 * Hace que el lemming caiga.
-	 * 
-	 * @param lemming El lemming que va a caer.
-	 */
-	@Override
-    public void manageFall(Lemming lemming) {
-    	lemming.fall();
-    }
-    
-    /**
-     * Este método es invocado cuando el lemming aterriza.
-     * Al aterrizar, el rol de paracaidista se desactiva.
-     * 
-     * @param lemming El lemming que tiene este rol.
-     * @return false, ya que no se realiza ninguna acción adicional al aterrizar.
-     */
-	@Override
-	public boolean manageLanding(Lemming lemming) {
-		lemming.disableRole();
-		return false;
 	}
 
 	@Override

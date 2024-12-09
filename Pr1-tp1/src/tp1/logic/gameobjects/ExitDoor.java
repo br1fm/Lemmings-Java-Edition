@@ -12,16 +12,14 @@ import tp1.view.Messages;
  */
 public class ExitDoor extends GameObject{
 	
-	//private Position pos;
-	
 
 	/**
 	 * Constructor de la clase ExitDoor.
 	 * 
 	 * @param pos Posición de la puerta de salida.
 	 */
-	public ExitDoor(Position pos, GameWorld game) {
-		super(pos, game);
+	public ExitDoor(Position pos) {
+		super(pos);
 	}
 	
 	// Constructor de copia profunda
@@ -70,7 +68,7 @@ public class ExitDoor extends GameObject{
 		if(!getObjectNameFrom(words[1])) return null;
 		else { 
 			Position pos = getPositionFrom(words[0], game);
-			return new ExitDoor(pos, game);
+			return new ExitDoor(pos);
 		}
 		}catch(ArrayIndexOutOfBoundsException e) {
 			throw new ObjectParseException("Not enough arguments: ");

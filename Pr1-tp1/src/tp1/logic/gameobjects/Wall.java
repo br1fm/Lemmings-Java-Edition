@@ -17,8 +17,8 @@ public class Wall extends GameObject{
 	 * @param col Columna de la posición de la wall.
 	 * @param row Fila de la posición de la wall.
 	 */
-	public Wall(Position pos, GameWorld game){
-		super(pos, game);
+	public Wall(Position pos){
+		super(pos);
 	}
 	
 	// Constructor de copia profunda
@@ -53,11 +53,6 @@ public class Wall extends GameObject{
 	public boolean receiveInteraction(GameItem other) {
 		return other.interactWith(this);
 	}
-	
-	@Override
-	public boolean interactWith(Lemming lemming) {
-		return true;
-	}
 
 	@Override
 	protected String getShortcut() {
@@ -72,7 +67,7 @@ public class Wall extends GameObject{
 		if(!getObjectNameFrom(words[1])) return null;
 		else { 
 			Position pos = getPositionFrom(words[0], game);
-			return new Wall(pos, game);
+			return new Wall(pos);
 		}
 		}catch(ArrayIndexOutOfBoundsException e) {
 			throw new ObjectParseException("Not enough arguments: ");

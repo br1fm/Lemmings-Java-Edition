@@ -102,7 +102,7 @@ public class SetRoleCommand extends Command{
 		
 		try {
 		LemmingRole r = LemmingRoleFactory.parse(role); 
-		if(!game.setRole(r, pos)) gameview.showError("No lemming in position (" + pos.getRow() + "," + pos.getCol() + ") admits role Walker"); //AQUÍ hay exception ! ! !
+		if(!game.setRole(r, pos)) gameview.showError("No lemming in position (" + pos.getRow() + "," + pos.getCol() + ") admits role " + role);
 		else {	
 			game.update();
 			gameview.showGame();

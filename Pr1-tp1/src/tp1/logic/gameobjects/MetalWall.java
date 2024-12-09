@@ -17,8 +17,8 @@ public class MetalWall extends GameObject{
 	 * @param pos Posicion del MetalWall.
 	 * @param game Interfaz GameWorld.
 	 */
-	public MetalWall(Position pos, GameWorld game) {
-		super(pos, game);
+	public MetalWall(Position pos) {
+		super(pos);
 	}
 
 	// Constructor de copia profunda
@@ -33,6 +33,8 @@ public class MetalWall extends GameObject{
 	public boolean receiveInteraction(GameItem other) {
 		return other.receiveInteraction(this);
 	}
+	
+	
 
 	/**
 	 * Devuelve un String del MetalWall.
@@ -68,7 +70,7 @@ public class MetalWall extends GameObject{
 		if(!getObjectNameFrom(words[1])) return null;
 		else { 
 			Position pos = getPositionFrom(words[0], game);
-			return new MetalWall(pos, game);
+			return new MetalWall(pos);
 		}
 		}catch(ArrayIndexOutOfBoundsException e) {
 			throw new ObjectParseException("Not enough arguments: ");

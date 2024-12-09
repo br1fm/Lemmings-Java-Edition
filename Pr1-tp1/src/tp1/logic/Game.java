@@ -3,6 +3,7 @@ package tp1.logic;
 import tp1.logic.gameobjects.Lemming;
 import tp1.logic.gameobjects.MetalWall;
 import tp1.logic.gameobjects.Wall;
+
 import tp1.logic.lemmingRoles.LemmingRole;
 import tp1.logic.lemmingRoles.ParachuterRole;
 import tp1.logic.lemmingRoles.WalkerRole;
@@ -84,24 +85,25 @@ public class Game implements GameModel, GameStatus, GameWorld{
 	private void initGame0() {
 		
 		// Puerta de salida
-		addObject(new ExitDoor(new Position(4, 5), this));
+		addObject(new ExitDoor(new Position(4, 5)));
 		
 		// Paredes
-		addObject(new Wall(new Position(4, 6), this));
-		addObject(new Wall(new Position(5, 6), this));
-		addObject(new Wall(new Position(6, 6), this));
-		addObject(new Wall(new Position(7, 6), this));
-		addObject(new Wall(new Position(7, 5), this));
-		addObject(new Wall(new Position(8, 9), this));
-		addObject(new Wall(new Position(9, 9), this));
-		addObject(new Wall(new Position(8, 8), this));
-		addObject(new Wall(new Position(0, 9), this));
-		addObject(new Wall(new Position(1, 9), this));
-		addObject(new Wall(new Position(4, 4), this));
-		addObject(new Wall(new Position(3, 4), this));
-		addObject(new Wall(new Position(2, 4), this));
-		addObject(new Wall(new Position(8, 1), this));
-		addObject(new Wall(new Position(9, 1), this));
+		addObject(new Wall(new Position(4, 6)));
+		addObject(new Wall(new Position(5, 6)));
+		addObject(new Wall(new Position(6, 6)));
+		addObject(new Wall(new Position(7, 6)));
+		addObject(new Wall(new Position(7, 5)));
+		addObject(new Wall(new Position(8, 9)));
+		addObject(new Wall(new Position(9, 9)));
+		addObject(new Wall(new Position(8, 8)));
+		addObject(new Wall(new Position(0, 9)));
+		addObject(new Wall(new Position(1, 9)));
+		addObject(new Wall(new Position(4, 4)));
+		addObject(new Wall(new Position(3, 4)));
+		addObject(new Wall(new Position(2, 4)));
+		addObject(new Wall(new Position(8, 1)));
+		addObject(new Wall(new Position(9, 1)));
+		addObject(new Wall(new Position(3, 5)));
 		
 		// Lemmings
 		addObject(new Lemming(new Position(9, 0), this, new WalkerRole(), Direction.RIGHT, 0));
@@ -119,24 +121,25 @@ public class Game implements GameModel, GameStatus, GameWorld{
 	private void initGame1() {
 		
 		// Puerta de salida
-		addObject(new ExitDoor(new Position(4, 5), this));
+		addObject(new ExitDoor(new Position(4, 5)));
 		
 		// Paredes
-		addObject(new Wall(new Position(4, 6), this));
-		addObject(new Wall(new Position(5, 6), this));
-		addObject(new Wall(new Position(6, 6), this));
-		addObject(new Wall(new Position(7, 6), this));
-		addObject(new Wall(new Position(7, 5), this));
-		addObject(new Wall(new Position(8, 9), this));
-		addObject(new Wall(new Position(9, 9), this));
-		addObject(new Wall(new Position(8, 8), this));
-		addObject(new Wall(new Position(0, 9), this));
-		addObject(new Wall(new Position(1, 9), this));
-		addObject(new Wall(new Position(4, 4), this));
-		addObject(new Wall(new Position(3, 4), this));
-		addObject(new Wall(new Position(2, 4), this));
-		addObject(new Wall(new Position(8, 1), this));
-		addObject(new Wall(new Position(9, 1), this));
+		addObject(new Wall(new Position(4, 6)));
+		addObject(new Wall(new Position(5, 6)));
+		addObject(new Wall(new Position(6, 6)));
+		addObject(new Wall(new Position(7, 6)));
+		addObject(new Wall(new Position(7, 5)));
+		addObject(new Wall(new Position(8, 9)));
+		addObject(new Wall(new Position(9, 9)));
+		addObject(new Wall(new Position(8, 8)));
+		addObject(new Wall(new Position(0, 9)));
+		addObject(new Wall(new Position(1, 9)));
+		addObject(new Wall(new Position(4, 4)));
+		addObject(new Wall(new Position(3, 4)));
+		addObject(new Wall(new Position(2, 4)));
+		addObject(new Wall(new Position(8, 1)));
+		addObject(new Wall(new Position(9, 1)));
+		addObject(new Wall(new Position(3, 5)));
 		
 		// Lemmings
 		addObject(new Lemming(new Position(9, 0), this, new WalkerRole(), Direction.RIGHT, 0));
@@ -151,23 +154,23 @@ public class Game implements GameModel, GameStatus, GameWorld{
 	private void initGame2() {
 		
 		// Paredes
-		addObject(new Wall(new Position(4, 6), this));
-		addObject(new Wall(new Position(5, 6), this));
-		addObject(new Wall(new Position(6, 6), this));
-		addObject(new Wall(new Position(7, 6), this));
-		addObject(new Wall(new Position(7, 5), this));
-		addObject(new Wall(new Position(8, 9), this));
-		addObject(new Wall(new Position(9, 9), this));
-		addObject(new Wall(new Position(8, 8), this));
-		addObject(new Wall(new Position(0, 9), this));
-		addObject(new Wall(new Position(1, 9), this));
-		addObject(new Wall(new Position(4, 4), this));
-		addObject(new Wall(new Position(3, 4), this));
-		addObject(new Wall(new Position(2, 4), this));
-		addObject(new Wall(new Position(8, 1), this));
-		addObject(new Wall(new Position(9, 1), this));
-		addObject(new Wall(new Position(3, 5), this));
-		addObject(new MetalWall(new Position(3, 6), this));
+		addObject(new Wall(new Position(4, 6)));
+		addObject(new Wall(new Position(5, 6)));
+		addObject(new Wall(new Position(6, 6)));
+		addObject(new Wall(new Position(7, 6)));
+		addObject(new Wall(new Position(7, 5)));
+		addObject(new Wall(new Position(8, 9)));
+		addObject(new Wall(new Position(9, 9)));
+		addObject(new Wall(new Position(8, 8)));
+		addObject(new Wall(new Position(0, 9)));
+		addObject(new Wall(new Position(1, 9)));
+		addObject(new Wall(new Position(4, 4)));
+		addObject(new Wall(new Position(3, 4)));
+		addObject(new Wall(new Position(2, 4)));
+		addObject(new Wall(new Position(8, 1)));
+		addObject(new Wall(new Position(9, 1)));
+		addObject(new Wall(new Position(3, 5)));
+		addObject(new MetalWall(new Position(3, 6)));
 		
 		// Lemmings
 		addObject(new Lemming(new Position(9, 0), this, new WalkerRole(), Direction.RIGHT, 0));
@@ -178,7 +181,7 @@ public class Game implements GameModel, GameStatus, GameWorld{
 		addObject(new Lemming(new Position(3, 3), this, new WalkerRole(), Direction.RIGHT, 0));
 		
 		// Puerta de salida
-		addObject(new ExitDoor(new Position(4, 5), this));
+		addObject(new ExitDoor(new Position(4, 5)));
 
 		lems_to_win = 2;
 		lems_in_board = 6;
@@ -319,7 +322,7 @@ public class Game implements GameModel, GameStatus, GameWorld{
 	 */
 	 public boolean isAtBorder(Position pos) {
 			return (pos.getCol() == DIM_X||
-					pos.getRow() == -1);
+					pos.getCol() == -1);
 	}
 		
 	 /**
@@ -328,7 +331,7 @@ public class Game implements GameModel, GameStatus, GameWorld{
 	 * @return true si la posición está en el vacío, false en caso contrario.
 	 */
 	public boolean isAtVoid(Position pos) {
-			return (pos.getRow() == DIM_Y);
+			return (pos.getRow() >= DIM_Y);
 	}
 	
 	 /**

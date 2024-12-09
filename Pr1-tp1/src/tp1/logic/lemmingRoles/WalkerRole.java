@@ -29,9 +29,20 @@ public class WalkerRole extends AbstractRole implements LemmingRole{
 	 */
 	@Override
     public void play(Lemming lemming) {
-    	lemming.move();
+    	if(!lemming.isOnGround()) {
+    		lemming.fall();
+    	}
+    	
+    	else {
+    		if(lemming.getFall_force() > MAX_FALL) lemming.die();
+    		else {
+    			lemming.walk();
+    			lemming.resetFall_force();
+    		}
+    	}
+    	
     }
-    
+	
     /**
 	 * Devuelve el icono que representa al lemming según su dirección.
 	 * 
@@ -43,15 +54,6 @@ public class WalkerRole extends AbstractRole implements LemmingRole{
     	if(lemming.getDirection() == Direction.LEFT) str = Messages.LEMMING_LEFT; 
     	else str = Messages.LEMMING_RIGHT;
     	return str;
-    }
-    
-    /**
-	 * Hace que el lemming caiga.
-	 * 
-	 * @param lemming El lemming que va a caer.
-	 */
-    public void manageFall(Lemming lemming) {
-    	lemming.fall();
     }
     
     /**
