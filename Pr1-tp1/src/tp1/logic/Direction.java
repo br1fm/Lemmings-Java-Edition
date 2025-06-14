@@ -1,7 +1,7 @@
 package tp1.logic;
 
 public enum Direction {
-	LEFT(-1,0), RIGHT(1,0), DOWN(0,1), UP(0,-1), NONE(0,0);
+	LEFT(-1,0), RIGHT(1,0), DOWN(0,1), UP(0,-1), NONE(0,0), LEFT_DOWN(-1,1), RIGHT_DOWN(1,1), RIGHT_UP(1,-1), LEFT_UP(-1,-1);
 	
 	private int x;
 	private int y;
@@ -67,6 +67,7 @@ public enum Direction {
 	
 	public Direction getDirection(String dir) {
 		Direction aux;
+		dir = dir.toUpperCase();
 		
 		switch(dir) {
 		case "LEFT":
@@ -80,6 +81,18 @@ public enum Direction {
 			break;
 		case "DOWN":
 			aux = DOWN;
+			break;
+		case "LEFT_DOWN":
+			aux = LEFT_DOWN;
+			break;
+		case "RIGHT_DOWN":
+			aux = RIGHT_DOWN;
+			break;
+		case "RIGHT_UP":
+			aux = RIGHT_UP;
+			break;
+		case "LEFT_UP":
+			aux = LEFT_UP;
 			break;
 		default:
 			aux = null;

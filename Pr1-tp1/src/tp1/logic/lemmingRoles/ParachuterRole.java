@@ -1,5 +1,6 @@
 package tp1.logic.lemmingRoles;
 
+import tp1.logic.gameobjects.GameItem;
 import tp1.logic.gameobjects.Lemming;
 import tp1.view.Messages;
 
@@ -54,6 +55,5 @@ public class ParachuterRole extends AbstractRole{
 	public String helpText() {
 		return DETAILS;
 	}
-	
 
 }

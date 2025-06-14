@@ -11,10 +11,13 @@ public class LemmingRoleFactory {
 	private static final List<AbstractRole> AVAILABLE_ROLES = Arrays.asList(
 			new DownCaverRole(),
             new ParachuterRole(),
-            new WalkerRole()
+            new WalkerRole(),
+            new HorizontalCaverRole(),
+            new CaverRole(),
+            new BlockerRole()
     );
 	
-	public static LemmingRole parse(String input) throws RoleParseException{ 
+	public static LemmingRole parse(String[] input) throws RoleParseException{ 
 		for(AbstractRole i : AVAILABLE_ROLES) {
 			if(i.parse(input) != null) {
 				return i;

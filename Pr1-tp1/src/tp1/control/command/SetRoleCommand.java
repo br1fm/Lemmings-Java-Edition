@@ -5,11 +5,9 @@ import tp1.logic.lemmingRoles.LemmingRole;
 import tp1.logic.lemmingRoles.LemmingRoleFactory;
 import tp1.exceptions.CommandExecuteException;
 import tp1.exceptions.CommandParseException;
-import tp1.exceptions.GameModelException;
 import tp1.exceptions.OffBoardException;
 import tp1.exceptions.RoleParseException;
 import tp1.logic.GameModel;
-import tp1.logic.GameWorld;
 import tp1.view.GameView;
 import tp1.view.Messages;
 
@@ -23,7 +21,7 @@ import tp1.view.Messages;
  */
 public class SetRoleCommand extends Command{
 	
-	private String role;
+	private String[] role;
 	private Position pos;
 	
 	
@@ -46,7 +44,7 @@ public class SetRoleCommand extends Command{
      * @param col La columna de la posición donde se asignará el rol.
      * @param row La fila de la posición donde se asignará el rol.
      */
-	public SetRoleCommand(String role, int col, int row) {
+	public SetRoleCommand(String[] role, int col, int row) {
 		super(NAME, SHORTCUT, DETAILS, HELP);
 		this.role = role;
 		this.pos = new Position(col, row);
@@ -69,7 +67,7 @@ public class SetRoleCommand extends Command{
 			int row = 0;
 			int col = 0;
 			
-			if(command.length != 4) throw new CommandParseException("Incorrect parameter number");
+			if(command.length > 5) throw new CommandParseException("Incorrect parameter number");
 			
 			try {
 			char caracter = command[2].charAt(0);
@@ -83,7 +81,7 @@ public class SetRoleCommand extends Command{
 			catch(IndexOutOfBoundsException e) {
 				throw new CommandParseException("Not enough arguments");
 			}
-			return new SetRoleCommand(command[1], col - 1, row);
+			return new SetRoleCommand(command, col - 1, row);
 		}
 		
 		return null;
@@ -101,7 +99,7 @@ public class SetRoleCommand extends Command{
 	public void execute(GameModel game, GameView gameview) throws CommandExecuteException{
 		
 		try {
-		LemmingRole r = LemmingRoleFactory.parse(role); 
+		LemmingRole r = LemmingRoleFactory.parse(role);
 		if(!game.setRole(r, pos)) gameview.showError("No lemming in position (" + pos.getRow() + "," + pos.getCol() + ") admits role " + role);
 		else {	
 			game.update();

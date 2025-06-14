@@ -19,6 +19,7 @@ public class CommandGenerator {
             new ResetCommand(),
             new LoadCommand(),
             new HelpCommand(),
+            new ToggleLemmingCommand(),
             new ExitCommand());
     
     /**

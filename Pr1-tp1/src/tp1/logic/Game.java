@@ -103,7 +103,6 @@ public class Game implements GameModel, GameStatus, GameWorld{
 		addObject(new Wall(new Position(2, 4)));
 		addObject(new Wall(new Position(8, 1)));
 		addObject(new Wall(new Position(9, 1)));
-		addObject(new Wall(new Position(3, 5)));
 		
 		// Lemmings
 		addObject(new Lemming(new Position(9, 0), this, new WalkerRole(), Direction.RIGHT, 0));
@@ -139,7 +138,6 @@ public class Game implements GameModel, GameStatus, GameWorld{
 		addObject(new Wall(new Position(2, 4)));
 		addObject(new Wall(new Position(8, 1)));
 		addObject(new Wall(new Position(9, 1)));
-		addObject(new Wall(new Position(3, 5)));
 		
 		// Lemmings
 		addObject(new Lemming(new Position(9, 0), this, new WalkerRole(), Direction.RIGHT, 0));
@@ -232,7 +230,7 @@ public class Game implements GameModel, GameStatus, GameWorld{
 	 * @return Número de lemmings restantes para ganar.
 	 */
 	public int numLemmingsToWin() {
-		return lems_to_win;
+		return lems_to_win - numLemmingsExit();
 	}
 
 	/**
@@ -372,6 +370,11 @@ public class Game implements GameModel, GameStatus, GameWorld{
 	public void load(String fileName) throws GameLoadException {
 		this.conf = new FileGameConfiguration(fileName, this);
 		reset();
+	}
+
+	@Override
+	public void stop(Position pos) {
+		container.stop(pos);
 	}
 
 }

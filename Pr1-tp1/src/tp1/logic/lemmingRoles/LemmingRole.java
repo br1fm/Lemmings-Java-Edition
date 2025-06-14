@@ -14,11 +14,12 @@ public interface LemmingRole {
     public String getDetails();
     
     public String helpText();
-    public LemmingRole parse(String role);
+    public LemmingRole parse(String[] role);
     
     public boolean receiveInteraction(GameItem other, Lemming owner);
     public boolean interactWith(Lemming receiver, Lemming owner);
     public boolean interactWith(Wall wall, Lemming owner);
     public boolean interactWith(ExitDoor door, Lemming owner);
     boolean equals(LemmingRole other_role);
+	public boolean isSolid();
 }

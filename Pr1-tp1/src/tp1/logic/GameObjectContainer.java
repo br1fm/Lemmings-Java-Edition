@@ -211,5 +211,11 @@ public class GameObjectContainer {
     		
     	return (stop);
 	}
+
+	public void stop(Position pos) {
+		for(GameObject o : gameObjects) {
+			if(o.isInPosition(pos)) o.toggleMovement();
+		}
+	}
     
 }

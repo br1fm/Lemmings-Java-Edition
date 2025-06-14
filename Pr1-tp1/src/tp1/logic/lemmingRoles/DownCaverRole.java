@@ -37,7 +37,10 @@ public class DownCaverRole extends AbstractRole{
 		
 		if(!hasCaved) {
 			lemming.disableRole();
-			if(!lemming.isOnGround()) lemming.fall();
+			if(!lemming.isOnGround()) {
+				lemming.fall();
+				lemming.resetFall_force();
+			}
 			else lemming.walk();
 		}
 		

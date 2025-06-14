@@ -48,7 +48,7 @@ public class Lemming extends GameObject{
 	 */
 	@Override
 	public void update() {
-		if(!isOut()){
+		if(!isOut() || !isStopped()){
 			interact();
 			role.play(this);
 		}
@@ -77,7 +77,7 @@ public class Lemming extends GameObject{
 	/**
 	 * Hace que el lemming caiga a la posición inmediatamente abajo.
 	 */
-	public void fall() {		
+	public void fall() {
 		updatePosition(Direction.DOWN);
 		fall_force++;
 		if(this.isAtVoid()) this.die();
@@ -90,7 +90,7 @@ public class Lemming extends GameObject{
 	public void walk() {
 		updatePosition(dir);
 		if(isSolidAtPos() || isAtBorder()) {
-			dir = dir.changeDirection();
+			changeDirection();
 			updatePosition(dir);
 		}
 	}
@@ -122,6 +122,11 @@ public class Lemming extends GameObject{
 	public boolean interactWith(Wall wall) {
 		return role.interactWith(wall, this);
 	}
+	
+	@Override
+	public boolean interactWith(Lemming lemming) {
+		return role.interactWith(lemming, this);
+	}
 
 	@Override
 	public boolean receiveInteraction(GameItem other) {
@@ -136,7 +141,7 @@ public class Lemming extends GameObject{
 				Position p = getPositionFrom(words[0], game);
 				Direction d = getLemmingDirectionFrom(words[2]);
 				int ff = getLemmingHeigthFrom(words[3]);
-				LemmingRole lr = getLemmingRoleFrom(words[4]);
+				LemmingRole lr = getLemmingRoleFrom(words);
 				return new Lemming(p, game, lr, d, ff);
 			}
 		}catch(ArrayIndexOutOfBoundsException e) {
@@ -161,7 +166,7 @@ public class Lemming extends GameObject{
 		}
 	}
 	
-	private static LemmingRole getLemmingRoleFrom(String line) throws ObjectParseException {
+	private static LemmingRole getLemmingRoleFrom(String[] line) throws ObjectParseException {
 		try {
 			LemmingRole lr = LemmingRoleFactory.parse(line);
 			return lr;
@@ -194,5 +199,14 @@ public class Lemming extends GameObject{
     public GameObject copy() {
         return new Lemming(this);
     }
+    
+    public void changeDirection() {
+    	dir = dir.changeDirection();
+    }
+    
+    @Override
+	public boolean isSolid(){
+		return role.isSolid();
+	}
     
 }

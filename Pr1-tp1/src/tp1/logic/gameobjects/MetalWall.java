@@ -33,8 +33,6 @@ public class MetalWall extends GameObject{
 	public boolean receiveInteraction(GameItem other) {
 		return other.receiveInteraction(this);
 	}
-	
-	
 
 	/**
 	 * Devuelve un String del MetalWall.

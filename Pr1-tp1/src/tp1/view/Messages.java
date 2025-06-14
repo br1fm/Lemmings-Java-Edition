@@ -111,6 +111,11 @@ public class Messages {
 	public static final String COMMAND_RESET_SHORTCUT = "r";
 	public static final String COMMAND_RESET_DETAILS = "[r]eset";
 	public static final String COMMAND_RESET_HELP = "reset the game to initial configuration";
+	
+	public static final String COMMAND_TOGGLE_NAME = "toggLemming";
+	public static final String COMMAND_TOGGLE_SHORTCUT = "tl";
+	public static final String COMMAND_TOGGLE_DETAILS = "[t]oggle[L]emming";
+	public static final String COMMAND_TOGGLE_HELP = "toggles a lemming";
 
 //Roles
 	
@@ -126,6 +131,22 @@ public class Messages {
 	public static final String ROLE_DOWN_CAVER_SHORTCUT = "dc";
 	public static final String ROLE_DOWN_CAVER_DETAILS = "[D]own [C]aver: Lemming caves downwards";
 	
+	public static final String ROLE_BLOCKER_NAME = "Blocker";
+	public static final String ROLE_BLOCKER_SHORTCUT = "b";
+	public static final String ROLE_BLOCKER_DETAILS = "Blocker: Lemming that blocks other Lemmings";
+	
+	public static final String ROLE_HORIZONTAL_CAVER_NAME = "HorizontalCaver";
+	public static final String ROLE_HORIZONTAL_CAVER_SHORTCUT = "hc";
+	public static final String ROLE_HORIZONTAL_CAVER_DETAILS = "[H]orizontal [C]aver: Lemming that caves horizontally";
+	
+	public static final String ROLE_CAVER_NAME = "Caver";
+	public static final String ROLE_CAVER_SHORTCUT = "c";
+	public static final String ROLE_CAVER_DETAILS = "[C]aver+dir: Lemming that caves following a \"dir\" direction";
+	
+	public static final String ROLE_DRONE_NAME = "Drone";
+	public static final String ROLE_DRONE_SHORTCUT = "d";
+	public static final String ROLE_DOWN_DRONE_DETAILS = "[D]roneRole<dir1, dir2, ... , dirN>";
+	
 //Symbols
 	public static final String EMPTY = "";
 	public static final String WALL = MyStringUtils.repeat("▓",ConsoleView.CELL_SIZE);
@@ -135,6 +156,8 @@ public class Messages {
 	public static final String LEMMING_LEFT = "ᗺ";
 	public static final String PARACHUTE = "🪂";
 	public static final String LEMMING_DOWN_CAVER = "´･ω･`";
+	public static final String LEMMMING_BLOCKER = "T";
+	public static final String LEMMING_HORIZONTAL_CAVER = "⬅️➡️";
 
 	
 

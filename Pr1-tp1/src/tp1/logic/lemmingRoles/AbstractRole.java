@@ -43,10 +43,12 @@ public abstract class AbstractRole implements LemmingRole{
 	/**
 	 * La constante que define el valor máximo de caída para el lemming que tiene el rol.
 	 */
-	protected final int MAX_FALL = 2;
+	protected final int MAX_FALL = 3;
 	
 	@Override
-	public boolean receiveInteraction(GameItem other, Lemming owner) { return false; }
+	public boolean receiveInteraction(GameItem other, Lemming owner) { 
+		return other.interactWith(owner);
+	}
 	
 	@Override
     public boolean interactWith(Lemming receiver, Lemming owner) { return false; }
@@ -68,12 +70,16 @@ public abstract class AbstractRole implements LemmingRole{
 	}
     
     @Override
-    public LemmingRole parse(String role){
-		if(role.equalsIgnoreCase(name) || role.equalsIgnoreCase(shortcut)){
+    public LemmingRole parse(String[] role){
+		if(role[1].equalsIgnoreCase(name) || role[1].equalsIgnoreCase(shortcut)){
 			return new WalkerRole();
 		}
 		return null;
 	}
+    
+    public boolean isSolid() {
+    	return false;
+    }
     
     @Override
     public boolean equals(LemmingRole other_role) {

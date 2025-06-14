@@ -10,7 +10,7 @@ import tp1.logic.GameWorld;
 public abstract class GameObject implements GameItem{
 	
 	private Position pos;
-	private boolean is_alive, is_out;
+	private boolean is_alive, is_out, stopped;
 	private GameWorld game;
 	
 	GameObject(Position pos, GameWorld game){
@@ -18,6 +18,7 @@ public abstract class GameObject implements GameItem{
 		this.pos = pos;
 		this.is_out = false;
 		is_alive = true;
+		stopped = false;
 	}
 	
 	protected GameObject(GameObject other) {
@@ -25,6 +26,7 @@ public abstract class GameObject implements GameItem{
         this.game = other.game;
         this.is_out = false;
 		is_alive = true;
+		stopped = false;
     }
 	
 	GameObject(){}
@@ -69,7 +71,7 @@ public abstract class GameObject implements GameItem{
 	 * @param dir La dirección en la que se quiere mover el objeto.
 	 * @return La nueva posición del objeto después de moverse.
 	 */
-	protected Position updatePosition(Direction dir) {
+	public Position updatePosition(Direction dir) {
 		pos = pos.nextPosition(dir);
 		return pos;
 	}
@@ -158,6 +160,15 @@ public abstract class GameObject implements GameItem{
 	@Override
 	public boolean isExit() {
 		return false;
+	}
+	
+	public void toggleMovement() {
+		if(stopped = false) stopped = true;
+		else stopped = false;
+	}
+	
+	public boolean isStopped() {                                                                                                                                      
+		return stopped;
 	}
 	
 	@Override
