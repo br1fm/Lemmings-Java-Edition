@@ -1,3 +1,4 @@
-**/doc/** linguist-generated=true
-
 *.java linguist-language=Java
+*.html linguist-language=HTML
+
+**/doc/** -linguist-generated -linguist-documentation -linguist-vendored
